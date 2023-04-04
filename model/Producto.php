@@ -8,8 +8,10 @@ class Producto
     private $precio;
     private $imagen;
     private $cantidad;
+    private $oferta;
+    private $id_categoria;
 
-    public function __construct($id_producto, $nombre, $descripcion, $precio, $imagen, $cantidad)
+    public function __construct($id_producto, $nombre, $descripcion, $precio, $imagen, $cantidad, $oferta, $id_categoria)
     {
         $this->id_producto = $id_producto;
         $this->nombre = $nombre;
@@ -17,6 +19,8 @@ class Producto
         $this->precio = $precio;
         $this->imagen = $imagen;
         $this->cantidad = $cantidad;
+        $this->oferta = $oferta;
+        $this->id_categoria = $id_categoria;
     }
 
     public function getIdProducto()
@@ -47,5 +51,15 @@ class Producto
     public function getCantidad()
     {
         return $this->cantidad;
+    }
+
+    public function getOferta()
+    {
+        return $this->oferta;
+    }
+
+    public function getIdCategoria()
+    {
+        return $this->id_categoria;
     }
 }
