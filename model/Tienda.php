@@ -2,7 +2,6 @@
 
 class Tienda
 {
-    private $table = "";
     private $conection;
     private array $categorias = array();
 

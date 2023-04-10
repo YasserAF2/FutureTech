@@ -2,9 +2,9 @@
 
 /* Database connection values */
 define("DB_HOST", "localhost");
-define("DB", "futuretech");
+define("DB", "tienda");
 define("DB_USER", "root");
-define("DB_PASS", "123456");
+define("DB_PASS", "");
 
 /* Default options */
 

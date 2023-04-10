@@ -1,9 +1,6 @@
 <?php
 
-
-
-
-class tienda
+class controlador
 {
 
     public $view;
@@ -17,5 +14,14 @@ class tienda
     public function principal()
     {
         $this->view = 'principal';
+
+        $tienda = new Tienda();
+        $categorias = $tienda->getCategorias();
+
+        $datos = array(
+            'categorias' => $categorias,
+        );
+
+        return $datos;
     }
 }

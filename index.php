@@ -10,8 +10,8 @@ require_once 'model/ItemCarrito.php';
 require_once 'model/ItemPedido.php';
 require_once 'model/Pedido.php';
 require_once 'model/Usuario.php';
-
-require_once 'controller/tienda.php';
+require_once 'model/Tienda.php';
+require_once 'controller/controlador.php';
 
 /* Bienvenido a FutureTech, la tienda en línea para tecnología de vanguardia. Ofrecemos una amplia selección de productos
 tecnológicos de alta calidad, desde portátiles y ordenadores de sobremesa hasta periféricos y accesorios para
@@ -23,7 +23,7 @@ clientes, ¡ven y descubre el futuro de la tecnología con nosotros! */
 if (!isset($_GET["action"])) $_GET["action"] = constant("DEFAULT_ACTION");
 
 
-$controlador = new tienda();
+$controlador = new controlador();
 
 $dataToView = array();
 $dataToView  = $controlador->{$_GET["action"]}();

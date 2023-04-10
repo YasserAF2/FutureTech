@@ -11,9 +11,14 @@
     <nav>
         <ul>
             <?php
-            $tienda = new Tienda();
+            $categorias = $dataToView['categorias'];
+            foreach ($categorias as $categoria) {
+            ?>
 
-            $tienda->getCategorias();
+            <li><a href="#"><?php echo $categoria->getNombre(); ?></a></li>
+
+            <?php
+            }
             ?>
         </ul>
     </nav>
