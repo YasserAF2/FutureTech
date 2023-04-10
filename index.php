@@ -4,6 +4,13 @@ require_once 'model/db.php';
 require_once 'config/config.php';
 require_once 'model/Producto.php';
 require_once 'model/Categoria.php';
+require_once 'model/Carrito.php';
+require_once 'model/Comentarios.php';
+require_once 'model/ItemCarrito.php';
+require_once 'model/ItemPedido.php';
+require_once 'model/Pedido.php';
+require_once 'model/Usuario.php';
+
 require_once 'controller/tienda.php';
 
 /* Bienvenido a FutureTech, la tienda en línea para tecnología de vanguardia. Ofrecemos una amplia selección de productos
@@ -20,7 +27,6 @@ $controlador = new tienda();
 
 $dataToView = array();
 $dataToView  = $controlador->{$_GET["action"]}();
-var_dump($dataToView);
 
 
 require_once 'view/template/header.php';

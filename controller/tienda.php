@@ -7,11 +7,15 @@ class tienda
 {
 
     public $view;
-    private $linkedbar;
-
+    public $header;
 
     public function __construct()
     {
-        $this->view = 'tienda';
+        $this->view = 'principal';
+    }
+
+    public function principal()
+    {
+        $this->view = 'principal';
     }
 }

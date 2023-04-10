@@ -8,4 +8,4 @@ define("DB_PASS", "123456");
 
 /* Default options */
 
-define("DEFAULT_ACTION", "tienda");
+define("DEFAULT_ACTION", "principal");
