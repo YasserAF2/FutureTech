@@ -7,16 +7,14 @@
 </head>
 
 <body>
-    <h1>INICIO</h1>
+    <h1>FUTURE TECH</h1>
     <nav>
         <ul>
             <?php
             $categorias = $dataToView['categorias'];
             foreach ($categorias as $categoria) {
             ?>
-
             <li><a href="#"><?php echo $categoria->getNombre(); ?></a></li>
-
             <?php
             }
             ?>
