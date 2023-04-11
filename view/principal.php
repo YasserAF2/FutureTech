@@ -1,67 +1,71 @@
 <main>
-    <!-- Sección de destacados -->
-    <section class="destacados">
-        <h2>Productos Destacados</h2>
-        <!-- Lista de productos destacados -->
-        <ul>
-            <li>
-                <a href="#">
-                    <img src="img/producto1.jpg" alt="Producto 1">
-                    <h3>Nombre del producto 1</h3>
-                    <p>Descripción breve del producto 1</p>
-                    <span class="precio">99,99 €</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="img/producto2.jpg" alt="Producto 2">
-                    <h3>Nombre del producto 2</h3>
-                    <p>Descripción breve del producto 2</p>
-                    <span class="precio">149,99 €</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="img/producto3.jpg" alt="Producto 3">
-                    <h3>Nombre del producto 3</h3>
-                    <p>Descripción breve del producto 3</p>
-                    <span class="precio">79,99 €</span>
-                </a>
-            </li>
-        </ul>
-    </section>
-    <!-- Sección de ofertas -->
-    <section class="ofertas">
-        <h2>Ofertas</h2>
-        <!-- Lista de productos en oferta -->
-        <ul>
-            <li>
-                <a href="#">
-                    <img src="img/producto4.jpg" alt="Producto 4">
-                    <h3>Nombre del producto 4</h3>
-                    <p>Descripción breve del producto 4</p>
-                    <span class="precio-original">129,99 €</span>
-                    <span class="precio-oferta">99,99 €</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="img/producto5.jpg" alt="Producto 5">
-                    <h3>Nombre del producto 5</h3>
-                    <p>Descripción breve del producto 5</p>
-                    <span class="precio-original">179,99 €</span>
-                    <span class="precio-oferta">149,99 €</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="img/producto6.jpg" alt="Producto 6">
-                    <h3>Nombre del producto 6</h3>
-                    <p>Descripción breve del producto 6</p>
-                    <span class="precio-original">99,99 €</span>
-                    <span class="precio-oferta">69,99 €</span>
-                </a>
-            </li>
-        </ul>
-    </section>
+    <?php
+
+    // Obtener el array de categorías de la tienda
+    $categorias = $dataToView['categorias'];
+    ?>
+
+    <main>
+        <!-- Sección de destacados -->
+        <section class="destacados">
+            <h2>Productos Destacados</h2>
+            <!-- Lista de productos destacados -->
+            <ul>
+                <?php
+                // Recorrer el array de categorías
+                foreach ($categorias as $categoria) {
+                    // Obtener el array de productos de la categoría actual
+                    $productos = $categoria->getProductos(1);
+
+                    // Recorrer el array de productos de la categoría actual
+                    foreach ($productos as $producto) {
+                ?>
+                        <li>
+                            <a href="#">
+                                <img src="<?php echo $producto->getImagen(); ?>" alt="<?php echo $producto->getNombre(); ?>">
+                                <h3><?php echo $producto->getNombre(); ?></h3>
+                                <p><?php echo $producto->getDescripcion(); ?></p>
+                                <span class="precio"><?php echo $producto->getPrecio(); ?> €</span>
+                            </a>
+                        </li>
+                <?php
+                    }
+                }
+                ?>
+            </ul>
+        </section>
+
+        <!-- Sección de ofertas -->
+        <section class="ofertas">
+            <h2>Ofertas</h2>
+            <!-- Lista de productos en oferta -->
+            <ul>
+                <?php
+                // Recorrer el array de categorías
+                foreach ($categorias as $categoria) {
+                    // Obtener el array de productos de la categoría actual
+                    $productos = $categoria->getProductos(3);
+
+                    // Recorrer el array de productos de la categoría actual
+                    foreach ($productos as $producto) {
+                        if ($producto->getOferta()) {
+                ?>
+                            <li>
+                                <a href="#">
+                                    <img src="<?php echo $producto->getImagen(); ?>" alt="<?php echo $producto->getNombre(); ?>">
+                                    <h3><?php echo $producto->getNombre(); ?></h3>
+                                    <p><?php echo $producto->getDescripcion(); ?></p>
+                                    <span class="precio-original"><?php echo $producto->getPrecio(); ?> €</span>
+                                    <span class="precio-oferta"><?php echo $producto->getPorcentajeOferta(); ?> €</span>
+                                </a>
+                            </li>
+                <?php
+                        }
+                    }
+                }
+                ?>
+            </ul>
+        </section>
+    </main>
+
 </main>
