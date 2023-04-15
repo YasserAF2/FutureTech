@@ -1,27 +1,33 @@
 <main>
     <?php
 
+
     // Obtener el array de categorías de la tienda
     $categorias = $dataToView['categorias'];
     ?>
 
-    <main>
+    <div>
         <!-- Sección de destacados -->
-        <section class="destacados">
+        <section class="destacados container">
             <h2>Productos Destacados</h2>
             <!-- Lista de productos destacados -->
-            <ul>
+            <ul class="row">
                 <?php
+
+                $productos = array(); // Inicializar el array de productos vacío
+                for ($i = 1; $i <= 5; $i++) {
+                    $productosPagina = $categoria->getProductos($i); // Obtener los productos de la página actual
+                    $productos = array_merge($productos, $productosPagina); // Unir los productos obtenidos con el array de productos total
+                }
+
                 // Recorrer el array de categorías
                 foreach ($categorias as $categoria) {
-                    // Obtener el array de productos de la categoría actual
-                    $productos = $categoria->getProductos(1);
-
                     // Recorrer el array de productos de la categoría actual
+                    echo $categoria->getNombre();
                     foreach ($productos as $producto) {
                 ?>
-                        <li>
-                            <a href="#">
+                        <li class="col-sm-6 col-md-4 col-lg-3">
+                            <a href="producto_individual.php">
                                 <img src="<?php echo $producto->getImagen(); ?>" alt="<?php echo $producto->getNombre(); ?>">
                                 <h3><?php echo $producto->getNombre(); ?></h3>
                                 <p><?php echo $producto->getDescripcion(); ?></p>
@@ -36,10 +42,10 @@
         </section>
 
         <!-- Sección de ofertas -->
-        <section class="ofertas">
+        <section class="ofertas container">
             <h2>Ofertas</h2>
             <!-- Lista de productos en oferta -->
-            <ul>
+            <ul class="row">
                 <?php
                 // Recorrer el array de categorías
                 foreach ($categorias as $categoria) {
@@ -50,7 +56,7 @@
                     foreach ($productos as $producto) {
                         if ($producto->getOferta()) {
                 ?>
-                            <li>
+                            <li class="col-sm-6 col-md-4 col-lg-3">
                                 <a href="#">
                                     <img src="<?php echo $producto->getImagen(); ?>" alt="<?php echo $producto->getNombre(); ?>">
                                     <h3><?php echo $producto->getNombre(); ?></h3>
@@ -66,6 +72,6 @@
                 ?>
             </ul>
         </section>
-    </main>
+    </div>
 
 </main>
