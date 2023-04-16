@@ -25,9 +25,10 @@
                 // Recorrer el array de productos de la categoría actual
                 foreach ($productos as $producto) {
                     if ($producto->getDestacado() == 1) {
+                        $id = $producto->getIdProducto();
                 ?>
                         <li class="col-sm-6 col-md-4 col-lg-3">
-                            <a href="producto_individual.php">
+                            <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
                                 <img src="<?php echo $producto->getImagen(); ?>" alt="<?php echo $producto->getNombre(); ?>">
                                 <h3><?php echo $producto->getNombre(); ?></h3>
                                 <p><?php echo $producto->getDescripcion(); ?></p>

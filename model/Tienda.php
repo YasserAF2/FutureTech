@@ -30,4 +30,13 @@ class Tienda
         }
         return $this->categorias;
     }
+
+    public function getProductoId($id)
+    {
+        $sql = "SELECT * FROM producto WHERE id_producto=" . $id;
+        $resultado = $this->conection->query($sql);
+
+        $producto = mysqli_fetch_assoc($resultado);
+        return $producto;
+    }
 }

@@ -24,4 +24,21 @@ class controlador
 
         return $datos;
     }
+
+    public function producto_individual()
+    {
+        $this->view = 'producto_individual';
+
+        $id = $_GET['id_producto'];
+        $tienda = new Tienda();
+        $categorias = $tienda->getCategorias();
+        $producto = $tienda->getProductoId($id);
+
+        $datos = array(
+            'categorias' => $categorias,
+            'producto' => $producto,
+        );
+
+        return $datos;
+    }
 }
