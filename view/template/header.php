@@ -30,13 +30,19 @@
     <a href="index.php">
         <h1>FUTURE TECH</h1>
     </a>
+    <p>juanperez@gmail.com</p>
+    <?php
+    if (isset($_SESSION['username'])) {
+        echo "<p>Bienvenido " . $_SESSION['username'] . "!</p>";
+    } else {
+    ?>
     <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Login
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <form action="" method="post">
+            <form action="index.php?action=logeado" method="post">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
 
@@ -47,6 +53,9 @@
             </form>
         </div>
     </div>
+    <?php
+    }
+    ?>
 
 
 
