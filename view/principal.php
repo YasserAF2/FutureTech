@@ -20,11 +20,11 @@
                     $productos = array_merge($productos, $productosPagina); // Unir los productos obtenidos con el array de productos total
                 }
 
-                // Recorrer el array de categorías
-                foreach ($categorias as $categoria) {
-                    // Recorrer el array de productos de la categoría actual
-                    echo $categoria->getNombre();
-                    foreach ($productos as $producto) {
+                $productos = array_unique($productos, SORT_REGULAR);
+
+                // Recorrer el array de productos de la categoría actual
+                foreach ($productos as $producto) {
+                    if ($producto->getDestacado() == 1) {
                 ?>
                         <li class="col-sm-6 col-md-4 col-lg-3">
                             <a href="producto_individual.php">
@@ -47,26 +47,20 @@
             <!-- Lista de productos en oferta -->
             <ul class="row">
                 <?php
-                // Recorrer el array de categorías
-                foreach ($categorias as $categoria) {
-                    // Obtener el array de productos de la categoría actual
-                    $productos = $categoria->getProductos(3);
 
-                    // Recorrer el array de productos de la categoría actual
-                    foreach ($productos as $producto) {
-                        if ($producto->getOferta()) {
+                // Recorrer el array de productos de la categoría actual
+                foreach ($productos as $producto) {
+                    if ($producto->getOferta() == 1) {
                 ?>
-                            <li class="col-sm-6 col-md-4 col-lg-3">
-                                <a href="#">
-                                    <img src="<?php echo $producto->getImagen(); ?>" alt="<?php echo $producto->getNombre(); ?>">
-                                    <h3><?php echo $producto->getNombre(); ?></h3>
-                                    <p><?php echo $producto->getDescripcion(); ?></p>
-                                    <span class="precio-original"><?php echo $producto->getPrecio(); ?> €</span>
-                                    <span class="precio-oferta"><?php echo $producto->getPorcentajeOferta(); ?> €</span>
-                                </a>
-                            </li>
+                        <li class="col-sm-6 col-md-4 col-lg-3">
+                            <a href="producto_individual.php">
+                                <img src="<?php echo $producto->getImagen(); ?>" alt="<?php echo $producto->getNombre(); ?>">
+                                <h3><?php echo $producto->getNombre(); ?></h3>
+                                <p><?php echo $producto->getDescripcion(); ?></p>
+                                <span class="precio"><?php echo $producto->getPrecio(); ?> €</span>
+                            </a>
+                        </li>
                 <?php
-                        }
                     }
                 }
                 ?>

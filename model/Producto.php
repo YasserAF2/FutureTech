@@ -10,9 +10,10 @@ class Producto
     private $cantidad;
     private $oferta;
     private $porcentaje_oferta;
+    private $destacado;
     private $id_categoria;
 
-    public function __construct($id_producto, $nombre, $descripcion, $precio, $imagen, $cantidad, $oferta, $porcentaje_oferta, $id_categoria)
+    public function __construct($id_producto, $nombre, $descripcion, $precio, $imagen, $cantidad, $oferta, $porcentaje_oferta, $destacado, $id_categoria)
     {
         $this->id_producto = $id_producto;
         $this->nombre = $nombre;
@@ -22,6 +23,7 @@ class Producto
         $this->cantidad = $cantidad;
         $this->oferta = $oferta;
         $this->porcentaje_oferta = $porcentaje_oferta;
+        $this->destacado = $destacado;
         $this->id_categoria = $id_categoria;
     }
 
@@ -63,6 +65,11 @@ class Producto
     public function getPorcentajeOferta()
     {
         return $this->porcentaje_oferta;
+    }
+
+    public function getDestacado()
+    {
+        return $this->destacado;
     }
 
     public function getIdCategoria()
