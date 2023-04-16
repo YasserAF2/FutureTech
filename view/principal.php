@@ -27,14 +27,14 @@
                     if ($producto->getDestacado() == 1) {
                         $id = $producto->getIdProducto();
                 ?>
-                        <li class="col-sm-6 col-md-4 col-lg-3">
-                            <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
-                                <img src="<?php echo $producto->getImagen(); ?>" alt="<?php echo $producto->getNombre(); ?>">
-                                <h3><?php echo $producto->getNombre(); ?></h3>
-                                <p><?php echo $producto->getDescripcion(); ?></p>
-                                <span class="precio"><?php echo $producto->getPrecio(); ?> €</span>
-                            </a>
-                        </li>
+                <li class="col-sm-6 col-md-4 col-lg-3">
+                    <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
+                        <img src="<?php echo $producto->getImagen(); ?>" alt="<?php echo $producto->getNombre(); ?>">
+                        <h3><?php echo $producto->getNombre(); ?></h3>
+                        <p><?php echo $producto->getDescripcion(); ?></p>
+                        <span class="precio"><?php echo $producto->getPrecio(); ?> €</span>
+                    </a>
+                </li>
                 <?php
                     }
                 }
@@ -52,15 +52,16 @@
                 // Recorrer el array de productos de la categoría actual
                 foreach ($productos as $producto) {
                     if ($producto->getOferta() == 1) {
+                        $id = $producto->getIdProducto();
                 ?>
-                        <li class="col-sm-6 col-md-4 col-lg-3">
-                            <a href="producto_individual.php">
-                                <img src="<?php echo $producto->getImagen(); ?>" alt="<?php echo $producto->getNombre(); ?>">
-                                <h3><?php echo $producto->getNombre(); ?></h3>
-                                <p><?php echo $producto->getDescripcion(); ?></p>
-                                <span class="precio"><?php echo $producto->getPrecio(); ?> €</span>
-                            </a>
-                        </li>
+                <li class="col-sm-6 col-md-4 col-lg-3">
+                    <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
+                        <img src="<?php echo $producto->getImagen(); ?>" alt="<?php echo $producto->getNombre(); ?>">
+                        <h3><?php echo $producto->getNombre(); ?></h3>
+                        <p><?php echo $producto->getDescripcion(); ?></p>
+                        <span class="precio"><?php echo $producto->getPrecio(); ?> €</span>
+                    </a>
+                </li>
                 <?php
                     }
                 }
