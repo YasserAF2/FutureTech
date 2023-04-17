@@ -39,4 +39,18 @@ class Tienda
         $producto = mysqli_fetch_assoc($resultado);
         return $producto;
     }
+
+    public function validarUsuario($usuario, $password)
+    {
+        // Consulta para verificar las credenciales de inicio de sesión
+        $sql = "SELECT * FROM usuario WHERE correo = '$usuario' AND contraseña = '$password'";
+        $result = $this->conection->query($sql);
+
+        // Verificar si se obtuvo un resultado
+        if (mysqli_num_rows($result) == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
