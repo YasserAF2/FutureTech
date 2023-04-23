@@ -33,7 +33,7 @@ class Tienda
 
     public function getProductoId($id)
     {
-        $sql = "SELECT * FROM producto WHERE id_producto=" . $id;
+        $sql = "SELECT * FROM producto WHERE id_producto=" . $id . "";
         $resultado = $this->conection->query($sql);
 
         $producto = mysqli_fetch_assoc($resultado);
@@ -49,6 +49,19 @@ class Tienda
         // Verificar si se obtuvo un resultado
         if (mysqli_num_rows($result) == 1) {
             return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function obtenerProducto($idProducto)
+    {
+        $sql = "SELECT * FROM producto WHERE id_producto = '$idProducto'";
+        $result = $this->conection->query($sql);
+
+        if ($result->num_rows == 1) {
+            $producto = $result->fetch_assoc();
+            return $producto;
         } else {
             return false;
         }

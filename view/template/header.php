@@ -27,32 +27,29 @@
         <h1>FUTURE TECH</h1>
     </a>
     <p>juanperez@gmail.com</p>
-    <?php
-    if (isset($_SESSION['username'])) {
-        echo "<p>Bienvenido " . $_SESSION['username'] . "!</p>";
-    } else {
-    ?>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Login
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <form action="index.php?action=logeado" method="post">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
+    <div class="header">
+        <?php
+        session_start();
 
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
+        if (isset($_SESSION['usuario'])) { ?>
+            <p>Bienvenido, <?php echo $_SESSION['usuario']; ?>!</p>
+            <a href="index.php?action=carrito">
+                <i class="fas fa-shopping-cart"></i> Carrito de la compra
+            </a>
 
-                    <input type="submit" value="Login">
-                </form>
-            </div>
-        </div>
-    <?php
-    }
-    ?>
-
-
+            <a href="index.php?action=logout">Cerrar sesión</a>
+        <?php } else { ?>
+            <form method="post" action="index.php?action=logeado">
+                <label for="username">Usuario:</label>
+                <input type="text" name="username" required>
+                <label for="password">Contraseña:</label>
+                <input type="password" name="password" required>
+                <label for="recordar">Recordarme</label>
+                <input type="checkbox" id="recordar" name="recordar">
+                <input type="submit" value="Iniciar sesión">
+            </form>
+        <?php } ?>
+    </div>
 
     <nav>
         <ul class="list-unstyled d-flex">

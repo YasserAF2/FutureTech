@@ -41,22 +41,73 @@ class controlador
         return $datos;
     }
 
+
     public function logeado()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $usuario = isset($_POST['usuario']) ? $_POST['usuario'] : '';
-            $password = isset($_POST['contraseña']) ? $_POST['contraseña'] : '';
+            $usuario = isset($_POST['username']) ? $_POST['username'] : '';
+            $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-            if ($this->tienda->validarUsuario($usuario, $password)) {
-                session_start();
-                $_SESSION['usuario'] = $usuario;
-                $this->view = 'principal';
-                header('Location: index.php?action=' . $this->view);
+            if (!empty($usuario) && !empty($password) && $this->tienda->validarUsuario($usuario, $password)) {
+                session_start(); // Inicia la sesión
+                $_SESSION['usuario'] = $usuario; // Guarda el usuario en la sesión
+                header('Location: index.php'); // Redirecciona a la página principal
                 exit;
             } else {
                 $_SESSION['mensaje_error'] = 'Usuario o contraseña incorrectos';
-                $this->view = 'principal';
             }
+        }
+    }
+
+    public function logout()
+    {
+        session_start();
+        session_destroy();
+        setcookie('usuario', '', time() - 3600, '/');
+        header('Location: index.php');
+    }
+
+    public function carrito()
+    {
+        $this->view = 'carrito';
+        $categorias = $this->tienda->getCategorias();
+
+        $datos = array(
+            'categorias' => $categorias,
+        );
+
+        return $datos;
+    }
+
+    public function agregarAlCarrito()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $idProducto = $_POST['idProducto'];
+            $cantidad = $_POST['cantidad'];
+            $producto = $this->tienda->obtenerProducto($idProducto);
+
+            // Verificar si el carrito existe en la sesión
+            if (!isset($_SESSION['carrito'])) {
+                $_SESSION['carrito'] = array();
+            }
+
+            $carrito = $_SESSION['carrito'];
+
+            // Verificar si el producto ya está en el carrito
+            if (array_key_exists($idProducto, $carrito)) {
+                $carrito[$idProducto]['cantidad'] += $cantidad;
+            } else {
+                // Si el producto no está en el carrito, agregarlo
+                $carrito[$idProducto] = array(
+                    'producto' => $producto,
+                    'cantidad' => $cantidad
+                );
+            }
+
+            $_SESSION['carrito'] = $carrito;
+
+            header('Location: index.php?action=carrito');
+            exit;
         }
     }
 }
