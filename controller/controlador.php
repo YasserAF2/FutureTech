@@ -106,6 +106,30 @@ class controlador
 
             $_SESSION['carrito'] = $carrito;
 
+            if (isset($_SESSION['usuario'])) {
+                $idUsuario = $_SESSION['usuario']['idUsuario'];
+
+                // Verificar si el carrito existe en la base de datos
+                $carritoBD = $this->tienda->obtenerCarrito($idUsuario);
+
+                if (!$carritoBD) {
+                    // Si el carrito no existe en la base de datos, crearlo
+                    $this->tienda->crearCarrito($idUsuario);
+                    $carritoBD = $this->tienda->obtenerCarrito($idUsuario);
+                }
+
+                // Verificar si el producto ya está en el carrito de la base de datos
+                $productoBD = $this->tienda->obtenerProductoCarrito($carritoBD['idCarrito'], $idProducto);
+
+                if ($productoBD) {
+                    // Si el producto ya está en el carrito de la base de datos, actualizar la cantidad
+                    $this->tienda->actualizarProductoCarrito($carritoBD['idCarrito'], $idProducto, $cantidad + $productoBD['cantidad']);
+                } else {
+                    // Si el producto no está en el carrito de la base de datos, agregarlo
+                    $this->tienda->agregarProductoCarrito($carritoBD['idCarrito'], $idProducto, $cantidad);
+                }
+            }
+
             header('Location: index.php?action=carrito');
             exit;
         }
