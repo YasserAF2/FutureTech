@@ -21,10 +21,9 @@ $producto = $dataToView['producto'];
                 <form action="index.php?action=agregarAlCarrito" method="POST">
                     <div class="form-group">
                         <label for="cantidad">Cantidad:</label>
-                        <input type="number" name="cantidad" id="cantidad" class="form-control" value="1" min="1"
-                            max="<?php echo $producto['cantidad'] ?>">
-                        <input type="hidden" name="idProducto" id="idProducto"
-                            value="<?php echo $_GET['id_producto'] ?>">
+                        <input type="number" name="cantidad" id="cantidad" class="form-control" value="1" min="1" max="<?php echo $producto['cantidad'] ?>">
+                        <input type="hidden" name="idProducto" id="idProducto" value="<?php echo $_GET['id_producto'] ?>">
+                        <input type="hidden" name="precio" id="precio" value="<?php echo $producto['precio'] ?>">
                     </div>
                     <button type="submit" class="btn btn-primary">Agregar al carrito</button>
                 </form>

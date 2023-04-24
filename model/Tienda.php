@@ -67,9 +67,38 @@ class Tienda
         }
     }
 
-    public function obtenerCarrito($idUsuario)
+    public function obtenerProductosPorCategoria($id_categoria)
     {
-        $sql = "SELECT * FROM carrito WHERE idUsuario = '$idUsuario'";
+        $sql = "SELECT * FROM producto WHERE id_categoria = '$id_categoria'";
+        $result = $this->conection->query($sql);
+
+        if ($result->num_rows > 0) {
+            $productos = array();
+            while ($row = $result->fetch_assoc()) {
+                $productos[] = $row;
+            }
+            return $productos;
+        } else {
+            return false;
+        }
+    }
+
+    public function obtenerCategoria($id_categoria)
+    {
+        $sql = "SELECT * FROM categoria WHERE id_categoria = '$id_categoria'";
+        $result = $this->conection->query($sql);
+
+        if ($result->num_rows == 1) {
+            $categoria = $result->fetch_assoc();
+            return $categoria;
+        } else {
+            return false;
+        }
+    }
+
+    /*     public function obtenerCarrito($idUsuario)
+    {
+        $sql = "SELECT * FROM carrito WHERE id_usuario = '$idUsuario'";
         $result = $this->conection->query($sql);
 
         if ($result && $result->num_rows > 0) {
@@ -77,45 +106,5 @@ class Tienda
         }
 
         return null;
-    }
-
-    public function crearCarrito($idUsuario)
-    {
-        $sql = "INSERT INTO carrito (idUsuario) VALUES ('$idUsuario')";
-        $result = $this->conection->query($sql);
-
-        if ($result) {
-            return $this->conection->insert_id;
-        }
-
-        return null;
-    }
-
-    public function obtenerProductoCarrito($idCarrito, $idProducto)
-    {
-        $sql = "SELECT * FROM producto_carrito WHERE idCarrito = '$idCarrito' AND idProducto = '$idProducto'";
-        $result = $this->conection->query($sql);
-
-        if ($result && $result->num_rows > 0) {
-            return $result->fetch_assoc();
-        }
-
-        return null;
-    }
-
-    public function actualizarProductoCarrito($idCarrito, $idProducto, $cantidad)
-    {
-        $sql = "UPDATE producto_carrito SET cantidad = '$cantidad' WHERE idCarrito = '$idCarrito' AND idProducto = '$idProducto'";
-        $result = $this->conection->query($sql);
-
-        return $result !== false;
-    }
-
-    public function agregarProductoCarrito($idCarrito, $idProducto, $cantidad)
-    {
-        $sql = "INSERT INTO producto_carrito (idCarrito, idProducto, cantidad) VALUES ('$idCarrito', '$idProducto', '$cantidad')";
-        $result = $this->conection->query($sql);
-
-        return $result !== false;
-    }
+    } */
 }
