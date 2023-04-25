@@ -4,6 +4,7 @@ class Tienda
 {
     private $conection;
     private array $categorias = array();
+    private array $usuarios = array();
 
     function __construct()
     {
@@ -31,6 +32,21 @@ class Tienda
         return $this->categorias;
     }
 
+    public function getUsuarios()
+    {
+        $sql = "SELECT * FROM usuario";
+        $result = $this->conection->query($sql);
+
+        if ($result->num_rows > 0) {
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $this->usuarios[$i] = new Usuario($row['id_usuario'], $row['nombre'], $row['direccion'], $row['correo'], $row['tipo'], $row['contraseña']);
+                $i++;
+            }
+        }
+        return $this->usuarios;
+    }
+
     public function getProductoId($id)
     {
         $sql = "SELECT * FROM producto WHERE id_producto=" . $id . "";
@@ -49,6 +65,19 @@ class Tienda
         // Verificar si se obtuvo un resultado
         if (mysqli_num_rows($result) == 1) {
             return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getTipoUsuario($email)
+    {
+        $sql = "SELECT tipo FROM usuario WHERE correo = '$email'";
+        $result = $this->conection->query($sql);
+
+        if ($result->num_rows == 1) {
+            $tipoUsuario = $result->fetch_assoc()['tipo'];
+            return $tipoUsuario;
         } else {
             return false;
         }

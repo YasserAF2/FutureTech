@@ -30,7 +30,9 @@
     <a href="index.php">
         <h1>FUTURE TECH</h1>
     </a>
-    <p>juanperez@gmail.com</p>
+    <p>Cliente: juanperez@gmail.com, contraseña123</p>
+    <p>Admin: carlos@admin.com, 12345678</p>
+
     <div class="header">
         <?php
         session_start();
@@ -40,6 +42,11 @@
         <a href="index.php?action=carrito">
             <i class="fas fa-shopping-cart"></i> Carrito de la compra
         </a>
+
+        <?php if (isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] == 'Administrador') {
+                echo "<p>Tipo de usuario: " . $_SESSION['tipo_usuario'] . "</p>";
+                echo "<a href='administrator/index.php'>Ir al panel de administración<i class='fas fa-cog'></i></a><br>";
+            } ?>
 
         <a href="index.php?action=logout">Cerrar sesión</a>
         <?php } else { ?>

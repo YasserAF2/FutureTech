@@ -7,6 +7,17 @@
     ?>
 
     <div>
+        <div>
+            Bienvenido a FutureTech, la tienda en línea para tecnología de vanguardia. Ofrecemos una amplia selección
+            de productos tecnológicos de alta calidad, desde portátiles y ordenadores de sobremesa hasta periféricos y
+            accesorios
+            para computadoras. Nuestros productos son cuidadosamente seleccionados para garantizar que nuestros clientes
+            obtengan la mejor experiencia tecnológica posible. Ofrecemos precios competitivos y envío rápido para que
+            pueda
+            disfrutar de sus productos lo antes posible. En FutureTech, nos comprometemos a brindar productos y
+            servicios de alta calidad
+            a nuestros clientes, ¡ven y descubre el futuro de la tecnología con nosotros!
+        </div>
         <!-- Sección de destacados -->
         <section class="destacados container">
             <h2>Productos Destacados</h2>
@@ -27,14 +38,14 @@
                     if ($producto->getDestacado() == 1) {
                         $id = $producto->getIdProducto();
                 ?>
-                <li class="col-sm-6 col-md-4 col-lg-3">
-                    <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
-                        <img src="<?php echo $producto->getImagen(); ?>" alt="<?php echo $producto->getNombre(); ?>">
-                        <h3><?php echo $producto->getNombre(); ?></h3>
-                        <p><?php echo $producto->getDescripcion(); ?></p>
-                        <span class="precio"><?php echo $producto->getPrecio(); ?> €</span>
-                    </a>
-                </li>
+                        <li class="col-sm-6 col-md-4 col-lg-3">
+                            <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
+                                <img src="<?php echo $producto->getImagen(); ?>" alt="<?php echo $producto->getNombre(); ?>">
+                                <h3><?php echo $producto->getNombre(); ?></h3>
+                                <p><?php echo $producto->getDescripcion(); ?></p>
+                                <span class="precio"><?php echo $producto->getPrecio(); ?> €</span>
+                            </a>
+                        </li>
                 <?php
                     }
                 }
@@ -54,14 +65,14 @@
                     if ($producto->getOferta() == 1) {
                         $id = $producto->getIdProducto();
                 ?>
-                <li class="col-sm-6 col-md-4 col-lg-3">
-                    <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
-                        <img src="<?php echo $producto->getImagen(); ?>" alt="<?php echo $producto->getNombre(); ?>">
-                        <h3><?php echo $producto->getNombre(); ?></h3>
-                        <p><?php echo $producto->getDescripcion(); ?></p>
-                        <span class="precio"><?php echo $producto->getPrecio(); ?> €</span>
-                    </a>
-                </li>
+                        <li class="col-sm-6 col-md-4 col-lg-3">
+                            <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
+                                <img src="<?php echo $producto->getImagen(); ?>" alt="<?php echo $producto->getNombre(); ?>">
+                                <h3><?php echo $producto->getNombre(); ?></h3>
+                                <p><?php echo $producto->getDescripcion(); ?></p>
+                                <span class="precio"><?php echo $producto->getPrecio(); ?> €</span>
+                            </a>
+                        </li>
                 <?php
                     }
                 }

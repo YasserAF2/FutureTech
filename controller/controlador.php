@@ -49,8 +49,10 @@ class controlador
             $password = isset($_POST['password']) ? $_POST['password'] : '';
 
             if (!empty($usuario) && !empty($password) && $this->tienda->validarUsuario($usuario, $password)) {
+
                 session_start(); // Inicia la sesión
                 $_SESSION['usuario'] = $usuario; // Guarda el usuario en la sesión
+                $_SESSION['tipo_usuario'] = $this->tienda->getTipoUsuario($usuario); // Guarda el tipo de usuario en la sesión
                 header('Location: index.php'); // Redirecciona a la página principal
                 exit;
             } else {
