@@ -3,7 +3,8 @@ $usuarios = $dataToView['usuarios'];
 ?>
 
 <div class="usuarios-lista">
-    <table>
+    <h2>Lista y administración de los usuarios.</h2>
+    <table class="tabla-usuarios">
         <thead>
             <tr>
                 <th>Nombre</th>

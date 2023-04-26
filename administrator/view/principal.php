@@ -11,7 +11,6 @@
     </div>
     <div class="main">
         <h2>Zona de administración:</h2>
-        <p>En esta zona se mostrarán las opciones seleccionadas de la lista de la izquierda.</p>
         <div id="vista-dinamica"></div>
     </div>
 </div>

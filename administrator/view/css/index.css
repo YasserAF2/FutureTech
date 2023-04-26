@@ -1,6 +1,9 @@
+/* principal.php */
 .container {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
 
 .list {
@@ -12,4 +15,70 @@
 .main {
   flex-basis: 75%;
   padding: 20px;
+}
+
+/* tabla usuarios vista lista_usuarios.php */
+.tabla-usuarios {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-usuarios th,
+.tabla-usuarios td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.tabla-usuarios th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+  text-align: left;
+}
+
+.tabla-usuarios tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.tabla-usuarios tr:hover {
+  background-color: #ddd;
+}
+
+/* header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+}
+
+.logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+.user-message p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.user-message a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  margin-left: 1rem;
+}
+
+/* footer.php */
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
 }
