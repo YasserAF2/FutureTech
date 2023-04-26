@@ -5,6 +5,7 @@ class Tienda
     private $conection;
     private array $categorias = array();
     private array $usuarios = array();
+    private array $productos = array();
 
     function __construct()
     {
@@ -45,6 +46,21 @@ class Tienda
             }
         }
         return $this->usuarios;
+    }
+
+    public function getProductos()
+    {
+        $sql = "SELECT * FROM producto";
+        $result = $this->conection->query($sql);
+
+        if ($result->num_rows > 0) {
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $this->productos[$i] = new Producto($row['id_producto'], $row['nombre'], $row['descripcion'], $row['precio'], $row['imagen'], $row['cantidad'], $row['oferta'], $row['porcentaje_oferta'], $row['destacado'], $row['id_categoria']);
+                $i++;
+            }
+        }
+        return $this->productos;
     }
 
     public function getProductoId($id)

@@ -30,6 +30,18 @@ class controlador
         return $datos;
     }
 
+    public function ver_productos()
+    {
+        $this->view = 'ver_productos';
+        $productos = $this->tienda->getProductos();
+
+        $datos = array(
+            'productos' => $productos,
+        );
+
+        return $datos;
+    }
+
     public function cerrar_sesion()
     {
         session_start();

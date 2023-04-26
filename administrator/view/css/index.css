@@ -75,6 +75,33 @@
   background-color: #ddd;
 }
 
+/* tabla usuarios vista ver_productos.php */
+.tabla-productos {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-productos th,
+.tabla-productos td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.tabla-productos th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+  text-align: left;
+}
+
+.tabla-productos tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.tabla-productos tr:hover {
+  background-color: #ddd;
+}
+
 /* header */
 .header {
   display: flex;
