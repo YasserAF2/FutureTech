@@ -8,10 +8,10 @@
             <li><a href="#" class="opciones-lista">Opción 4</a></li>
             <li><a href="#" class="opciones-lista">Opción 5</a></li>
         </ul>
+        <a href="../index.php">Volver atrás</a>
     </div>
     <div class="main">
         <h2>Zona de administración:</h2>
         <div id="vista-dinamica"></div>
     </div>
 </div>
-<a href="../index.php">Volver atrás</a>

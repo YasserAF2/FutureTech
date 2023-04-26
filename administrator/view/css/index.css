@@ -12,6 +12,37 @@
   padding: 20px;
 }
 
+.list h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list li {
+  margin-bottom: 10px;
+}
+
+.list a.opciones-lista {
+  width: 100%;
+  color: #333;
+  text-decoration: none;
+  padding: 5px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  display: inline-block;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+}
+
+.list a.opciones-lista:hover {
+  background-color: #333;
+  color: #fff;
+}
+
 .main {
   flex-basis: 75%;
   padding: 20px;
