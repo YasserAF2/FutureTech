@@ -29,12 +29,13 @@
 
 
 <body>
+    <?php session_start(); ?>
     <div class="header">
         <div class="logo">
             <img src="img/logo.png" alt="Logo">
         </div>
         <div class="user-message">
-            <p>Bienvenido, Usuario</p>
-            <a href="#">Cerrar sesión</a>
+            <p>Bienvenido, <?php echo $_SESSION['usuario']; ?></p>
+            <a href="index.php?action=cerrar_sesion">Cerrar sesión</a>
         </div>
     </div>
