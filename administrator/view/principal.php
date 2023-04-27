@@ -1,4 +1,4 @@
-<div class="container">
+<div class="cont">
     <div class="list">
         <h2>Lista de opciones:</h2>
         <ul>
@@ -11,7 +11,9 @@
         <a href="../index.php">Volver atrás</a>
     </div>
     <div class="main">
-        <h2>Zona de administración:</h2>
-        <div id="vista-dinamica"></div>
+        <div id="vista-dinamica">
+            <h2>Zona de administración:</h2>
+        </div>
+        <a href="#top" class="btn-volver-arriba">Volver arriba</a>
     </div>
 </div>
