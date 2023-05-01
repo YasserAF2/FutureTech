@@ -1,7 +1,15 @@
 <?php
-$id_producto = $_GET['id_producto'];
+
+if (isset($_GET['id_producto'])) {
+    $id_producto = $_GET['id_producto'];
+} else {
+    $id_producto = $dataToView['id_producto'];
+}
+
 $producto = $dataToView['producto'];
 $comentarios = $dataToView['comentarios'];
+$tienda = new Tienda();
+
 ?>
 <main>
     <div class="container">
@@ -23,7 +31,7 @@ $comentarios = $dataToView['comentarios'];
                     <div class="form-group">
                         <label for="cantidad">Cantidad:</label>
                         <input type="number" name="cantidad" id="cantidad" class="form-control" value="1" min="1" max="<?php echo $producto['cantidad'] ?>">
-                        <input type="hidden" name="idProducto" id="idProducto" value="<?php echo $_GET['id_producto'] ?>">
+                        <input type="hidden" name="idProducto" id="idProducto" value="<?php echo $id_producto ?>">
                         <input type="hidden" name="precio" id="precio" value="<?php echo $producto['precio'] ?>">
                     </div>
                     <button type="submit" class="btn btn-primary">Agregar al carrito</button>
@@ -32,18 +40,22 @@ $comentarios = $dataToView['comentarios'];
         </div>
         <div class="comentarios">
             <h3>Comentarios</h3>
+            <div>
+                <?php foreach ($comentarios as $comentario) : ?>
+                    <div class="comentario">
+                        <p><?php echo $tienda->obtenerNombreUser($comentario->getIdUsuario()); ?></p>
+                        <p class="fecha"><?php echo $comentario->getFecha(); ?></p>
+                        <p class="usuario"><?php echo $comentario->getTexto(); ?></p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
             <h3>Déjanos un comentario</h3>
             <form action="index.php?action=guardarComentario" method="POST" class="comentarios-form">
-                <textarea class="comentarios-textarea" placeholder="Escribe aquí tu comentario"></textarea>
+                <textarea name="texto" class="comentarios-textarea" placeholder="Escribe aquí tu comentario"></textarea>
+                <input type="hidden" name="id_producto" value="<?php echo $id_producto; ?>">
+                <input type="hidden" name="correo_usuario" value="<?php echo $_SESSION['usuario']; ?>">
                 <input type="submit" class="comentarios-boton" value="Enviar comentario">
             </form>
-            <!--             <?php foreach ($comentarios as $comentario) : ?>
-                <div class="comentario">
-                    <p class="nombre"><?php echo $comentario['nombre']; ?></p>
-                    <p class="fecha"><?php echo $comentario['fecha']; ?></p>
-                    <p class="mensaje"><?php echo $comentario['mensaje']; ?></p>
-                </div>
-            <?php endforeach; ?> -->
         </div>
 
     </div>

@@ -2,15 +2,15 @@
 
 class Comentarios
 {
-    private $id_comentario;
+    private $id_comentarios;
     private $id_producto;
     private $id_usuario;
     private $texto;
     private $fecha;
 
-    public function __construct($id_comentario, $id_producto, $id_usuario, $texto, $fecha)
+    public function __construct($id_comentarios, $id_producto, $id_usuario, $texto, $fecha)
     {
-        $this->id_comentario = $id_comentario;
+        $this->id_comentarios = $id_comentarios;
         $this->id_producto = $id_producto;
         $this->id_usuario = $id_usuario;
         $this->texto = $texto;
@@ -19,7 +19,7 @@ class Comentarios
 
     public function getIdComentario()
     {
-        return $this->id_comentario;
+        return $this->id_comentarios;
     }
 
     public function getIdProducto()

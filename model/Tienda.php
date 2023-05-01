@@ -87,6 +87,7 @@ class Tienda
         }
     }
 
+    /* obtener el tipo (cliente o admin) de usuario mediante el email */
     public function getTipoUsuario($email)
     {
         $sql = "SELECT tipo FROM usuario WHERE correo = '$email'";
@@ -142,6 +143,33 @@ class Tienda
         }
     }
 
+    /* devuelve el id del usuario consultando el correo */
+    public function obtenerUsuarioPorCorreo($email)
+    {
+        $sql = "SELECT id_usuario FROM usuario WHERE correo = '$email'";
+        $result = $this->conection->query($sql);
+
+        if ($result->num_rows == 1) {
+            $id_usuario = $result->fetch_assoc()['id_usuario'];
+            return $id_usuario;
+        } else {
+            return false;
+        }
+    }
+
+    public function obtenerNombreUser($id_usuario)
+    {
+        $sql = "SELECT nombre FROM usuario WHERE id_usuario = '$id_usuario'";
+        $result = $this->conection->query($sql);
+
+        if ($result->num_rows == 1) {
+            $nombre = $result->fetch_assoc()['nombre'];
+            return $nombre;
+        } else {
+            return false;
+        }
+    }
+
     /* COMENTARIO DE UN PRODUCTO, DEVUELVE LOS COMENTARIOS */
     public function getComentarios()
     {
@@ -151,10 +179,23 @@ class Tienda
         if ($result->num_rows > 0) {
             $i = 0;
             while ($row = $result->fetch_assoc()) {
-                $this->comentarios[$i] = new Comentarios($row['id_comentario'], $row['id_producto'], $row['id_usuario'], $row['texto'], $row['fecha']);
+                $this->comentarios[$i] = new Comentarios($row['id_comentarios'], $row['id_producto'], $row['id_usuario'], $row['texto'], $row['fecha']);
                 $i++;
             }
         }
         return $this->comentarios;
+    }
+
+    /* GUARDAR COMENTARIO EN BD */
+    public function guardarComentario($id_comentarios, $texto, $fecha, $id_producto, $id_usuario)
+    {
+        $this->getConection();
+        $sql = "INSERT INTO comentarios (id_comentarios, texto, fecha, id_producto, id_usuario) VALUES ('$id_comentarios', '$texto', '$fecha', '$id_producto', '$id_usuario')";
+
+        if ($this->conection->query($sql) === TRUE) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

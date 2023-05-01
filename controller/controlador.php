@@ -102,5 +102,35 @@ class controlador
 
     public function guardarComentario()
     {
+        $this->view = 'producto_individual';
+
+        $id_producto = $_POST['id_producto'];
+
+        $categorias = $this->tienda->getCategorias();
+        $producto = $this->tienda->getProductoId($id_producto);
+        $comentarios = $this->tienda->getComentarios();
+
+        if (isset($_POST['texto']) && !empty($_POST['texto'])) {
+            $correo_usuario = $_POST['correo_usuario'];
+            $id_usuario = $this->tienda->obtenerUsuarioPorCorreo($correo_usuario);
+            $texto = $_POST['texto'];
+            $fecha = date('Y-m-d H:i:s');
+            $result = $this->tienda->guardarComentario(null, $texto, $fecha, $id_producto, $id_usuario);
+            if ($result) {
+                $comentarios = $this->tienda->getComentarios();
+            } else {
+                echo "Error al guardar el comentario";
+            }
+        }
+
+
+        $datos = array(
+            'categorias' => $categorias,
+            'producto' => $producto,
+            'comentarios' => $comentarios,
+            'id_producto' => $id_producto,
+        );
+
+        return $datos;
     }
 }
