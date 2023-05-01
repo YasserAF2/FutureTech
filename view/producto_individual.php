@@ -1,6 +1,7 @@
 <?php
 $id_producto = $_GET['id_producto'];
 $producto = $dataToView['producto'];
+$comentarios = $dataToView['comentarios'];
 ?>
 <main>
     <div class="container">
@@ -29,5 +30,21 @@ $producto = $dataToView['producto'];
                 </form>
             </div>
         </div>
+        <div class="comentarios">
+            <h3>Comentarios</h3>
+            <h3>Déjanos un comentario</h3>
+            <form action="index.php?action=guardarComentario" method="POST" class="comentarios-form">
+                <textarea class="comentarios-textarea" placeholder="Escribe aquí tu comentario"></textarea>
+                <input type="submit" class="comentarios-boton" value="Enviar comentario">
+            </form>
+            <!--             <?php foreach ($comentarios as $comentario) : ?>
+                <div class="comentario">
+                    <p class="nombre"><?php echo $comentario['nombre']; ?></p>
+                    <p class="fecha"><?php echo $comentario['fecha']; ?></p>
+                    <p class="mensaje"><?php echo $comentario['mensaje']; ?></p>
+                </div>
+            <?php endforeach; ?> -->
+        </div>
+
     </div>
 </main>

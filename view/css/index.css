@@ -7,6 +7,7 @@
   scroll-behavior: smooth;
 }
 
+/* NAV DE LA CABECERA CON LAS CATEGORIAS */
 nav ul {
   font-size: 1.5em;
   display: flex;
@@ -38,4 +39,66 @@ nav ul li a {
 
 nav ul li a:hover {
   text-decoration: none;
+}
+
+/* COMENTARIOS DE UN PRODUCTO */
+.comentarios {
+  margin-top: 50px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.comentarios h3 {
+  margin-bottom: 20px;
+}
+
+.comentarios-lista {
+  list-style-type: none;
+  padding: 0;
+}
+
+.comentario {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.comentario-autor {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.comentario-contenido {
+  margin: 0;
+}
+
+.comentarios-form {
+  margin-top: 20px;
+}
+
+.comentarios-textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.comentarios-boton {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.comentarios-boton:hover {
+  background-color: #0056b3;
 }

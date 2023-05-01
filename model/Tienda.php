@@ -6,6 +6,7 @@ class Tienda
     private array $categorias = array();
     private array $usuarios = array();
     private array $productos = array();
+    private array $comentarios = array();
 
     function __construct()
     {
@@ -141,15 +142,19 @@ class Tienda
         }
     }
 
-    /*     public function obtenerCarrito($idUsuario)
+    /* COMENTARIO DE UN PRODUCTO, DEVUELVE LOS COMENTARIOS */
+    public function getComentarios()
     {
-        $sql = "SELECT * FROM carrito WHERE id_usuario = '$idUsuario'";
+        $sql = "SELECT * FROM comentarios";
         $result = $this->conection->query($sql);
 
-        if ($result && $result->num_rows > 0) {
-            return $result->fetch_assoc();
+        if ($result->num_rows > 0) {
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $this->comentarios[$i] = new Comentarios($row['id_comentario'], $row['id_producto'], $row['id_usuario'], $row['texto'], $row['fecha']);
+                $i++;
+            }
         }
-
-        return null;
-    } */
+        return $this->comentarios;
+    }
 }

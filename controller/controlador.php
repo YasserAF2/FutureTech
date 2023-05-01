@@ -32,10 +32,12 @@ class controlador
         $id = $_GET['id_producto'];
         $categorias = $this->tienda->getCategorias();
         $producto = $this->tienda->getProductoId($id);
+        $comentarios = $this->tienda->getComentarios();
 
         $datos = array(
             'categorias' => $categorias,
             'producto' => $producto,
+            'comentarios' => $comentarios,
         );
 
         return $datos;
@@ -98,7 +100,7 @@ class controlador
         return $datos;
     }
 
-    public function agregarAlCarrito()
+    public function guardarComentario()
     {
     }
 }
