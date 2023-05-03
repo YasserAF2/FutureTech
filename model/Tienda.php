@@ -198,4 +198,16 @@ class Tienda
             return false;
         }
     }
+
+    public function agregarAlCarrito($id_carrito, $precio_total, $id_usuario)
+    {
+        $this->getConection();
+        $sql = "INSERT INTO carrito (id_carrito, precio_total, id_usuario) VALUES ($id_carrito, $precio_total, $id_usuario)";
+
+        if ($this->conection->query($sql) === TRUE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

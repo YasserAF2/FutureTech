@@ -83,6 +83,38 @@ class controlador
         return $datos;
     }
 
+/*     public function agregarAlCarrito($id_producto, $cantidad)
+    {
+        // Obtener el id del usuario actual desde la sesión
+        session_start();
+        $id_usuario = $_SESSION['id_usuario'];
+
+        // Comprobar si ya existe un carrito para el usuario actual
+        $id_carrito = $this->tienda->obtenerIdCarrito($id_usuario);
+
+        if (!$id_carrito) {
+            // Si no existe un carrito para el usuario actual, crear uno nuevo
+            $precio_total = 0; // El precio total del carrito se inicializa en cero
+            $this->tienda->crearCarrito($id_usuario, $precio_total);
+            $id_carrito = $this->tienda->obtenerIdCarrito($id_usuario);
+        }
+
+        // Obtener los datos del producto que se va a agregar al carrito
+        $producto = $this->tienda->getProductoId($id_producto);
+
+        // Calcular el precio total del carrito después de agregar el producto
+        $precio_total = $this->tienda->calcularPrecioTotalCarrito($id_carrito);
+
+        // Agregar el producto al carrito
+        $result = $this->tienda->agregarProductoAlCarrito($id_carrito, $producto, $cantidad);
+
+        if ($result) {
+            echo "Producto agregado al carrito correctamente.";
+        } else {
+            echo "Error al agregar el producto al carrito.";
+        }
+    } */
+
     public function vista_categoria()
     {
         $this->view = 'categoria_header';
