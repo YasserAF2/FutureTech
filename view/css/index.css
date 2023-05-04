@@ -44,6 +44,7 @@ nav ul li a:hover {
 /* COMENTARIOS DE UN PRODUCTO */
 .comentarios {
   margin-top: 50px;
+  margin-bottom: 50px;
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 10px;
@@ -118,3 +119,26 @@ nav ul li a:hover {
   overflow-x: hidden;
   font-size: 14px;
 }
+
+/* TITULO */
+.titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+}
+
+.titulo h1 {
+  font-size: 36px;
+  color: #212529;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.titulo:hover {
+  text-decoration: none;
+}
+
+/* intento de menu */
