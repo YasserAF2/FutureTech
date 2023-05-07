@@ -199,15 +199,76 @@ class Tienda
         }
     }
 
-    public function agregarAlCarrito($id_carrito, $precio_total, $id_usuario)
+    public function obtenerIdCarrito($id_usuario)
     {
         $this->getConection();
-        $sql = "INSERT INTO carrito (id_carrito, precio_total, id_usuario) VALUES ($id_carrito, $precio_total, $id_usuario)";
+        $sql = "SELECT id_carrito FROM carrito WHERE id_usuario = '$id_usuario'";
+        $result = $this->conection->query($sql);
+
+        if ($result->num_rows == 1) {
+            $id_carrito = $result->fetch_assoc()['id_carrito'];
+            return $id_carrito;
+        } else {
+            return false;
+        }
+    }
+
+    public function crearCarrito($id_usuario, $precio_total)
+    {
+        $this->getConection();
+        $sql = "INSERT INTO carrito (id_carrito, precio_total, id_usuario) VALUES (null, $precio_total, $id_usuario)";
 
         if ($this->conection->query($sql) === TRUE) {
             return true;
         } else {
             return false;
         }
+    }
+
+    public function calcularPrecioTotalCarrito($id_carrito)
+    {
+        $this->getConection();
+        $sql = "SELECT SUM(cantidad * precio) AS precio_total FROM item_carrito WHERE id_carrito = $id_carrito";
+
+        $result = $this->conection->query($sql);
+
+        if ($result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+            return $row['precio_total'];
+        } else {
+            return 0;
+        }
+    }
+
+    public function agregarItemAlCarrito($id_carrito, $id_producto, $cantidad, $precio)
+    {
+        $this->getConection();
+        $sql = "INSERT INTO item_carrito (id_carrito, id_producto, cantidad, precio) VALUES ($id_carrito, $id_producto, $cantidad, $precio)";
+
+        if ($this->conection->query($sql) === TRUE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function obtenerProductosCarrito($id_carrito)
+    {
+        $this->getConection();
+        $sql = "SELECT * FROM item_carrito WHERE id_carrito = $id_carrito";
+        $result = $this->conection->query($sql);
+
+        $productos = array();
+        while ($row = $result->fetch_assoc()) {
+            $producto = array(
+                'id_item_carrito' => $row['id_item_carrito'],
+                'cantidad' => $row['cantidad'],
+                'precio' => $row['precio'],
+                'id_carrito' => $row['id_carrito'],
+                'id_producto' => $row['id_producto']
+            );
+            $productos[] = $producto;
+        }
+        return $productos;
     }
 }

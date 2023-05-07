@@ -74,20 +74,42 @@ class controlador
     public function carrito()
     {
         $this->view = 'carrito';
+        session_start();
+        $id_usuario = $this->tienda->obtenerUsuarioPorCorreo($_SESSION['usuario']);
+
+        // Obtener el id del carrito del usuario actual
+        $id_carrito = $this->tienda->obtenerIdCarrito($id_usuario);
+
+        if (!$id_carrito) {
+            // Si no existe un carrito para el usuario actual, mostrar mensaje
+            $mensaje = "No hay productos en el carrito.";
+        } else {
+            // Obtener los productos del carrito y el precio total
+            $productos = $this->tienda->obtenerProductosCarrito($id_carrito);
+            $precio_total = $this->tienda->calcularPrecioTotalCarrito($id_carrito);
+        }
+
+        // Obtener las categorías para el menú
         $categorias = $this->tienda->getCategorias();
 
+        // Crear un array con los datos que se enviarán a la vista
         $datos = array(
             'categorias' => $categorias,
+            'productos' => $productos,
+            'precio_total' => $precio_total,
+            'mensaje' => $mensaje
         );
 
         return $datos;
     }
 
-/*     public function agregarAlCarrito($id_producto, $cantidad)
+    public function agregarAlCarrito()
     {
         // Obtener el id del usuario actual desde la sesión
         session_start();
-        $id_usuario = $_SESSION['id_usuario'];
+        $id_usuario = $this->tienda->obtenerUsuarioPorCorreo($_SESSION['usuario']);
+        $id_producto = $_POST['id_producto'];
+        $cantidad = $_POST['cantidad'];
 
         // Comprobar si ya existe un carrito para el usuario actual
         $id_carrito = $this->tienda->obtenerIdCarrito($id_usuario);
@@ -105,15 +127,19 @@ class controlador
         // Calcular el precio total del carrito después de agregar el producto
         $precio_total = $this->tienda->calcularPrecioTotalCarrito($id_carrito);
 
-        // Agregar el producto al carrito
-        $result = $this->tienda->agregarProductoAlCarrito($id_carrito, $producto, $cantidad);
+        // Agregar el producto al carrito    
+        $precio = $producto['precio'];
+        $result = $this->tienda->agregarItemAlCarrito($id_carrito, $id_producto, $cantidad, $precio);
 
         if ($result) {
             echo "Producto agregado al carrito correctamente.";
+            header("Location: index.php?action=carrito");
         } else {
             echo "Error al agregar el producto al carrito.";
         }
-    } */
+
+        $this->view = 'carrito';
+    }
 
     public function vista_categoria()
     {
