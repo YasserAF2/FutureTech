@@ -8,7 +8,7 @@ $precio_total = $dataToView['precio_total'];
     <?php if (empty($productos)) : ?>
         <p><?php echo $mensaje; ?></p>
     <?php else : ?>
-        <table>
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Producto</th>
@@ -29,7 +29,7 @@ $precio_total = $dataToView['precio_total'];
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <p>Precio total: <?php echo $precio_total; ?> euros.</p>
+        <p class="precio-total">Precio total: <?php echo $precio_total; ?> euros.</p>
     <?php endif; ?>
 
 

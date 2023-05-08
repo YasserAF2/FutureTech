@@ -141,4 +141,30 @@ nav ul li a:hover {
   text-decoration: none;
 }
 
-/* intento de menu */
+/* Estilo para la tabla del carrito de compra */
+.table {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.table th {
+  font-weight: bold;
+  background-color: #eee;
+  padding: 10px;
+}
+
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Estilo para el precio total */
+.precio-total {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  text-align: right;
+}
