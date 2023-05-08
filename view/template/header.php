@@ -16,10 +16,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- SLICK CARRUSEL -->
+    <!--     
     <link rel="stylesheet" type="text/css" href="view/slick/slick.css" />
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script> 
+    -->
 
     <!-- JAVASCRIPT -->
     <script type="text/javascript" src="view/js/archivo.js"></script>

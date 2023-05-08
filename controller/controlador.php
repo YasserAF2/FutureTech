@@ -82,7 +82,10 @@ class controlador
         // Obtener el id del carrito del usuario actual
         $id_carrito = $this->tienda->obtenerIdCarrito($id_usuario);
 
+        $productos = array();
+        $precio_total = 0; // Valor predeterminado para el precio total
         $mensaje = ""; // Valor predeterminado para el mensaje
+
 
         if (!$id_carrito) {
             // Si no existe un carrito para el usuario actual, mostrar mensaje
@@ -129,14 +132,14 @@ class controlador
         // Obtener los datos del producto que se va a agregar al carrito
         $producto = $this->tienda->getProductoId($id_producto);
 
-        // Calcular el precio total del carrito después de agregar el producto
-        $precio_total = $this->tienda->calcularPrecioTotalCarrito($id_carrito);
-
         // Agregar el producto al carrito    
         $precio = $producto['precio'];
         $result = $this->tienda->agregarItemAlCarrito($id_carrito, $id_producto, $cantidad, $precio);
 
         if ($result) {
+            // Actualizar el precio total del carrito
+            $precio_total = $this->tienda->calcularPrecioTotalCarrito($id_carrito);
+            $this->tienda->actualizarPrecioTotalCarrito($id_carrito, $precio_total);
             echo "Producto agregado al carrito correctamente.";
             header("Location: index.php?action=carrito");
         } else {
@@ -145,6 +148,8 @@ class controlador
 
         $this->view = 'carrito';
     }
+
+
 
     public function vista_categoria()
     {

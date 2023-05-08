@@ -32,7 +32,7 @@ class ItemPedido
         return $this->id_producto;
     }
 
-    public function getCantidad()
+    public function getItemCantidad()
     {
         return $this->cantidad;
     }

@@ -35,7 +35,7 @@ $(document).mouseup(function (e) {
   }
 });
 
-//CARRUSEL
+/* //CARRUSEL
 $(document).ready(function () {
   $('.carrusel-robots').slick({
     slidesToShow: 3,
@@ -61,3 +61,4 @@ $(document).ready(function () {
     ],
   });
 });
+ */

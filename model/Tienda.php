@@ -64,6 +64,7 @@ class Tienda
         return $this->productos;
     }
 
+    /* Te devuelve un producto por el id_producto */
     public function getProductoId($id)
     {
         $sql = "SELECT * FROM producto WHERE id_producto=" . $id . "";
@@ -231,7 +232,7 @@ class Tienda
     public function crearCarrito($id_usuario, $precio_total)
     {
         $this->getConection();
-        $sql = "INSERT INTO carrito (id_carrito, precio_total, id_usuario) VALUES (null, $precio_total, $id_usuario)";
+        $sql = "INSERT INTO carrito (id_carrito, precio_total, id_usuario) VALUES (null, '$precio_total', $id_usuario)";
 
         if ($this->conection->query($sql) === TRUE) {
             return true;
@@ -285,5 +286,31 @@ class Tienda
             $productos[] = $producto;
         }
         return $productos;
+    }
+
+    public function actualizarPrecioTotalCarrito($id_carrito, $precio_total)
+    {
+        $this->getConection();
+        $sql = "UPDATE carrito SET precio_total = $precio_total WHERE id_carrito = $id_carrito";
+
+        if ($this->conection->query($sql) === TRUE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function obtenerNombreProducto($id_producto)
+    {
+        $this->getConection();
+        $sql = "SELECT nombre FROM producto WHERE id_producto = '$id_producto'";
+        $result = $this->conection->query($sql);
+
+        if ($result->num_rows == 1) {
+            $nombre = $result->fetch_assoc()['nombre'];
+            return $nombre;
+        } else {
+            return false;
+        }
     }
 }
