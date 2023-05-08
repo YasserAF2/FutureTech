@@ -52,14 +52,19 @@ $tienda = new Tienda();
             </form>
             <h3>Comentarios</h3>
             <div>
-                <?php foreach ($comentarios as $comentario) : ?>
-                    <div class="comentario">
-                        <p><?php echo $tienda->obtenerNombreUser($comentario->getIdUsuario()); ?></p>
-                        <p class="fecha"><?php echo $comentario->getFecha(); ?></p>
-                        <p class="usuario"><?php echo $comentario->getTexto(); ?></p>
-                    </div>
-                <?php endforeach; ?>
+                <?php if (empty($comentarios)) : ?>
+                    <p>No hay comentarios.</p>
+                <?php else : ?>
+                    <?php foreach ($comentarios as $comentario) : ?>
+                        <div class="comentario">
+                            <p><?php echo $tienda->obtenerNombreUser($comentario->getIdUsuario()); ?></p>
+                            <p class="fecha"><?php echo $comentario->getFecha(); ?></p>
+                            <p class="usuario"><?php echo $comentario->getTexto(); ?></p>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
+
 
         </div>
 

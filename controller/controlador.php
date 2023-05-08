@@ -15,6 +15,7 @@ class controlador
 
     public function principal()
     {
+        session_start();
         $this->view = 'principal';
         $categorias = $this->tienda->getCategorias();
 
@@ -27,12 +28,13 @@ class controlador
 
     public function producto_individual()
     {
+        session_start();
         $this->view = 'producto_individual';
 
         $id = $_GET['id_producto'];
         $categorias = $this->tienda->getCategorias();
         $producto = $this->tienda->getProductoId($id);
-        $comentarios = $this->tienda->getComentarios();
+        $comentarios = $this->tienda->obtenerComentariosPorProducto($id);
 
         $datos = array(
             'categorias' => $categorias,
@@ -73,12 +75,14 @@ class controlador
 
     public function carrito()
     {
-        $this->view = 'carrito';
         session_start();
+        $this->view = 'carrito';
         $id_usuario = $this->tienda->obtenerUsuarioPorCorreo($_SESSION['usuario']);
 
         // Obtener el id del carrito del usuario actual
         $id_carrito = $this->tienda->obtenerIdCarrito($id_usuario);
+
+        $mensaje = ""; // Valor predeterminado para el mensaje
 
         if (!$id_carrito) {
             // Si no existe un carrito para el usuario actual, mostrar mensaje
@@ -102,6 +106,7 @@ class controlador
 
         return $datos;
     }
+
 
     public function agregarAlCarrito()
     {
@@ -143,6 +148,7 @@ class controlador
 
     public function vista_categoria()
     {
+        session_start();
         $this->view = 'categoria_header';
         $id_categoria = $_GET['id'];
         $productos = $this->tienda->obtenerProductosPorCategoria($id_categoria);
@@ -166,7 +172,6 @@ class controlador
 
         $categorias = $this->tienda->getCategorias();
         $producto = $this->tienda->getProductoId($id_producto);
-        $comentarios = $this->tienda->getComentarios();
 
         if (isset($_POST['texto']) && !empty($_POST['texto'])) {
             $correo_usuario = $_POST['correo_usuario'];
@@ -175,12 +180,15 @@ class controlador
             $fecha = date('Y-m-d H:i:s');
             $result = $this->tienda->guardarComentario(null, $texto, $fecha, $id_producto, $id_usuario);
             if ($result) {
-                $comentarios = $this->tienda->getComentarios();
+                // Si se guarda el comentario exitosamente, obtenemos los comentarios del producto actualizado.
+                $comentarios = $this->tienda->obtenerComentariosPorProducto($id_producto);
             } else {
                 echo "Error al guardar el comentario";
             }
         }
 
+        // Obtenemos los comentarios del producto para mostrarlos en la vista.
+        $comentarios = $this->tienda->obtenerComentariosPorProducto($id_producto);
 
         $datos = array(
             'categorias' => $categorias,

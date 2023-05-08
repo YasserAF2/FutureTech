@@ -170,10 +170,25 @@ class Tienda
         }
     }
 
-    /* COMENTARIO DE UN PRODUCTO, DEVUELVE LOS COMENTARIOS */
+    /* DEVUELVE TODOS LOS COMENTARIOS */
     public function getComentarios()
     {
         $sql = "SELECT * FROM comentarios";
+        $result = $this->conection->query($sql);
+
+        if ($result->num_rows > 0) {
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $this->comentarios[$i] = new Comentarios($row['id_comentarios'], $row['id_producto'], $row['id_usuario'], $row['texto'], $row['fecha']);
+                $i++;
+            }
+        }
+        return $this->comentarios;
+    }
+
+    public function obtenerComentariosPorProducto($id_producto)
+    {
+        $sql = "SELECT * FROM comentarios WHERE id_producto = '$id_producto' ORDER BY fecha DESC";
         $result = $this->conection->query($sql);
 
         if ($result->num_rows > 0) {
