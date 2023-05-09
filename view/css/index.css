@@ -168,3 +168,7 @@ nav ul li a:hover {
   margin-top: 1rem;
   text-align: right;
 }
+
+i.fas.fa-trash-alt {
+  color: red;
+}
