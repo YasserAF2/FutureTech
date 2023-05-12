@@ -172,3 +172,67 @@ nav ul li a:hover {
 i.fas.fa-trash-alt {
   color: red;
 }
+
+/* estilo para la vista de una categoria */
+/* Estilo para la lista de productos */
+.producto {
+  margin-bottom: 2rem;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Estilo para el botón "Añadir al carrito" */
+.producto button {
+  background-color: #0066cc;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.producto button:hover {
+  background-color: #0050a0;
+}
+
+/* Estilo para la imagen */
+.producto img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Estilo para la oferta */
+.producto .oferta {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #f5a623;
+  color: #fff;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Estilo para el destacado */
+.producto .destacado {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #d93025;
+  color: #fff;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+p.destacado {
+  margin-bottom: 0;
+}
+
+/* modal del header para logearse */
+.modal-content {
+  max-width: 500px;
+  margin: 0 auto;
+}

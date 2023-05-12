@@ -35,10 +35,6 @@
 </head>
 
 <body>
-    <!--     
-        <p>Cliente: juanperez@gmail.com, contraseña123</p>
-        <p>Admin: carlos@admin.com, 12345678</p> 
-    -->
     <div class="container">
         <a class="titulo row" href="index.php">
             <h1>FUTURE TECH</h1>
@@ -56,34 +52,12 @@
                 <div id="resultados"></div>
             </div>
         </div>
-        <div class="header">
-            <?php
-            //session_start();
-
-            if (isset($_SESSION['usuario'])) { ?>
-                <p>Bienvenido, <?php echo $_SESSION['usuario']; ?>!</p>
-                <a href="index.php?action=carrito">
-                    <i class="fas fa-shopping-cart"></i> Carrito de la compra
-                </a>
-
-                <?php if (isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] == 'Administrador') {
-                    echo "<p>Tipo de usuario: " . $_SESSION['tipo_usuario'] . "</p>";
-                    echo "<a href='administrator/index.php'>Ir al panel de administración<i class='fas fa-cog'></i></a><br>";
-                } ?>
-
-                <a href="index.php?action=logout">Cerrar sesión</a>
-            <?php } else { ?>
-                <form method="post" action="index.php?action=logeado">
-                    <label for="username">Usuario:</label>
-                    <input type="text" name="username" required>
-                    <label for="password">Contraseña:</label>
-                    <input type="password" name="password" required>
-                    <label for="recordar">Recordarme</label>
-                    <input type="checkbox" id="recordar" name="recordar">
-                    <input type="submit" value="Iniciar sesión">
-                </form>
-            <?php } ?>
-        </div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+            <i class="fas fa-user"></i>
+        </button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModal">
+            <i class="fas fa-user"></i> Registrarse
+        </button>
     </div>
     <nav>
         <ul class="list-unstyled d-flex">
@@ -99,3 +73,110 @@
             ?>
         </ul>
     </nav>
+
+
+    <!-- Modal LOGIN -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <?php
+                    //session_start();
+
+                    if (isset($_SESSION['usuario'])) { ?>
+                        <p>Bienvenido, <?php echo $_SESSION['usuario']; ?>!</p>
+                        <a href="index.php?action=carrito">
+                            <i class="fas fa-shopping-cart"></i> Carrito de la compra
+                        </a>
+
+                        <?php if (isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] == 'Administrador') {
+                            echo "<p>Tipo de usuario: " . $_SESSION['tipo_usuario'] . "</p>";
+                            echo "<a href='administrator/index.php'>Ir al panel de administración<i class='fas fa-cog'></i></a><br>";
+                        } ?>
+
+                        <a href="index.php?action=logout">Cerrar sesión</a>
+                    <?php } else { ?>
+                        <form class="form-horizontal" method="post" action="index.php?action=logeado">
+                            <div class="form-group">
+                                <label for="username" class="col-sm-2 control-label">Usuario:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="username" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="col-sm-2 control-label">Contraseña:</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" name="password" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" id="recordar" name="recordar"> Recordarme
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                                </div>
+                            </div>
+                        </form>
+                    <?php } ?>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Modal Registrarse -->
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerModalLabel">Registrarse</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form method="POST" action="index.php?action=procesar_registro">
+                        <div class="form-group">
+                            <label for="correo">Correo electrónico:</label>
+                            <input type="email" class="form-control" id="correo" name="correo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contraseña">Contraseña:</label>
+                            <input type="password" class="form-control" id="contraseña" name="contraseña" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Nombre de usuario:</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="direccion">Dirección:</label>
+                            <input type="text" class="form-control" id="direccion" name="direccion" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Registrarse</button>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+    </div>

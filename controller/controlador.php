@@ -204,4 +204,8 @@ class controlador
 
         return $datos;
     }
+
+    public function procesar_registro()
+    {
+    }
 }
