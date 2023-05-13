@@ -2,6 +2,7 @@
 $tienda = new Tienda();
 $productos = $dataToView['productos'];
 $precio_total = $dataToView['precio_total'];
+$mensaje = $dataToView['mensaje'];
 
 // Agrupar los productos por id_producto y llevar un registro de la cantidad
 $productos_agrupados = [];
@@ -11,12 +12,14 @@ foreach ($productos as $producto) {
         $productos_agrupados[$id_producto]['cantidad'] += $producto['cantidad'];
     } else {
         $productos_agrupados[$id_producto] = [
+            'id' => $id_producto,
             'nombre' => $tienda->obtenerNombreProducto($id_producto),
             'precio' => $producto['precio'],
             'cantidad' => $producto['cantidad']
         ];
     }
 }
+
 ?>
 <div>
     <h1> CARRITO DE COMPRA</h1>
@@ -38,7 +41,11 @@ foreach ($productos as $producto) {
                         <td><?php echo $producto['nombre']; ?></td>
                         <td><?php echo $producto['precio']; ?></td>
                         <td><?php echo $producto['cantidad']; ?></td>
-                        <td><i class="fas fa-trash-alt"></i></td>
+                        <td>
+                            <button class="borrar-producto" data-id="<?php echo $producto['id']; ?>">
+                                <i class="fas fa-trash-alt"></i> Borrar
+                            </button>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

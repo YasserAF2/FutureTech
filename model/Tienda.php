@@ -313,4 +313,33 @@ class Tienda
             return false;
         }
     }
+
+    public function existeNombreUsuario($nombre)
+    {
+        $this->getConection();
+        $sql = "SELECT nombre FROM usuario WHERE nombre = '$nombre'";
+
+        if ($this->conection->query($sql) === TRUE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function registro($correo, $contraseña, $nombre, $direccion)
+    {
+        // Insertar los datos del usuario en la base de datos
+        $this->getConection();
+        $sql = "INSERT INTO usuario (nombre, direccion, correo, contraseña) VALUES ('$nombre', '$direccion', '$correo', '$contraseña')";
+
+        if ($this->conection->query($sql) === TRUE) {
+            // Devolver un mensaje de éxito en formato JSON
+            header('Content-Type: application/json');
+            echo json_encode(array('exito' => 'El registro se ha completado con éxito'));
+        } else {
+            // Devolver un mensaje de error en formato JSON
+            header('Content-Type: application/json');
+            echo json_encode(array('error' => 'Ha ocurrido un error al registrar al usuario'));
+        }
+    }
 }

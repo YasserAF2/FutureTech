@@ -104,7 +104,15 @@ nav ul li a:hover {
   background-color: #0056b3;
 }
 
-/* DIV DEL BUSCADOR */
+/* buscador */
+.buscador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+
+/* DIV DE los resultados del BUSCADOR */
 #resultados {
   position: absolute;
   top: 50px;
@@ -123,9 +131,10 @@ nav ul li a:hover {
 /* TITULO */
 .titulo {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 80px;
+  width: auto;
 }
 
 .titulo h1 {
@@ -139,6 +148,19 @@ nav ul li a:hover {
 
 .titulo:hover {
   text-decoration: none;
+}
+
+/* botones de login y register */
+/* .botones {
+} */
+
+/* contenedor de la cabecera que contiene el titulo, el buscador y los botones */
+.top {
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
 /* Estilo para la tabla del carrito de compra */

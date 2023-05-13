@@ -207,5 +207,46 @@ class controlador
 
     public function procesar_registro()
     {
+        // Obtener los datos del formulario
+        $correo = $_POST['correo'];
+        $contraseña = $_POST['contraseña'];
+        $nombre = $_POST['nombre'];
+        $direccion = $_POST['direccion'];
+
+        // Comprobar si el nombre de usuario ya existe
+        if ($this->tienda->existeNombreUsuario($nombre)) {
+            // Devolver un mensaje de error en formato JSON
+            header('Content-Type: application/json');
+            echo json_encode(array('error' => 'El nombre de usuario ya existe'));
+            return;
+        }
+
+        // Hash de la contraseña
+        $hashed_contraseña = password_hash($contraseña, PASSWORD_DEFAULT);
+
+        // Insertar los datos del usuario en la base de datos
+        $this->tienda->registro($correo, $hashed_contraseña, $nombre, $direccion);
+
+        // Devolver un mensaje de éxito en formato JSON
+        header('Content-Type: application/json');
+        echo json_encode(array('exito' => 'El registro se ha completado con éxito'));
+    }
+
+
+
+    public function comprobar_nombre_usuario()
+    {
+        if (isset($_GET['nombre'])) {
+            $nombreUsuario = $_GET['nombre'];
+            // Consulta a la base de datos para verificar si el nombre de usuario existe
+            $existe = $this->tienda->existeNombreUsuario($nombreUsuario);
+            // Devolver una respuesta en formato JSON con el resultado de la consulta
+            header('Content-Type: application/json');
+            echo json_encode(array('existe' => $existe));
+        } else {
+            // Si no se proporciona el nombre de usuario, devolver un error 400 Bad Request
+            http_response_code(400);
+            echo 'Error: Nombre de usuario no proporcionado';
+        }
     }
 }

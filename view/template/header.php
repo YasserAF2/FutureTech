@@ -35,29 +35,29 @@
 </head>
 
 <body>
-    <div class="container">
-        <a class="titulo row" href="index.php">
+    <div class="container top">
+        <a class="titulo" href="index.php">
             <h1>FUTURE TECH</h1>
         </a>
-        <div class="row">
-            <div class="col-md-6 mx-auto">
-                <form>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Buscar" id="busqueda">
-                        <div class="input-group-append">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
-                        </div>
+        <div class="buscador">
+            <form>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Buscar" id="busqueda">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-search"></i></span>
                     </div>
-                </form>
-                <div id="resultados"></div>
-            </div>
+                </div>
+            </form>
+            <!-- <div id="resultados"></div> -->
         </div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
-            <i class="fas fa-user"></i>
-        </button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModal">
-            <i class="fas fa-user"></i> Registrarse
-        </button>
+        <div class="botones">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+                <i class="fas fa-user"></i> Login
+            </button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModal">
+                <i class="fas fa-user"></i> Registrarse
+            </button>
+        </div>
     </div>
     <nav>
         <ul class="list-unstyled d-flex">
@@ -153,7 +153,7 @@
             </div>
             <div class="modal-body">
                 <div>
-                    <form method="POST" action="index.php?action=procesar_registro">
+                    <form method="POST" action="index.php?action=procesar_registro" novalidate>
                         <div class="form-group">
                             <label for="correo">Correo electrónico:</label>
                             <input type="email" class="form-control" id="correo" name="correo" required>
@@ -164,7 +164,8 @@
                         </div>
                         <div class="form-group">
                             <label for="nombre">Nombre de usuario:</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required onblur="comprobarNombreUsuario()">
+                            <small id="mensaje-error" class="form-text text-danger"></small>
                         </div>
                         <div class="form-group">
                             <label for="direccion">Dirección:</label>

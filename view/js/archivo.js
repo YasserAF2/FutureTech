@@ -34,3 +34,25 @@ $(document).mouseup(function (e) {
     container.hide();
   }
 });
+
+function comprobarNombreUsuario() {
+  const nombreUsuario = document.getElementById('nombre').value;
+  const mensajeError = document.getElementById('mensaje-error');
+
+  console.log('Comprobando nombre de usuario:', nombreUsuario);
+
+  fetch('index.php?action=comprobar_nombre_usuario&nombre=' + nombreUsuario)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('Respuesta del servidor:', data);
+      if (data.existe) {
+        mensajeError.innerText =
+          'El nombre de usuario ya existe, por favor elija otro';
+      } else {
+        mensajeError.innerText = '';
+      }
+    })
+    .catch((error) => {
+      console.error('Error al comprobar el nombre de usuario:', error);
+    });
+}
