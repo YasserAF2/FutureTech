@@ -19,10 +19,10 @@
         </div>
 
         <!-- Sección de destacados -->
-        <section class="destacados container">
+        <section class="container">
             <h2>Productos Destacados</h2>
             <!-- Lista de productos destacados -->
-            <ul class="row">
+            <ul class="destacados row">
                 <?php
 
                 $productos = array(); // Inicializar el array de productos vacío
@@ -38,14 +38,14 @@
                     if ($producto->getDestacado() == 1) {
                         $id = $producto->getIdProducto();
                 ?>
-                <li class="col-sm-6 col-md-4 col-lg-3">
-                    <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
-                        <img src="<?php echo $producto->getImagen(); ?>" alt="<?php echo $producto->getNombre(); ?>">
-                        <h3><?php echo $producto->getNombre(); ?></h3>
-                        <p><?php echo $producto->getDescripcion(); ?></p>
-                        <span class="precio"><?php echo $producto->getPrecio(); ?> €</span>
-                    </a>
-                </li>
+                        <li class="col-sm-6 col-md-4 col-lg-3">
+                            <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
+                                <img class="imagen-principal" src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>" alt="<?php echo $producto->getNombre(); ?>">
+                                <h3><?php echo $producto->getNombre(); ?></h3>
+                                <p><?php echo $producto->getDescripcion(); ?></p>
+                                <span class="precio"><?php echo $producto->getPrecio(); ?> €</span>
+                            </a>
+                        </li>
                 <?php
                     }
                 }
@@ -54,25 +54,24 @@
         </section>
 
         <!-- Sección de ofertas -->
-        <section class="ofertas container">
+        <section class="container">
             <h2>Ofertas</h2>
             <!-- Lista de productos en oferta -->
-            <ul class="row">
+            <ul class="ofertas row">
                 <?php
-
                 // Recorrer el array de productos de la categoría actual
                 foreach ($productos as $producto) {
                     if ($producto->getOferta() == 1) {
                         $id = $producto->getIdProducto();
                 ?>
-                <li class="col-sm-6 col-md-4 col-lg-3">
-                    <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
-                        <img src="<?php echo $producto->getImagen(); ?>" alt="<?php echo $producto->getNombre(); ?>">
-                        <h3><?php echo $producto->getNombre(); ?></h3>
-                        <p><?php echo $producto->getDescripcion(); ?></p>
-                        <span class="precio"><?php echo $producto->getPrecio(); ?> €</span>
-                    </a>
-                </li>
+                        <li class="col-sm-6 col-md-4 col-lg-3">
+                            <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
+                                <img class="imagen-principal" src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>" alt="<?php echo $producto->getNombre(); ?>">
+                                <h3><?php echo $producto->getNombre(); ?></h3>
+                                <p><?php echo $producto->getDescripcion(); ?></p>
+                                <span class="precio"><?php echo $producto->getPrecio(); ?> €</span>
+                            </a>
+                        </li>
                 <?php
                     }
                 }
