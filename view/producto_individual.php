@@ -15,7 +15,7 @@ $tienda = new Tienda();
     <div class="container">
         <div>
             <div>
-                <img src="img/nombre_imagen.jpg" alt="IMAGEN DEL PRODUCTO" class="img-fluid">
+                <img src="data:image/jpeg;base64,<?php echo base64_encode($producto['imagen']) ?>" alt="IMAGEN DEL PRODUCTO">
             </div>
             <div>
                 <h1><?php echo $producto['nombre'] ?></h1>
@@ -64,9 +64,6 @@ $tienda = new Tienda();
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
-
-
         </div>
-
     </div>
 </main>
