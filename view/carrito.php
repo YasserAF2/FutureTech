@@ -11,45 +11,42 @@ foreach ($productos as $producto) {
     if (isset($productos_agrupados[$id_producto])) {
         $productos_agrupados[$id_producto]['cantidad'] += $producto['cantidad'];
     } else {
+        $imagen_base64 = $tienda->obtenerImagenProducto($id_producto);
         $productos_agrupados[$id_producto] = [
             'id' => $id_producto,
             'nombre' => $tienda->obtenerNombreProducto($id_producto),
+            'imagen' => base64_encode($imagen_base64),
             'precio' => $producto['precio'],
             'cantidad' => $producto['cantidad']
         ];
     }
 }
-
 ?>
-<div>
-    <h1> CARRITO DE COMPRA</h1>
-    <?php if (empty($productos)) : ?>
+
+<?php if (empty($productos)) : ?>
+    <div>
         <p><?php echo $mensaje; ?></p>
-    <?php else : ?>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($productos_agrupados as $producto) : ?>
-                    <tr>
-                        <td><?php echo $producto['nombre']; ?></td>
-                        <td><?php echo $producto['precio']; ?></td>
-                        <td><?php echo $producto['cantidad']; ?></td>
-                        <td>
-                            <button class="borrar-producto" data-id="<?php echo $producto['id']; ?>">
-                                <i class="fas fa-trash-alt"></i> Borrar
-                            </button>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-        <p class="precio-total">Precio total: <?php echo $precio_total; ?> euros.</p>
-    <?php endif; ?>
-</div>
+    </div>
+<?php else : ?>
+    <div class="container carrito">
+        <div>
+            <h2>Tu carrito</h2>
+            <?php foreach ($productos_agrupados as $producto) : ?>
+                <div class="divcarrito">
+                    <div class="divimagen">
+                        <img class="carritoimg" src="data:image/jpeg;base64,<?php echo $producto['imagen']; ?>" alt="Imagen del producto">
+                    </div>
+                    <div><?php echo $producto['nombre']; ?></div>
+                    <div><?php echo $producto['precio']; ?>€</div>
+                    <div> <i class="fas fa-trash-alt"></i> Borrar
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div>
+            <h2>Resumen de la compra</h2>
+            <p class="precio-total">Precio total: <?php echo $precio_total; ?> euros.</p>
+            <button type="button" class="btn">Continuar con la compra</button>
+        </div>
+    </div>
+<?php endif; ?>

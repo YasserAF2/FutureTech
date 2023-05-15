@@ -4,8 +4,6 @@ if (typeof jQuery === 'undefined') {
   console.log('jQuery se ha cargado correctamente');
 }
 
-console.log($.fn.slick);
-
 //BUSCADOR
 $(document).ready(function () {
   // Agregar evento keyup al input de búsqueda

@@ -314,6 +314,20 @@ class Tienda
         }
     }
 
+    public function obtenerImagenProducto($id_producto)
+    {
+        $this->getConection();
+        $sql = "SELECT imagen FROM producto WHERE id_producto = '$id_producto'";
+        $result = $this->conection->query($sql);
+
+        if ($result->num_rows == 1) {
+            $imagen = $result->fetch_assoc()['imagen'];
+            return $imagen;
+        } else {
+            return false;
+        }
+    }
+
     public function existeNombreUsuario($nombre)
     {
         $this->getConection();

@@ -198,16 +198,29 @@ nav ul li a:hover {
   border-bottom: 1px solid #ccc;
 }
 
-/* Estilo para el precio total */
-.precio-total {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-top: 1rem;
-  text-align: right;
+/* carrito */
+.carrito {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
 }
 
-i.fas.fa-trash-alt {
-  color: red;
+.carritoimg {
+  width: auto;
+  height: 100px;
+  object-fit: contain;
+}
+
+.divimagen {
+  width: 100px;
+  height: auto;
+}
+
+.divcarrito {
+  display: flex;
+  border: 1px solid black;
+  height: 110px;
+  margin-bottom: 10px;
 }
 
 /* estilo para la vista de una categoria */
