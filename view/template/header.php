@@ -91,17 +91,24 @@
                     //session_start();
 
                     if (isset($_SESSION['usuario'])) { ?>
-                        <p>Bienvenido, <?php echo $_SESSION['usuario']; ?>!</p>
-                        <a href="index.php?action=carrito">
-                            <i class="fas fa-shopping-cart"></i> Carrito de la compra
-                        </a>
+                        <div>
+                            <p>Bienvenido, <?php echo $_SESSION['usuario']; ?>!</p>
+                        </div>
+                        <div>
+                            <a href="index.php?action=carrito">
+                                <i class="fas fa-shopping-cart"></i> Carrito de la compra
+                            </a>
+                        </div>
 
                         <?php if (isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] == 'Administrador') {
                             echo "<p>Tipo de usuario: " . $_SESSION['tipo_usuario'] . "</p>";
                             echo "<a href='administrator/index.php'>Ir al panel de administración<i class='fas fa-cog'></i></a><br>";
                         } ?>
 
-                        <a href="index.php?action=logout">Cerrar sesión</a>
+                        <div>
+                            <a href="index.php?action=logout">Cerrar sesión</a>
+                        </div>
+
                     <?php } else { ?>
                         <form class="form-horizontal" method="post" action="index.php?action=logeado">
                             <div class="form-group">
