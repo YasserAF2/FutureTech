@@ -28,7 +28,8 @@
         </div>
     </div>
 </footer>
-
+<!-- JAVASCRIPT -->
+<script type="text/javascript" src="view/js/archivo.js"></script>
 </body>
 
 </html>

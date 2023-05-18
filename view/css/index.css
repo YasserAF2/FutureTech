@@ -135,6 +135,12 @@ nav ul li a:hover {
   font-size: 14px;
 }
 
+/* LOGO */
+.logo {
+  height: 100px;
+  width: auto;
+}
+
 /* TITULO */
 .titulo {
   display: flex;
@@ -348,4 +354,19 @@ a[href='index.php?action=logout'] {
 
 a[href='index.php?action=logout']:hover {
   text-decoration: none;
+}
+
+/* producto individual */
+.p-individual {
+  display: grid;
+}
+
+.img-p-individual {
+  height: 150px;
+  width: auto;
+}
+/* div donde va la imagen*/
+.img-p {
+  display: flex;
+  justify-content: center;
 }

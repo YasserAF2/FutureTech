@@ -1,3 +1,4 @@
+console.log('Starting');
 if (typeof jQuery === 'undefined') {
   console.log('jQuery no se ha cargado correctamente');
 } else {
@@ -33,24 +34,22 @@ $(document).mouseup(function (e) {
   }
 });
 
-function comprobarNombreUsuario() {
-  const nombreUsuario = document.getElementById('nombre').value;
-  const mensajeError = document.getElementById('mensaje-error');
+//imagen del producto individual zoom
+// Obtener la imagen y el contenedor
+let imagen = document.getElementById('imagenPI');
+let contenedor = document.getElementById('img-container');
 
-  console.log('Comprobando nombre de usuario:', nombreUsuario);
+// Aumentar el tamaño de la imagen al pasar el ratón por encima
+imagen.addEventListener('mouseover', () => {
+  imagen.style.transform = 'scale(2)'; // Ajusta el factor de escala deseado
+});
 
-  fetch('index.php?action=comprobar_nombre_usuario&nombre=' + nombreUsuario)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('Respuesta del servidor:', data);
-      if (data.existe) {
-        mensajeError.innerText =
-          'El nombre de usuario ya existe, por favor elija otro';
-      } else {
-        mensajeError.innerText = '';
-      }
-    })
-    .catch((error) => {
-      console.error('Error al comprobar el nombre de usuario:', error);
-    });
-}
+// Restaurar el tamaño original de la imagen al quitar el ratón
+imagen.addEventListener('mouseout', () => {
+  imagen.style.transform = 'scale(1)';
+});
+
+// Mostrar la imagen en grande al hacer clic
+imagen.addEventListener('click', () => {
+  contenedor.classList.toggle('img-p-individual-expanded');
+});

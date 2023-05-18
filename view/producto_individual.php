@@ -13,11 +13,11 @@ $tienda = new Tienda();
 ?>
 <main>
     <div class="container">
-        <div>
-            <div>
-                <img src="data:image/jpeg;base64,<?php echo base64_encode($producto['imagen']) ?>" alt="IMAGEN DEL PRODUCTO">
+        <div class="row p-individual">
+            <div id="img-container" class="img-p col-md-3">
+                <img id="imagenPI" class="img-p-individual" src="data:image/jpeg;base64,<?php echo base64_encode($producto['imagen']) ?>" alt="IMAGEN DEL PRODUCTO">
             </div>
-            <div>
+            <div class="col-md-6">
                 <h1><?php echo $producto['nombre'] ?></h1>
                 <p class="lead"><?php echo $producto['descripcion'] ?></p>
                 <hr>
@@ -36,6 +36,9 @@ $tienda = new Tienda();
                     </div>
                     <button type="submit" class="btn btn-primary">Agregar al carrito</button>
                 </form>
+            </div>
+            <div class="col-md-3">
+                Pagar
             </div>
         </div>
         <div class="comentarios">

@@ -13,6 +13,7 @@ class controlador
         $this->tienda = new Tienda();
     }
 
+    //PÁGINA PRINCIPAL
     public function principal()
     {
         session_start();
@@ -26,6 +27,7 @@ class controlador
         return $datos;
     }
 
+    //PÁGINA DE UN PRODUCTO INDIVIDUAL
     public function producto_individual()
     {
         session_start();
@@ -45,7 +47,7 @@ class controlador
         return $datos;
     }
 
-
+    //LOGIN DE USUARIO
     public function logeado()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -65,6 +67,7 @@ class controlador
         }
     }
 
+    //LOGOUT DE USUARIO
     public function logout()
     {
         session_start();
@@ -73,6 +76,7 @@ class controlador
         header('Location: index.php');
     }
 
+    //VISTA DEL CARRITO
     public function carrito()
     {
         session_start();
@@ -111,6 +115,7 @@ class controlador
     }
 
 
+    //AGREGAR UN PRODUCTO AL CARRITO
     public function agregarAlCarrito()
     {
         // Obtener el id del usuario actual desde la sesión
@@ -149,8 +154,22 @@ class controlador
         $this->view = 'carrito';
     }
 
+    //ELIMINAR UN PRODUCTO DEL CARRITO
+    public function eliminarProductoCarrito()
+    {
+        session_start();
+        $id_producto = $_GET['id'];
+        $id_usuario = $this->tienda->obtenerUsuarioPorCorreo($_SESSION['usuario']);
+        $id_carrito = $this->tienda->obtenerIdCarrito($id_usuario);
 
+        // Eliminar el producto del carrito
+        $this->tienda->eliminarItemCarrito($id_carrito, $id_producto);
 
+        // Redirigir al usuario al carrito
+        header('Location: index.php?action=carrito');
+    }
+
+    //VISTA QUE SE MUESTRA AL PINCHAR EN UNA CATEGORIA DEL HEADER
     public function vista_categoria()
     {
         session_start();
@@ -169,6 +188,7 @@ class controlador
         return $datos;
     }
 
+    //GUARDAR COMENTARIO EN UN PRODUCTO
     public function guardarComentario()
     {
         $this->view = 'producto_individual';
@@ -205,6 +225,7 @@ class controlador
         return $datos;
     }
 
+    //REGISTRO
     public function procesar_registro()
     {
         // Obtener los datos del formulario
@@ -233,7 +254,7 @@ class controlador
     }
 
 
-
+    //COMPROBAR EL NOMBRE DEL USUARIO
     public function comprobar_nombre_usuario()
     {
         if (isset($_GET['nombre'])) {

@@ -13,12 +13,14 @@ class Tienda
         $this->getConection();
     }
 
+    //Conexión
     public function getConection()
     {
         $dbObj = new Db();
         $this->conection = $dbObj->conection;
     }
 
+    //obtener todas las categorias
     public function getCategorias()
     {
         $sql = "SELECT * FROM categoria";
@@ -34,6 +36,7 @@ class Tienda
         return $this->categorias;
     }
 
+    //obtener todos los usuarios
     public function getUsuarios()
     {
         $sql = "SELECT * FROM usuario";
@@ -49,6 +52,7 @@ class Tienda
         return $this->usuarios;
     }
 
+    //obtener todos los productos
     public function getProductos()
     {
         $sql = "SELECT * FROM producto";
@@ -74,6 +78,7 @@ class Tienda
         return $producto;
     }
 
+    //validar el usuario
     public function validarUsuario($usuario, $password)
     {
         // Consulta para verificar las credenciales de inicio de sesión
@@ -102,6 +107,7 @@ class Tienda
         }
     }
 
+    //obtener todos los productos por el id_producto
     public function obtenerProducto($idProducto)
     {
         $sql = "SELECT * FROM producto WHERE id_producto = '$idProducto'";
@@ -115,6 +121,7 @@ class Tienda
         }
     }
 
+    //Obtener todos los productos de una categoria
     public function obtenerProductosPorCategoria($id_categoria)
     {
         $sql = "SELECT * FROM producto WHERE id_categoria = '$id_categoria'";
@@ -131,6 +138,7 @@ class Tienda
         }
     }
 
+    //Obtener categoria por el id de categoria
     public function obtenerCategoria($id_categoria)
     {
         $sql = "SELECT * FROM categoria WHERE id_categoria = '$id_categoria'";
@@ -158,6 +166,7 @@ class Tienda
         }
     }
 
+    //Obtener el nombre del usuario por el id_usuario
     public function obtenerNombreUser($id_usuario)
     {
         $sql = "SELECT nombre FROM usuario WHERE id_usuario = '$id_usuario'";
@@ -187,6 +196,7 @@ class Tienda
         return $this->comentarios;
     }
 
+    //Obtener los comentarios de un producto por el id_producto
     public function obtenerComentariosPorProducto($id_producto)
     {
         $sql = "SELECT * FROM comentarios WHERE id_producto = '$id_producto' ORDER BY fecha DESC";
@@ -215,6 +225,7 @@ class Tienda
         }
     }
 
+    //Obtener el id del carrito por el id_usuario
     public function obtenerIdCarrito($id_usuario)
     {
         $this->getConection();
@@ -229,6 +240,7 @@ class Tienda
         }
     }
 
+    //Crear un carrito para un usuario
     public function crearCarrito($id_usuario, $precio_total)
     {
         $this->getConection();
@@ -241,6 +253,7 @@ class Tienda
         }
     }
 
+    //Calcular el precio del carrito
     public function calcularPrecioTotalCarrito($id_carrito)
     {
         $this->getConection();
@@ -256,6 +269,7 @@ class Tienda
         }
     }
 
+    //Agregar items al carrito
     public function agregarItemAlCarrito($id_carrito, $id_producto, $cantidad, $precio)
     {
         $this->getConection();
@@ -268,6 +282,7 @@ class Tienda
         }
     }
 
+    //Obtener los productos de un carrito
     public function obtenerProductosCarrito($id_carrito)
     {
         $this->getConection();
@@ -288,6 +303,16 @@ class Tienda
         return $productos;
     }
 
+    //Eliminar item del carrito de BD
+    public function eliminarItemCarrito($id_carrito, $id_producto)
+    {
+        $this->getConection();
+        $sql = "DELETE FROM item_carrito WHERE id_carrito = $id_carrito AND id_producto = $id_producto";
+        $stmt = $this->conection->prepare($sql);
+        $stmt->execute();
+    }
+
+    //Actualizar el precio del carrito
     public function actualizarPrecioTotalCarrito($id_carrito, $precio_total)
     {
         $this->getConection();
@@ -300,6 +325,7 @@ class Tienda
         }
     }
 
+    //Obtener el nombre del producto por el id_producto
     public function obtenerNombreProducto($id_producto)
     {
         $this->getConection();
@@ -314,6 +340,7 @@ class Tienda
         }
     }
 
+    //Obtener la imagen de un producto por el id_producto
     public function obtenerImagenProducto($id_producto)
     {
         $this->getConection();
@@ -328,6 +355,7 @@ class Tienda
         }
     }
 
+    //comprobar la existencia del nombre del usuario
     public function existeNombreUsuario($nombre)
     {
         $this->getConection();
@@ -340,6 +368,7 @@ class Tienda
         }
     }
 
+    //registrar un usuario
     public function registro($correo, $contraseña, $nombre, $direccion)
     {
         // Insertar los datos del usuario en la base de datos
