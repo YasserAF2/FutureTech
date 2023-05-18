@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="view/img/favicon-32x32.png">
-
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="view/css/index.css">
@@ -44,13 +44,30 @@
             <!-- <div id="resultados"></div> -->
         </div>
         <div class="botones">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
-                <i class="fas fa-user"></i> Login
-            </button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModal">
-                <i class="fas fa-user"></i> Registrarse
-            </button>
+            <?php if (isset($_SESSION['usuario'])) : ?>
+                <a href="index.php?action=carrito" class="btn btn-primary">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+                <a href="index.php?action=logout" class="btn btn-primary">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+
+                <?php if ($_SESSION['tipo_usuario'] == 'Administrador') : ?>
+                    <a href="administrator/index.php" class="btn btn-primary">
+                        <i class="fas fa-cogs"></i>
+                    </a>
+                <?php endif; ?>
+
+            <?php else : ?>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+                    <i class="fas fa-user"></i> Login
+                </button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModal">
+                    <i class="fas fa-user"></i> Registrarse
+                </button>
+            <?php endif; ?>
         </div>
+
     </div>
     <nav>
         <ul class="list-unstyled d-flex">
@@ -80,68 +97,46 @@
             </div>
             <div class="modal-body">
                 <div>
-                    <?php
-                    if (isset($_SESSION['usuario'])) { ?>
-                        <div>
-                            <p>Bienvenido, <?php echo $_SESSION['usuario']; ?>!</p>
+                    <form class="form-horizontal" method="post" action="index.php?action=logeado">
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label">Usuario:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="username" name="username" required>
+                            </div>
                         </div>
-                        <div>
-                            <a href="index.php?action=carrito">
-                                <i class="fas fa-shopping-cart"></i> Carrito de la compra
-                            </a>
+                        <div class="form-group">
+                            <label for="password" class="col-sm-2 control-label">Contraseña:</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
                         </div>
-
-                        <?php if (isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] == 'Administrador') {
-                            echo "<p>Tipo de usuario: " . $_SESSION['tipo_usuario'] . "</p>";
-                            echo "<a href='administrator/index.php'>Ir al panel de administración<i class='fas fa-cog'></i></a><br>";
-                        } ?>
-
-                        <div>
-                            <a href="index.php?action=logout">Cerrar sesión</a>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="recordar" name="recordar"> Recordarme
+                                    </label>
+                                </div>
+                            </div>
                         </div>
-
-                    <?php } else { ?>
-                        <form class="form-horizontal" method="post" action="index.php?action=logeado">
-                            <div class="form-group">
-                                <label for="username" class="col-sm-2 control-label">Usuario:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="username" name="username" required>
-                                </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
                             </div>
-                            <div class="form-group">
-                                <label for="password" class="col-sm-2 control-label">Contraseña:</label>
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="password" name="password" required>
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <span id="mensaje-error">
+                                    <?php
+                                    if (isset($_SESSION['mensaje_error'])) {
+                                        echo '<div class="alert alert-danger">' . $_SESSION['mensaje_error'] . '</div>';
+                                        unset($_SESSION['mensaje_error']); // Limpiar el mensaje de error
+                                    }
+                                    ?>
+                                </span>
                             </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="recordar" name="recordar"> Recordarme
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <span id="mensaje-error">
-                                        <?php
-                                        if (isset($_SESSION['mensaje_error'])) {
-                                            echo '<div class="alert alert-danger">' . $_SESSION['mensaje_error'] . '</div>';
-                                            unset($_SESSION['mensaje_error']); // Limpiar el mensaje de error
-                                        }
-                                        ?>
-                                    </span>
-                                </div>
-                            </div>
-                        </form>
-                    <?php } ?>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="modal-footer">

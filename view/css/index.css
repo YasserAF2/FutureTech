@@ -121,24 +121,24 @@ nav ul li a:hover {
 
 /* DIV DE los resultados del BUSCADOR */
 #resultados {
-  position: absolute;
-  top: 50px;
-  left: 0;
-  right: 0;
-  background-color: white;
-  z-index: 999;
-  border: 1px solid #ddd;
-  border-top: none;
-  max-height: 300px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  font-size: 14px;
+  width: 100px;
+  height: 100px;
 }
 
 /* LOGO */
 .logo {
   height: 100px;
   width: auto;
+}
+
+/* div del titulo destacados */
+.titulo-d {
+  background-color: cyan;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 100%;
 }
 
 /* TITULO */
@@ -173,11 +173,35 @@ nav ul li a:hover {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
+  text-align: center;
+}
+
+.destacados li {
+  display: inline-block;
+  background-color: cadetblue;
+  padding: 5px;
+}
+
+.ofertas li {
+  display: inline-block;
+  background-color: cadetblue;
+  padding: 5px;
+}
+
+.destacados a,
+.ofertas a {
+  color: black;
+}
+
+.destacados a:hover,
+.ofertas a:hover {
+  color: black;
+  text-decoration: none;
 }
 
 /* contenedor de la cabecera que contiene el titulo, el buscador y los botones */
 .top {
-  height: 100px;
+  height: 110px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

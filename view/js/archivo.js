@@ -6,31 +6,40 @@ if (typeof jQuery === 'undefined') {
 }
 
 //BUSCADOR
-$(document).ready(function () {
-  // Agregar evento keyup al input de búsqueda
-  $('#busqueda').on('keyup', function () {
-    // Obtener el valor del input de búsqueda
-    var query = $(this).val();
+document.addEventListener('DOMContentLoaded', function () {
+  // Obtener el elemento del input de búsqueda
+  var busquedaInput = document.getElementById('busqueda');
 
-    // Hacer una solicitud AJAX al servidor para obtener los resultados de búsqueda
-    $.ajax({
-      url: 'view/buscar.php',
-      type: 'POST',
-      data: {
-        query: query,
+  // Agregar el evento keyup al input de búsqueda
+  busquedaInput.addEventListener('keyup', function () {
+    // Obtener el valor del input de búsqueda
+    var query = this.value;
+
+    // Realizar la solicitud AJAX utilizando fetch
+    fetch('view/buscar.php', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/x-www-form-urlencoded',
       },
-      success: function (response) {
+      body: 'query=' + encodeURIComponent(query),
+    })
+      .then(function (response) {
+        return response.text();
+      })
+      .then(function (data) {
         // Mostrar los resultados de búsqueda en la página
-        $('#resultados').html(response);
-      },
-    });
+        document.getElementById('resultados').innerHTML = data;
+      })
+      .catch(function (error) {
+        console.log('Error:', error);
+      });
   });
 });
 
-$(document).mouseup(function (e) {
-  var container = $('#resultados');
-  if (!container.is(e.target) && container.has(e.target).length === 0) {
-    container.hide();
+document.addEventListener('mouseup', function (e) {
+  var container = document.getElementById('resultados');
+  if (!container.contains(e.target)) {
+    container.style.display = 'none';
   }
 });
 
