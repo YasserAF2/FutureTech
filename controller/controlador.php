@@ -65,6 +65,14 @@ class controlador
                 $_SESSION['mensaje_error'] = 'Usuario o contraseña incorrectos';
             }
         }
+
+        $categorias = $this->tienda->getCategorias();
+
+        $datos = array(
+            'categorias' => $categorias,
+        );
+
+        return $datos;
     }
 
     //LOGOUT DE USUARIO

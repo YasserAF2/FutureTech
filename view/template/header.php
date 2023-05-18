@@ -86,8 +86,6 @@
             <div class="modal-body">
                 <div>
                     <?php
-                    //session_start();
-
                     if (isset($_SESSION['usuario'])) { ?>
                     <div>
                         <p>Bienvenido, <?php echo $_SESSION['usuario']; ?>!</p>
@@ -137,7 +135,14 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <span id="mensaje-error"></span>
+                                <span id="mensaje-error">
+                                    <?php
+                                        if (isset($_SESSION['mensaje_error'])) {
+                                            echo '<div class="alert alert-danger">' . $_SESSION['mensaje_error'] . '</div>';
+                                            unset($_SESSION['mensaje_error']); // Limpiar el mensaje de error
+                                        }
+                                        ?>
+                                </span>
                             </div>
                         </div>
                     </form>
