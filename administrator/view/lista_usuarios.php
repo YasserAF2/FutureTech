@@ -11,6 +11,8 @@ $usuarios = $dataToView['usuarios'];
                 <th>Dirección</th>
                 <th>Correo</th>
                 <th>Tipo</th>
+                <th>Editar</th>
+                <th>Borrar</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +22,8 @@ $usuarios = $dataToView['usuarios'];
                     <td><?php echo $usuario->getDireccion(); ?></td>
                     <td><?php echo $usuario->getCorreo(); ?></td>
                     <td><?php echo $usuario->getTipo(); ?></td>
+                    <td><i class="fas fa-pencil-alt"></i></td>
+                    <td><i class="fas fa-trash"></i></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

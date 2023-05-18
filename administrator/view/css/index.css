@@ -12,6 +12,12 @@ html {
   height: 100%;
 }
 
+/* logo */
+.logo {
+  height: 80px;
+  width: auto;
+}
+
 /* principal.php */
 .cont {
   display: flex;
