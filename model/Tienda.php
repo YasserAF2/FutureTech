@@ -368,4 +368,32 @@ class Tienda
             echo "mal";
         }
     }
+
+    // editar usuario de la vista de administrador
+    public function editarUsuario($id_usuario, $nombre, $direccion, $correo, $tipo)
+    {
+        $this->getConection();
+
+        $nombre = $this->conection->real_escape_string($nombre);
+        $direccion = $this->conection->real_escape_string($direccion);
+        $correo = $this->conection->real_escape_string($correo);
+        $tipo = $this->conection->real_escape_string($tipo);
+
+        $sql = "UPDATE usuario SET nombre = '$nombre', direccion = '$direccion', correo = '$correo', tipo = '$tipo' WHERE id_usuario = $id_usuario";
+
+        if ($this->conection->query($sql) === TRUE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // borrar usuario de la vista de administrador
+    public function borrarUsuario($id_usuario)
+    {
+        $this->getConection();
+        $sql = "DELETE FROM usuario WHERE id_usuario= $id_usuario";
+        $stmt = $this->conection->prepare($sql);
+        $stmt->execute();
+    }
 }

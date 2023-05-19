@@ -187,3 +187,22 @@ footer {
 .show-btn-volver-arriba {
   display: block;
 }
+
+/* formulario editar */
+.formularioEditar {
+  height: 550px;
+}
+
+.f-editar {
+  display: flex;
+  flex-direction: column;
+}
+
+.f-editar button {
+  width: 100px;
+  align-items: center;
+}
+
+.f-editar a {
+  width: 150px;
+}

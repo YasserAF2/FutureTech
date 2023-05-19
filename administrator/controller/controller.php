@@ -49,4 +49,47 @@ class controlador
         session_destroy();
         header('Location: ../index.php');
     }
+
+    public function editar_usuario()
+    {
+        $this->view = "editar_usuario";
+
+        $id_usuario = $_POST['id_usuario'];
+        $nombre = $_POST['nombre'];
+        $direccion = $_POST['direccion'];
+        $correo = $_POST['correo'];
+        $tipo = $_POST['tipo'];
+
+        $datos = array(
+            'id_usuario' => $id_usuario,
+            'nombre' => $nombre,
+            'direccion' => $direccion,
+            'correo' => $correo,
+            'tipo' => $tipo
+        );
+
+        return $datos;
+    }
+
+    public function guardar_usuario()
+    {
+        $id_usuario = $_POST['id_usuario'];
+        $nombre = $_POST['nombre'];
+        $direccion = $_POST['direccion'];
+        $correo = $_POST['correo'];
+        $tipo = $_POST['tipo'];
+
+        $this->tienda->editarUsuario($id_usuario, $nombre, $direccion, $correo, $tipo);
+
+        header('Location: index.php');
+    }
+
+    public function borrar_usuario()
+    {
+        $id_usuario = $_POST['id_usuario'];
+
+        $this->tienda->borrarUsuario($id_usuario);
+
+        header('Location: index.php');
+    }
 }

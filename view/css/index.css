@@ -163,9 +163,11 @@ nav ul li a:hover {
   text-decoration: none;
 }
 
-/* botones de login y register */
-/* .botones {
-} */
+/* footer */
+footer {
+  background-color: lightgray;
+  padding-top: 10px;
+}
 
 /* DESTACADOS PRINCIPAL */
 .destacados,
