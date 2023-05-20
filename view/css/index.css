@@ -7,26 +7,32 @@
   scroll-behavior: smooth;
 }
 
+/* redes sociales iconos, espacio y tamaño */
+.redes li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.redes li a {
+  font-size: 35px;
+}
+
 /* NAV DE LA CABECERA CON LAS CATEGORIAS */
-nav ul {
+nav.menupc ul {
   font-size: 1.5em;
   display: flex;
 }
 
-nav ul li {
+nav.menupc ul li {
   background-color: lightblue;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 2px;
-  margin-right: 2px;
-  margin-bottom: 10px;
   width: 100%;
-  height: 65px;
 }
 
-nav ul li a {
+nav.menupc ul li a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,7 +43,7 @@ nav ul li a {
   font-weight: bold;
 }
 
-nav ul li a:hover {
+nav.menupc ul li a:hover {
   text-decoration: none;
 }
 
@@ -208,6 +214,26 @@ footer {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+}
+
+.botones {
+  display: flex;
+  flex-direction: row;
+}
+
+.botones button {
+  margin-left: 2px;
+}
+
+/* Estilos para el formulario de inicio de sesión */
+.formlogin {
+  display: none;
+  top: 50%; /* Posición verticalmente centrada */
+  right: -100%; /* Posición inicial fuera de la pantalla por la derecha */
+  transition: right 0.3s ease-in-out;
+  background-color: white;
+  height: 100vh; /* Ajusta la altura según tus necesidades */
+  z-index: 999; /* Ajusta el valor de z-index según tus necesidades */
 }
 
 /* Estilo para la tabla del carrito de compra */
@@ -395,4 +421,134 @@ a[href='index.php?action=logout']:hover {
 .img-p {
   display: flex;
   justify-content: center;
+}
+
+/* menu hamburguesa */
+/* boton */
+#menu-toggle {
+  display: none; /* Ocultar el botón en dispositivos grandes */
+}
+
+#menu {
+  margin-top: 5px;
+  display: none; /* Ocultar el menú desplegable por defecto */
+}
+
+/* menu de version movil */
+#menu ul:last-child {
+  border-bottom: 1px solid black;
+}
+
+#menu li {
+  text-align: center;
+  font-size: large;
+  border-top: 1px solid black;
+}
+
+#menu li a {
+  display: inline-block;
+  width: 100%;
+  text-decoration: none;
+  color: black;
+}
+
+/* Estilos para tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  main {
+    background-color: yellow;
+  }
+}
+
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 480px) {
+  main {
+    background-color: red;
+  }
+
+  /* logo tienda */
+  .logo {
+    height: 70px;
+  }
+
+  /* barra de busqueda */
+  .buscador {
+    display: none;
+  }
+
+  /* header */
+  .top {
+    height: 85px;
+  }
+
+  /* botones */
+  .btn-login {
+    display: none !important;
+  }
+
+  .btn-login2 {
+    display: block;
+  }
+
+  /* formulario login */
+  .formlogin {
+    display: block;
+    position: fixed;
+    top: 80px;
+    right: -100%; /* Inicialmente oculto fuera de la pantalla */
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    transition: right 0.3s ease-in-out;
+  }
+
+  .formlogin.open {
+    right: 0; /* Mostrar el formulario desplazándolo a la posición correcta */
+  }
+
+  .menupc {
+    display: none;
+  }
+
+  #menu-toggle {
+    display: block; /* Mostrar el botón en dispositivos pequeños */
+  }
+
+  #menu.show {
+    display: block; /* Mostrar el menú cuando tiene la clase "show" */
+  }
+
+  .titulo-d {
+    height: 70px;
+  }
+
+  .titulo-d h2 {
+    font-size: 1.55rem;
+    margin-top: 5px;
+  }
+
+  .destacados,
+  .ofertas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .destacados li {
+    border-bottom: 1px solid black;
+  }
+
+  .imagen-principal {
+    float: left;
+    height: 200px;
+    width: 160px;
+  }
+
+  .producto h2 {
+    padding-top: 20px;
+  }
+
+  .titulocategoria {
+    font-size: 2rem;
+    text-align: center;
+  }
 }

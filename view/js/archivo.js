@@ -36,29 +36,54 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+/* 
 document.addEventListener('mouseup', function (e) {
   var container = document.getElementById('resultados');
   if (!container.contains(e.target)) {
     container.style.display = 'none';
   }
-});
+}); 
+*/
 
 //imagen del producto individual zoom
 // Obtener la imagen y el contenedor
 let imagen = document.getElementById('imagenPI');
 let contenedor = document.getElementById('img-container');
 
-// Aumentar el tamaño de la imagen al pasar el ratón por encima
-imagen.addEventListener('mouseover', () => {
-  imagen.style.transform = 'scale(2)'; // Ajusta el factor de escala deseado
+if (imagen !== null) {
+  // Aumentar el tamaño de la imagen al pasar el ratón por encima
+  imagen.addEventListener('mouseover', () => {
+    imagen.style.transform = 'scale(2)'; // Ajusta el factor de escala deseado
+  });
+
+  // Restaurar el tamaño original de la imagen al quitar el ratón
+  imagen.addEventListener('mouseout', () => {
+    imagen.style.transform = 'scale(1)';
+  });
+
+  // Mostrar la imagen en grande al hacer clic
+  imagen.addEventListener('click', () => {
+    contenedor.classList.toggle('img-p-individual-expanded');
+  });
+}
+
+//MENU HAMBURGUESA
+// Obtener referencias a los elementos del DOM
+const menuToggle = document.getElementById('menu-toggle');
+const menu = document.getElementById('menu');
+
+// Agregar un controlador de eventos al botón
+menuToggle.addEventListener('click', function () {
+  menu.classList.toggle('show');
 });
 
-// Restaurar el tamaño original de la imagen al quitar el ratón
-imagen.addEventListener('mouseout', () => {
-  imagen.style.transform = 'scale(1)';
-});
+//FORMULARIO LOGIN MOVIL
+// Obtener referencias a los elementos del DOM
+const loginButton = document.getElementById('btn-login2');
+const formlogin = document.getElementById('formlogin');
 
-// Mostrar la imagen en grande al hacer clic
-imagen.addEventListener('click', () => {
-  contenedor.classList.toggle('img-p-individual-expanded');
+// Agregar un controlador de eventos al botón de inicio de sesión
+loginButton.addEventListener('click', function () {
+  console.log('click');
+  formlogin.classList.toggle('open');
 });

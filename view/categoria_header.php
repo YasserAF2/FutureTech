@@ -3,7 +3,7 @@ $productos = $dataToView['productos'];
 ?>
 
 <div class="container">
-    <h2><?php echo $dataToView['categoria_actual']['nombre']; ?></h2>
+    <h2 class="titulocategoria"><?php echo $dataToView['categoria_actual']['nombre']; ?></h2>
     <?php foreach ($productos as $producto) : ?>
     <div class="producto">
         <h2>
