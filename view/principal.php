@@ -7,8 +7,7 @@
     ?>
 
     <div>
-        <!--         
-        <div class="container">
+        <section class="highlight">
             <p>
                 Bienvenido a FutureTech, la tienda en línea para tecnología de vanguardia. Ofrecemos una amplia
                 selección
@@ -22,8 +21,7 @@
                 disfrutar de sus productos lo antes posible. En FutureTech, nos comprometemos a brindar productos y
                 servicios de alta calidad a nuestros clientes, ¡ven y descubre el futuro de la tecnología con nosotros!
             </p>
-        </div> 
-        -->
+        </section>
 
         <!-- Sección de destacados -->
         <section class="container">

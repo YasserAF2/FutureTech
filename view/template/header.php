@@ -27,10 +27,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway&family=Roboto&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-    <div class="container top">
+    <div class="top">
         <a class="titulo" href="index.php">
             <img class="logo" src="view/img/FTLOGO.png" alt="LOGO" />
             <h1>FUTURE TECH</h1>
@@ -62,7 +68,7 @@
             <?php endif; ?>
 
             <?php else : ?>
-            <button type="button" class="btn-login btn btn-primary" data-toggle="modal" data-target="#loginModal">
+            <button type="button" class="btn-login btn" data-toggle="modal" data-target="#loginModal">
                 <i class="fas fa-user"></i>
             </button>
             <button type="button" id="btn-login2" class="btn-login2 btn btn-primary">

@@ -7,6 +7,10 @@
   scroll-behavior: smooth;
 }
 
+:root {
+  --azuloscuro: #0392c0;
+}
+
 /* redes sociales iconos, espacio y tamaño */
 .redes li {
   display: inline-block;
@@ -19,12 +23,13 @@
 
 /* NAV DE LA CABECERA CON LAS CATEGORIAS */
 nav.menupc ul {
+  font-family: 'Roboto', sans-serif;
   font-size: 1.5em;
   display: flex;
 }
 
 nav.menupc ul li {
-  background-color: lightblue;
+  background-color: var(--azuloscuro);
   text-align: center;
   display: flex;
   justify-content: center;
@@ -133,13 +138,15 @@ nav.menupc ul li a:hover {
 
 /* LOGO */
 .logo {
-  height: 100px;
+  height: 90px;
   width: auto;
 }
 
 /* div del titulo destacados */
 .titulo-d {
-  background-color: cyan;
+  font-family: 'Roboto', sans-serif;
+  color: black;
+  background-color: var(--azuloscuro);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -154,14 +161,15 @@ nav.menupc ul li a:hover {
   align-items: center;
   height: 80px;
   width: auto;
+  font-family: 'Raleway', sans-serif;
 }
 
 .titulo h1 {
   font-size: 36px;
-  color: #212529;
+  color: white;
   text-decoration: none;
-  margin: 0;
-  padding: 0;
+  margin-left: 15px;
+  margin-bottom: 0;
   text-align: center;
 }
 
@@ -175,6 +183,11 @@ footer {
   padding-top: 10px;
 }
 
+/* primera seccion de la página */
+.highlight {
+  padding: 15px;
+}
+
 /* DESTACADOS PRINCIPAL */
 .destacados,
 .ofertas {
@@ -186,13 +199,11 @@ footer {
 
 .destacados li {
   display: inline-block;
-  background-color: cadetblue;
   padding: 5px;
 }
 
 .ofertas li {
   display: inline-block;
-  background-color: cadetblue;
   padding: 5px;
 }
 
@@ -209,7 +220,8 @@ footer {
 
 /* contenedor de la cabecera que contiene el titulo, el buscador y los botones */
 .top {
-  height: 110px;
+  background-color: black;
+  height: 120px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -225,6 +237,14 @@ footer {
   margin-left: 2px;
 }
 
+.btn-login {
+  background-color: #5ce1e6;
+}
+
+.btn-login2 {
+  display: none !important;
+}
+
 /* Estilos para el formulario de inicio de sesión */
 .formlogin {
   display: none;
@@ -234,6 +254,7 @@ footer {
   background-color: white;
   height: 100vh; /* Ajusta la altura según tus necesidades */
   z-index: 999; /* Ajusta el valor de z-index según tus necesidades */
+  padding-top: 10px;
 }
 
 /* Estilo para la tabla del carrito de compra */
@@ -461,10 +482,6 @@ a[href='index.php?action=logout']:hover {
 
 /* Estilos para dispositivos móviles */
 @media screen and (max-width: 480px) {
-  main {
-    background-color: red;
-  }
-
   /* logo tienda */
   .logo {
     height: 70px;
@@ -480,20 +497,24 @@ a[href='index.php?action=logout']:hover {
     height: 85px;
   }
 
+  .titulo h1 {
+    font-size: 1.8em;
+  }
+
   /* botones */
   .btn-login {
     display: none !important;
   }
 
   .btn-login2 {
-    display: block;
+    display: block !important;
   }
 
   /* formulario login */
   .formlogin {
     display: block;
     position: fixed;
-    top: 80px;
+    top: 85px;
     right: -100%; /* Inicialmente oculto fuera de la pantalla */
     width: 100%;
     height: 100vh;
