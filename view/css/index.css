@@ -201,6 +201,7 @@ footer p {
 }
 
 footer .copy {
+  font-family: 'Open Sans', sans-serif;
   border-top: 1px solid white;
   padding-bottom: 2px;
   display: flex;
@@ -257,13 +258,16 @@ footer .copy {
   align-items: center;
 }
 
-.botones {
-  display: flex;
-  flex-direction: row;
+/* contenedor de los botones */
+.botones button,
+.botones a {
+  background-color: var(--azulclaro);
+  color: black;
 }
 
-.botones button {
-  margin-left: 2px;
+.botones a:hover {
+  background-color: var(--azulclaro);
+  color: black;
 }
 
 .btn-login {
@@ -288,6 +292,7 @@ footer .copy {
 
 /* carrito */
 .carrito {
+  height: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
@@ -320,8 +325,8 @@ footer .copy {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid black;
-  border-radius: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   height: 140px;
   margin-bottom: 10px;
 }
@@ -392,6 +397,24 @@ footer .copy {
   text-align: center;
   position: relative;
   overflow: hidden;
+}
+
+.producto h2 a {
+  color: black;
+}
+
+.producto h2 a:hover {
+  text-decoration: none;
+}
+
+/* descripcion del producto */
+.producto-d {
+  margin-top: 5px;
+}
+
+/* imagen del producto */
+.imagen-categoria {
+  margin-top: 5px;
 }
 
 /* Estilo para el botón "Añadir al carrito" */
@@ -500,7 +523,6 @@ a[href='index.php?action=logout']:hover {
 }
 
 #menu {
-  margin-top: 5px;
   display: none; /* Ocultar el menú desplegable por defecto */
 }
 
@@ -531,6 +553,11 @@ a[href='index.php?action=logout']:hover {
 
 /* Estilos para dispositivos móviles */
 @media screen and (max-width: 480px) {
+  *:hover {
+    pointer-events: none;
+    cursor: default;
+  }
+
   /* logo tienda */
   .logo {
     height: 70px;
@@ -547,10 +574,19 @@ a[href='index.php?action=logout']:hover {
   }
 
   .titulo h1 {
-    font-size: 1.8em;
+    font-size: 1.5em;
   }
 
   /* botones */
+  .botones {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .botones button {
+    margin-left: 2px;
+  }
+
   .btn-login {
     display: none !important;
   }
@@ -596,6 +632,10 @@ a[href='index.php?action=logout']:hover {
     margin-top: 5px;
   }
 
+  .lupa {
+    display: none;
+  }
+
   .destacados,
   .ofertas {
     display: flex;
@@ -603,7 +643,8 @@ a[href='index.php?action=logout']:hover {
     justify-content: center;
   }
 
-  .destacados li {
+  .destacados li,
+  .ofertas li {
     border-bottom: 1px solid black;
   }
 
@@ -620,5 +661,24 @@ a[href='index.php?action=logout']:hover {
   .titulocategoria {
     font-size: 2rem;
     text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .carrito {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .carrito h2 {
+    margin-top: 10px;
+  }
+
+  .resumen {
+    margin-bottom: 10px;
+  }
+
+  nav.menumovil ul {
+    background-color: var(--azuloscuro);
   }
 }

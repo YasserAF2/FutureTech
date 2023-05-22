@@ -50,10 +50,10 @@ foreach ($productos as $producto) {
                 </div>
             <?php endforeach; ?>
         </div>
-        <div>
+        <div class="resumen">
             <h2>Resumen de la compra</h2>
             <p class="precio-total">Precio total: <?php echo $precio_total; ?> euros.</p>
-            <button class="compra btn" type="button">Continuar con la compra</button>
+            <button class="compra btn" type="button">Proceder con el pago</button>
         </div>
     </div>
 <?php endif; ?>
