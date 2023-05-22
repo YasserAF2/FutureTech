@@ -60,6 +60,7 @@ nav.menupc ul li a:hover {
 
 /* COMENTARIOS DE UN PRODUCTO */
 .comentarios {
+  font-family: 'Open Sans', sans-serif;
   margin-top: 50px;
   margin-bottom: 50px;
   border: 1px solid #ccc;
@@ -68,6 +69,7 @@ nav.menupc ul li a:hover {
 }
 
 .comentarios h3 {
+  font-family: 'Roboto', sans-serif;
   margin-bottom: 20px;
 }
 
@@ -459,17 +461,36 @@ a[href='index.php?action=logout']:hover {
 
 /* producto individual */
 .p-individual {
+  font-family: 'Open Sans', sans-serif;
   display: grid;
+  font-size: 1.5em;
+}
+
+.p-individual h1 {
+  font-family: 'Roboto', sans-serif;
+}
+
+.lupa {
+  font-family: 'Open Sans', sans-serif;
 }
 
 .img-p-individual {
-  height: 150px;
+  height: 400px;
   width: auto;
 }
 /* div donde va la imagen*/
 .img-p {
   display: flex;
   justify-content: center;
+}
+
+/* cantidad de producto individual */
+.cantidadpi {
+  display: flex;
+}
+
+.cantidadpi label {
+  margin-right: 10px;
 }
 
 /* menu hamburguesa */

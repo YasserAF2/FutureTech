@@ -14,32 +14,42 @@ $tienda = new Tienda();
 <main>
     <div class="container">
         <div class="row p-individual">
-            <div id="img-container" class="img-p col-md-3">
+            <div id="img-container" class="img-p col-md-5">
                 <img id="imagenPI" class="img-p-individual" src="data:image/jpeg;base64,<?php echo base64_encode($producto['imagen']) ?>" alt="IMAGEN DEL PRODUCTO">
             </div>
             <div class="col-md-6">
                 <h1><?php echo $producto['nombre'] ?></h1>
-                <p class="lead"><?php echo $producto['descripcion'] ?></p>
                 <hr>
-                <h4 class="mb-3">Detalles del producto:</h4>
+                <p class="lead"><?php echo $producto['descripcion'] ?></p>
                 <ul>
-                    <li><strong>Precio:</strong> <?php echo $producto['precio'] ?> €</li>
-                    <li><strong>Disponibilidad:</strong> <?php echo $producto['cantidad'] ?></li>
-                    <li><strong>Categoría:</strong> Nombre de la categoría</li>
+                    <li>Precio: <?php echo $producto['precio'] ?> €</li>
+                    <li>
+                        <?php if ($producto['cantidad'] <= 0) : ?>
+                            <i class="text-danger fas fa-times"></i> Sin stock
+                        <?php else : ?>
+                            <i class="text-success fas fa-check"></i> En stock
+                        <?php endif; ?>
+                    </li>
                 </ul>
                 <form action="index.php?action=agregarAlCarrito" method="POST">
                     <div class="form-group">
-                        <label for="cantidad">Cantidad:</label>
-                        <input type="number" name="cantidad" id="cantidad" class="form-control" value="1" min="1" max="<?php echo $producto['cantidad'] ?>">
+                        <div class="cantidadpi">
+                            <label for="cantidad">Cantidad:</label>
+                            <input type="number" name="cantidad" id="cantidad" class="w-25 form-control" value="1" min="1" max="<?php echo $producto['cantidad'] ?>">
+                        </div>
                         <input type="hidden" name="id_producto" id="id_producto" value="<?php echo $id_producto ?>">
                         <input type="hidden" name="precio" id="precio" value="<?php echo $producto['precio'] ?>">
                     </div>
-                    <button type="submit" class="btn btn-primary">Agregar al carrito</button>
+                    <?php if ($producto['cantidad'] <= 0) : ?>
+                        <button type="submit" class="btn btn-primary" disabled>Agregar al carrito</button>
+                    <?php else : ?>
+                        <button type="submit" class="btn btn-primary">Agregar al carrito</button>
+                    <?php endif; ?>
                 </form>
             </div>
-            <div class="col-md-3">
-                Pagar
-            </div>
+        </div>
+        <div class="lupa mb-2 ml-2">
+            <p><i class="fas fa-search"></i> Haz click con el ratón en la imagen para ampliarla.</p>
         </div>
         <div class="comentarios">
             <h3>Déjanos un comentario</h3>

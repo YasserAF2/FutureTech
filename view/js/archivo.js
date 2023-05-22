@@ -45,28 +45,6 @@ document.addEventListener('mouseup', function (e) {
 }); 
 */
 
-//imagen del producto individual zoom
-// Obtener la imagen y el contenedor
-let imagen = document.getElementById('imagenPI');
-let contenedor = document.getElementById('img-container');
-
-if (imagen !== null) {
-  // Aumentar el tamaño de la imagen al pasar el ratón por encima
-  imagen.addEventListener('mouseover', () => {
-    imagen.style.transform = 'scale(2)'; // Ajusta el factor de escala deseado
-  });
-
-  // Restaurar el tamaño original de la imagen al quitar el ratón
-  imagen.addEventListener('mouseout', () => {
-    imagen.style.transform = 'scale(1)';
-  });
-
-  // Mostrar la imagen en grande al hacer clic
-  imagen.addEventListener('click', () => {
-    contenedor.classList.toggle('img-p-individual-expanded');
-  });
-}
-
 //MENU HAMBURGUESA
 // Obtener referencias a los elementos del DOM
 const menuToggle = document.getElementById('menu-toggle');
