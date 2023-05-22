@@ -35,7 +35,9 @@ foreach ($productos as $producto) {
             <?php foreach ($productos_agrupados as $producto) : ?>
                 <div class="divcarrito">
                     <div class="divimagen">
-                        <img class="carritoimg" src="data:image/jpeg;base64,<?php echo $producto['imagen']; ?>" alt="Imagen del producto">
+                        <a href="index.php?action=producto_individual&id_producto=<?php echo $producto['id'] ?>">
+                            <img class="carritoimg" src="data:image/jpeg;base64,<?php echo $producto['imagen']; ?>" alt="Imagen del producto">
+                        </a>
                     </div>
                     <div class="datosCarrito">
                         <p><?php echo $producto['nombre']; ?></p>
@@ -51,7 +53,7 @@ foreach ($productos as $producto) {
         <div>
             <h2>Resumen de la compra</h2>
             <p class="precio-total">Precio total: <?php echo $precio_total; ?> euros.</p>
-            <button type="button" class="btn">Continuar con la compra</button>
+            <button class="compra btn" type="button">Continuar con la compra</button>
         </div>
     </div>
 <?php endif; ?>

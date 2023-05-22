@@ -9,6 +9,7 @@
 
 :root {
   --azuloscuro: #0392c0;
+  --azulclaro: #5ce1e6;
 }
 
 /* redes sociales iconos, espacio y tamaño */
@@ -18,7 +19,12 @@
 }
 
 .redes li a {
+  color: white;
   font-size: 35px;
+}
+
+.redes li a:hover {
+  color: var(--azuloscuro);
 }
 
 /* NAV DE LA CABECERA CON LAS CATEGORIAS */
@@ -178,8 +184,25 @@ nav.menupc ul li a:hover {
 
 /* footer */
 footer {
-  background-color: lightgray;
+  color: #dbd9d9;
+  background-color: #101010;
   padding-top: 10px;
+}
+
+footer h3 {
+  font-family: 'Roboto', sans-serif;
+  color: var(--azulclaro);
+}
+
+footer p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+footer .copy {
+  border-top: 1px solid white;
+  padding-bottom: 2px;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* primera seccion de la página */
@@ -190,10 +213,15 @@ footer {
 /* DESTACADOS PRINCIPAL */
 .destacados,
 .ofertas {
+  margin-top: 10px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   text-align: center;
+}
+
+.nproducto {
+  font-size: 1.5em;
 }
 
 .destacados li {
@@ -219,7 +247,7 @@ footer {
 
 /* contenedor de la cabecera que contiene el titulo, el buscador y los botones */
 .top {
-  background-color: black;
+  background-color: #101010;
   height: 120px;
   display: flex;
   flex-direction: row;
@@ -237,7 +265,7 @@ footer {
 }
 
 .btn-login {
-  background-color: #5ce1e6;
+  background-color: var(--azulclaro);
 }
 
 .btn-login2 {
@@ -256,26 +284,6 @@ footer {
   padding-top: 10px;
 }
 
-/* Estilo para la tabla del carrito de compra */
-.table {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  border-collapse: collapse;
-  text-align: center;
-}
-
-.table th {
-  font-weight: bold;
-  background-color: #eee;
-  padding: 10px;
-}
-
-.table td {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-}
-
 /* carrito */
 .carrito {
   display: grid;
@@ -283,14 +291,25 @@ footer {
   grid-gap: 20px;
 }
 
+/* botón de compra */
+.compra {
+  background-color: var(--azulclaro);
+  color: black;
+}
+
+.carrito h2 {
+  font-family: 'Roboto', sans-serif;
+}
+
 .carritoimg {
   width: auto;
   height: 100px;
-  object-fit: contain;
 }
 
 .divimagen {
-  width: 110px;
+  display: flex;
+  justify-content: center;
+  min-width: 150px;
   height: auto;
 }
 
@@ -300,6 +319,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   border: 1px solid black;
+  border-radius: 10px;
   height: 140px;
   margin-bottom: 10px;
 }
@@ -327,7 +347,16 @@ footer {
 }
 
 .datosCarrito {
+  font-family: 'Open Sans', sans-serif;
   margin-left: 10px;
+}
+
+.datosCarrito p {
+  margin: 0;
+}
+
+.precio-total {
+  font-family: 'Open Sans', sans-serif;
 }
 
 .carritoBorrar {

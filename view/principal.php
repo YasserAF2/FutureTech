@@ -50,8 +50,8 @@
                         <img class="imagen-principal"
                             src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>"
                             alt="<?php echo $producto->getNombre(); ?>">
-                        <h3><?php echo $producto->getNombre(); ?></h3>
-                        <p><?php echo $producto->getDescripcion(); ?></p>
+                        <p class="nproducto"><?php echo $producto->getNombre(); ?></p>
+                        <!--<p><?php echo $producto->getDescripcion(); ?></p>-->
                         <span class="precio">Precio: <?php echo $producto->getPrecio(); ?> €</span>
                     </a>
                 </li>
@@ -81,7 +81,7 @@
                             src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>"
                             alt="<?php echo $producto->getNombre(); ?>">
                         <h3><?php echo $producto->getNombre(); ?></h3>
-                        <p><?php echo $producto->getDescripcion(); ?></p>
+                        <!--<p><?php echo $producto->getDescripcion(); ?></p>-->
                         <span class="precio">Precio: <?php echo $producto->getPrecio(); ?> €</span>
                     </a>
                 </li>
