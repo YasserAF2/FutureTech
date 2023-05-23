@@ -6,44 +6,64 @@ if (typeof jQuery === 'undefined') {
 }
 
 //BUSCADOR
-document.addEventListener('DOMContentLoaded', function () {
-  // Obtener el elemento del input de búsqueda
-  var busquedaInput = document.getElementById('busqueda');
+// Variable para almacenar el estado del div de resultados
+let resultadosVisible = false;
 
-  // Agregar el evento keyup al input de búsqueda
-  busquedaInput.addEventListener('keyup', function () {
-    // Obtener el valor del input de búsqueda
-    var query = this.value;
+document.querySelector('form').addEventListener('submit', function (event) {
+  event.preventDefault(); // Evitar que el formulario se envíe normalmente
 
-    // Realizar la solicitud AJAX utilizando fetch
-    fetch('view/buscar.php', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/x-www-form-urlencoded',
-      },
-      body: 'query=' + encodeURIComponent(query),
+  const query = document.getElementById('busqueda').value; // Obtener el valor del campo de búsqueda
+
+  // Realizar la solicitud utilizando fetch
+  fetch('view/buscar/buscar.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: 'query=' + encodeURIComponent(query), // Enviar el parámetro de búsqueda
+  })
+    .then(function (response) {
+      if (response.ok) {
+        return response.text(); // Devolver la respuesta como texto
+      } else {
+        throw new Error(
+          'Error en la respuesta del servidor. Código: ' + response.status
+        );
+      }
     })
-      .then(function (response) {
-        return response.text();
-      })
-      .then(function (data) {
-        // Mostrar los resultados de búsqueda en la página
-        document.getElementById('resultados').innerHTML = data;
-      })
-      .catch(function (error) {
-        console.log('Error:', error);
-      });
-  });
+    .then(function (html) {
+      const resultadosDiv = document.getElementById('resultados');
+      resultadosDiv.innerHTML = html; // Mostrar los resultados en el elemento con el ID "resultados"
+
+      // Mostrar el div de resultados solo si hay resultados
+      if (html.trim() !== '') {
+        resultadosDiv.style.display = 'block';
+        resultadosVisible = true;
+      } else {
+        resultadosDiv.style.display = 'none';
+        resultadosVisible = false;
+      }
+    })
+    .catch(function (error) {
+      console.error('Error en la solicitud:', error);
+    });
 });
 
-/* 
-document.addEventListener('mouseup', function (e) {
-  var container = document.getElementById('resultados');
-  if (!container.contains(e.target)) {
-    container.style.display = 'none';
+//Esconder el div resultados al hacer click fuera
+document.addEventListener('click', function (event) {
+  const resultadosDiv = document.getElementById('resultados');
+  const targetElement = event.target;
+
+  // Comprobar si el clic ocurrió fuera del div de resultados cuando este está visible
+  if (
+    resultadosVisible &&
+    targetElement !== resultadosDiv &&
+    !resultadosDiv.contains(targetElement)
+  ) {
+    resultadosDiv.style.display = 'none'; // Cerrar o desaparecer el div de resultados
+    resultadosVisible = false; // Actualizar el estado del div de resultados
   }
-}); 
-*/
+});
 
 //MENU HAMBURGUESA
 // Obtener referencias a los elementos del DOM
@@ -61,7 +81,9 @@ const loginButton = document.getElementById('btn-login2');
 const formlogin = document.getElementById('formlogin');
 
 // Agregar un controlador de eventos al botón de inicio de sesión
-loginButton.addEventListener('click', function () {
-  console.log('click');
-  formlogin.classList.toggle('open');
-});
+if (loginButton) {
+  loginButton.addEventListener('click', function () {
+    console.log('click');
+    formlogin.classList.toggle('open');
+  });
+}

@@ -139,8 +139,47 @@ nav.menupc ul li a:hover {
 
 /* DIV DE los resultados del BUSCADOR */
 #resultados {
+  position: absolute;
+  top: 10%;
+  z-index: 99;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #101010;
+}
+
+.resultado-busqueda {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.resultado-busqueda a {
+  color: #333;
+  text-decoration: none;
+}
+
+.resultado-busqueda a:hover {
+  text-decoration: underline;
+}
+
+.resultado-busqueda img {
   width: 100px;
   height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.resultado-busqueda h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.resultado-busqueda p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
 }
 
 /* LOGO */

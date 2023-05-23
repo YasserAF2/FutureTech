@@ -11,20 +11,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         [
             'titulo' => 'Ordenador de sobremesa',
             'descripcion' => 'Ordenador de sobremesa de última generación con procesador Intel Core i7 y tarjeta gráfica NVIDIA GeForce RTX 3080.',
-            'imagen' => 'https://via.placeholder.com/150x150',
-            'url' => '#'
+            'imagen' => 'view/buscar/img/torre-01-1.png',
+            'url' => 'index.php?action=producto_individual&id_producto=11'
         ],
         [
-            'titulo' => 'Portátil HP',
-            'descripcion' => 'Portátil HP con pantalla de 15 pulgadas, procesador AMD Ryzen 5 y tarjeta gráfica AMD Radeon Vega 8.',
-            'imagen' => 'https://via.placeholder.com/150x150',
-            'url' => '#'
+            'titulo' => 'Ordenador de sobremesa HP',
+            'descripcion' => 'Ordenador de sobremesa HP con procesador Intel Core i5, 8 GB de RAM y 256 GB de almacenamiento SSD.',
+            'imagen' => 'view/buscar/img/sobremesa-HP.jpg',
+            'url' => 'index.php?action=producto_individual&id_producto=11'
         ],
         [
             'titulo' => 'Monitor LG',
             'descripcion' => 'Monitor LG de 27 pulgadas con resolución 4K y tecnología HDR.',
-            'imagen' => 'https://via.placeholder.com/150x150',
-            'url' => '#'
+            'imagen' => 'view/buscar/img/monitor LG.jpg',
+            'url' => 'index.php?action=producto_individual&id_producto=11'
         ]
     ];
 
