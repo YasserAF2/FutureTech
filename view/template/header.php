@@ -19,16 +19,20 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
 
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway&family=Roboto&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -50,26 +54,26 @@
         </div>
         <div class="botones">
             <?php if (isset($_SESSION['usuario'])) : ?>
-                <a href="index.php?action=carrito" class="btn btn-primary">
-                    <i class="fas fa-shopping-cart"></i>
-                </a>
-                <a href="index.php?action=logout" class="btn btn-primary">
-                    <i class="fas fa-sign-out-alt"></i>
-                </a>
+            <a href="index.php?action=carrito" class="btn btn-primary">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+            <a href="index.php?action=logout" class="btn btn-primary">
+                <i class="fas fa-sign-out-alt"></i>
+            </a>
 
-                <?php if ($_SESSION['tipo_usuario'] == 'Administrador') : ?>
-                    <a href="administrator/index.php" class="btn btn-primary">
-                        <i class="fas fa-cogs"></i>
-                    </a>
-                <?php endif; ?>
+            <?php if ($_SESSION['tipo_usuario'] == 'Administrador') : ?>
+            <a href="administrator/index.php" class="btn btn-primary">
+                <i class="fas fa-cogs"></i>
+            </a>
+            <?php endif; ?>
 
             <?php else : ?>
-                <button type="button" class="btn-login btn" data-toggle="modal" data-target="#loginModal">
-                    <i class="fas fa-user"></i>
-                </button>
-                <button type="button" id="btn-login2" class="btn-login2 btn btn-primary">
-                    <i class="fas fa-user"></i>
-                </button>
+            <button type="button" class="btn-login btn" data-toggle="modal" data-target="#loginModal">
+                <i class="fas fa-user"></i>
+            </button>
+            <button type="button" id="btn-login2" class="btn-login2 btn btn-primary">
+                <i class="fas fa-user"></i>
+            </button>
             <?php endif; ?>
             <button id="menu-toggle" class="btn btn-primary"><i class="fa-solid fa-bars"></i></button>
         </div>
@@ -123,9 +127,10 @@
             foreach ($categorias as $categoria) {
                 $id = $categoria->getIdCategoria();
             ?>
-                <li>
-                    <a href="index.php?action=vista_categoria&id=<?php echo $id; ?>"><?php echo $categoria->getNombre(); ?></a>
-                </li>
+            <li>
+                <a
+                    href="index.php?action=vista_categoria&id=<?php echo $id; ?>"><?php echo $categoria->getNombre(); ?></a>
+            </li>
             <?php
             }
             ?>
@@ -138,8 +143,9 @@
             foreach ($categorias as $categoria) {
                 $id = $categoria->getIdCategoria();
             ?>
-                <li class="flex-row"><a href="index.php?action=vista_categoria&id=<?php echo $id; ?>"><?php echo $categoria->getNombre(); ?></a>
-                </li>
+            <li class="flex-row"><a
+                    href="index.php?action=vista_categoria&id=<?php echo $id; ?>"><?php echo $categoria->getNombre(); ?></a>
+            </li>
             <?php
             }
             ?>
@@ -148,7 +154,8 @@
 
 
     <!-- Modal LOGIN -->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document"></div>
         <div class="modal-content">
             <div class="modal-header">
@@ -159,17 +166,19 @@
             </div>
             <div class="modal-body">
                 <div>
-                    <form class="form-horizontal" method="post" action="index.php?action=logeado">
+                    <form id="loginForm" class="form-horizontal" method="post" action="index.php?action=logeado">
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label">Usuario:</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="username" name="username" required>
+                                <div id="error-message" class="error-message"></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="password" class="col-sm-2 control-label">Contraseña:</label>
                             <div class="col-sm-10">
                                 <input type="password" class="form-control" id="password" name="password" required>
+                                <div id="error-message" class="error-message"></div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -183,7 +192,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                                <button id="submitBtn" type="submit" class="btn btn-primary">Iniciar sesión</button>
                             </div>
                         </div>
                         <div class="form-group">
@@ -198,51 +207,6 @@
                                 </span>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-    </div>
-
-    <!-- Modal Registrarse -->
-    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document"></div>
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="registerModalLabel">Registrarse</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div>
-                    <form method="POST" action="index.php?action=procesar_registro" novalidate>
-                        <div class="form-group">
-                            <label for="correo">Correo electrónico:</label>
-                            <input type="email" class="form-control" id="correo" name="correo" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="contraseña">Contraseña:</label>
-                            <input type="password" class="form-control" id="contraseña" name="contraseña" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="nombre">Nombre de usuario:</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" required onblur="comprobarNombreUsuario()">
-                            <small id="mensaje-error" class="form-text text-danger"></small>
-                        </div>
-                        <div class="form-group">
-                            <label for="direccion">Dirección:</label>
-                            <input type="text" class="form-control" id="direccion" name="direccion" required>
-                        </div>
-                        <div class="form-group">
-                            <small id="mensaje-error" class="form-text text-danger"></small>
-                            <small id="mensaje-exito" class="form-text text-success"></small>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Registrarse</button>
                     </form>
                 </div>
             </div>
