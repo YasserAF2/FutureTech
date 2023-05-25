@@ -10,33 +10,27 @@
         <section class="highlight">
             <div class="hero-carousel">
                 <div class="cs2 carousel-slide">
-
+                    <h1>¡Nuevos móviles disponibles en nuestra tienda!</h1>
+                    <p>Descubre los últimos modelos de teléfonos móviles con tecnología de vanguardia.</p>
                 </div>
                 <div class="cs1 carousel-slide">
                     <div>
-                        <h1>Bienvenido a FutureTech la tienda en línea para tecnología de vanguardia.</h1>
+                        <h1>Bienvenido a FutureTech, tu tienda en línea para tecnología de vanguardia.</h1>
                         <p>
-                            Ofrecemos una amplia selección
-                            de productos tecnológicos de alta calidad, desde portátiles y ordenadores de sobremesa hasta
-                            periféricos
-                            y accesorios
-                            para computadoras. Nuestros productos son cuidadosamente seleccionados para garantizar que
-                            nuestros
-                            clientes
-                            obtengan la mejor experiencia tecnológica posible. Ofrecemos precios competitivos y envío
-                            rápido para
-                            que
-                            pueda
-                            disfrutar de sus productos lo antes posible. En FutureTech, nos comprometemos a brindar
-                            productos y
-                            servicios de alta calidad a nuestros clientes, ¡ven y descubre el futuro de la tecnología
-                            con nosotros!
+                            Ofrecemos una amplia selección de productos tecnológicos de alta calidad, desde portátiles y
+                            ordenadores de sobremesa hasta periféricos y accesorios para computadoras.
+                            Nuestros productos son cuidadosamente seleccionados para garantizar que nuestros clientes
+                            obtengan la mejor experiencia tecnológica posible.
+                            Ofrecemos precios competitivos y envío rápido para que puedas disfrutar de tus productos lo
+                            antes posible.
+                            En FutureTech, nos comprometemos a brindar productos y servicios de alta calidad a nuestros
+                            clientes. ¡Ven y descubre el futuro de la tecnología con nosotros!
                         </p>
                     </div>
                 </div>
                 <div class="cs3 carousel-slide">
-                    <!--                     <img src="view/img/pcs.jpg" alt="Imagen 3">
- -->
+                    <h1>¡Nuevas ofertas de ordenadores de sobremesa!</h1>
+                    <p>Aprovecha nuestras increíbles ofertas en ordenadores de sobremesa de última generación.</p>
                 </div>
             </div>
         </section>
