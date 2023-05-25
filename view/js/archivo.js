@@ -65,6 +65,26 @@ document.addEventListener('click', function (event) {
   }
 });
 
+//FORMULARIO LOGIN EN VERSION MOVIL
+// Obtén el botón y el formulario por su ID
+var btnLogin = document.getElementById('btn-login2');
+var formLogin = document.getElementById('formlogin');
+
+// Verifica si el botón existe antes de agregar el event listener
+if (btnLogin) {
+  // Agrega un event listener al botón para escuchar el clic
+  btnLogin.addEventListener('click', function () {
+    // Verifica si el formulario ya tiene la clase "open"
+    if (formLogin.classList.contains('open')) {
+      // Si tiene la clase "open", la remueve para cerrar el formulario
+      formLogin.classList.remove('open');
+    } else {
+      // Si no tiene la clase "open", la agrega para abrir el formulario
+      formLogin.classList.add('open');
+    }
+  });
+}
+
 //MENU HAMBURGUESA
 // Obtener referencias a los elementos del DOM
 let menuToggle = document.getElementById('menu-toggle');
@@ -75,54 +95,31 @@ menuToggle.addEventListener('click', function () {
   menu.classList.toggle('show');
 });
 
-//FORMULARIO LOGIN MOVIL
-// Obtener el formulario y los campos de usuario y contraseña
-const loginForm = document.getElementById('loginForm');
-const usernameInput = document.getElementById('username');
-const passwordInput = document.getElementById('password');
-const errorMessage = document.getElementById('error-message');
+// JavaScript carrusel
+window.addEventListener('DOMContentLoaded', function () {
+  var carousel = document.querySelector('.hero-carousel');
+  carousel.classList.add('loading');
 
-// Expresiones regulares para validar usuario y contraseña
-const usernameRegex = /^[a-zA-Z0-9]{4,}$/;
-const passwordRegex = /^.{6,}$/;
+  setTimeout(function () {
+    // Una vez que los recursos estén listos, eliminar la clase de "loading"
+    carousel.classList.remove('loading');
+  }, 4000);
+});
 
-// Función de validación
-function validarFormulario(event) {
-  // Limpiar el mensaje de error
-  limpiarMensajeError();
+// Selecciona todos los elementos con la clase "carousel-slide" y los guarda en la variable slides
+var slides = document.querySelectorAll('.carousel-slide');
+// Almacena el índice del slide actual
+var currentSlide = 0;
+// Establece un intervalo de tiempo para llamar a la función nextSlide cada 5000 milisegundos (5 segundos)
+var slideInterval = setInterval(nextSlide, 4000);
 
-  // Validar usuario y contraseña
-  let errores = [];
+function nextSlide() {
+  // Remueve la clase "active" del slide actual, ocultándolo
+  slides[currentSlide].classList.remove('active');
 
-  if (!usernameRegex.test(usernameInput.value)) {
-    errores.push('El usuario debe tener al menos 4 caracteres alfanuméricos');
-  }
+  // Calcula el índice del siguiente slide en función del índice actual y la cantidad de slides disponibles
+  currentSlide = (currentSlide + 1) % slides.length;
 
-  if (!passwordRegex.test(passwordInput.value)) {
-    errores.push('La contraseña debe tener al menos 6 caracteres');
-  }
-
-  // Mostrar mensajes de error si los hay
-  if (errores.length > 0) {
-    mostrarMensajesError(errores);
-    event.preventDefault(); // Detener el envío del formulario si hay errores
-  }
+  // Agrega la clase "active" al nuevo slide actual, mostrándolo
+  slides[currentSlide].classList.add('active');
 }
-
-// Función para mostrar mensajes de error
-function mostrarMensajesError(errores) {
-  errores.forEach((error) => {
-    const mensajeError = document.createElement('div');
-    mensajeError.classList.add('error-item');
-    mensajeError.textContent = error;
-    errorMessage.appendChild(mensajeError);
-  });
-}
-
-// Función para limpiar el mensaje de error
-function limpiarMensajeError() {
-  errorMessage.innerHTML = '';
-}
-
-// Asociar la función de validación al evento submit del formulario
-loginForm.addEventListener('submit', validarFormulario);

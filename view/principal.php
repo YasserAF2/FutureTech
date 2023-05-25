@@ -8,19 +8,37 @@
 
     <div>
         <section class="highlight">
-            <p>
-                Bienvenido a FutureTech, la tienda en línea para tecnología de vanguardia. Ofrecemos una amplia
-                selección
-                de productos tecnológicos de alta calidad, desde portátiles y ordenadores de sobremesa hasta periféricos
-                y accesorios
-                para computadoras. Nuestros productos son cuidadosamente seleccionados para garantizar que nuestros
-                clientes
-                obtengan la mejor experiencia tecnológica posible. Ofrecemos precios competitivos y envío rápido para
-                que
-                pueda
-                disfrutar de sus productos lo antes posible. En FutureTech, nos comprometemos a brindar productos y
-                servicios de alta calidad a nuestros clientes, ¡ven y descubre el futuro de la tecnología con nosotros!
-            </p>
+            <div class="hero-carousel">
+                <div class="cs2 carousel-slide">
+
+                </div>
+                <div class="cs1 carousel-slide">
+                    <div>
+                        <h1>Bienvenido a FutureTech la tienda en línea para tecnología de vanguardia.</h1>
+                        <p>
+                            Ofrecemos una amplia selección
+                            de productos tecnológicos de alta calidad, desde portátiles y ordenadores de sobremesa hasta
+                            periféricos
+                            y accesorios
+                            para computadoras. Nuestros productos son cuidadosamente seleccionados para garantizar que
+                            nuestros
+                            clientes
+                            obtengan la mejor experiencia tecnológica posible. Ofrecemos precios competitivos y envío
+                            rápido para
+                            que
+                            pueda
+                            disfrutar de sus productos lo antes posible. En FutureTech, nos comprometemos a brindar
+                            productos y
+                            servicios de alta calidad a nuestros clientes, ¡ven y descubre el futuro de la tecnología
+                            con nosotros!
+                        </p>
+                    </div>
+                </div>
+                <div class="cs3 carousel-slide">
+                    <!--                     <img src="view/img/pcs.jpg" alt="Imagen 3">
+ -->
+                </div>
+            </div>
         </section>
 
         <!-- Sección de destacados -->
@@ -45,16 +63,14 @@
                     if ($producto->getDestacado() == 1) {
                         $id = $producto->getIdProducto();
                 ?>
-                <li>
-                    <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
-                        <img class="imagen-principal"
-                            src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>"
-                            alt="<?php echo $producto->getNombre(); ?>">
-                        <p class="nproducto"><?php echo $producto->getNombre(); ?></p>
-                        <!--<p><?php echo $producto->getDescripcion(); ?></p>-->
-                        <span class="precio">Precio: <?php echo $producto->getPrecio(); ?> €</span>
-                    </a>
-                </li>
+                        <li>
+                            <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
+                                <img class="imagen-principal" src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>" alt="<?php echo $producto->getNombre(); ?>">
+                                <p class="nproducto"><?php echo $producto->getNombre(); ?></p>
+                                <!--<p><?php echo $producto->getDescripcion(); ?></p>-->
+                                <span class="precio">Precio: <?php echo $producto->getPrecio(); ?> €</span>
+                            </a>
+                        </li>
                 <?php
                     }
                 }
@@ -75,16 +91,14 @@
                     if ($producto->getOferta() == 1) {
                         $id = $producto->getIdProducto();
                 ?>
-                <li>
-                    <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
-                        <img class="imagen-principal"
-                            src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>"
-                            alt="<?php echo $producto->getNombre(); ?>">
-                        <h3 class="nproducto"><?php echo $producto->getNombre(); ?></h3>
-                        <!--<p><?php echo $producto->getDescripcion(); ?></p>-->
-                        <span class="precio">Precio: <?php echo $producto->getPrecio(); ?> €</span>
-                    </a>
-                </li>
+                        <li>
+                            <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
+                                <img class="imagen-principal" src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>" alt="<?php echo $producto->getNombre(); ?>">
+                                <h3 class="nproducto"><?php echo $producto->getNombre(); ?></h3>
+                                <!--<p><?php echo $producto->getDescripcion(); ?></p>-->
+                                <span class="precio">Precio: <?php echo $producto->getPrecio(); ?> €</span>
+                            </a>
+                        </li>
                 <?php
                     }
                 }
