@@ -277,21 +277,50 @@ footer .copy {
 }
 
 .cs1 {
+  font-family: 'Open Sans', sans-serif;
   background-image: url(../img/image.png);
   background-size: cover;
   background-position: center;
 }
 
 .cs2 {
+  font-family: 'Open Sans', sans-serif;
   background-image: url(../img/moviles.jpg);
   background-size: cover;
   background-position: center;
 }
 
 .cs3 {
+  font-family: 'Open Sans', sans-serif;
   background-image: url(../img/pcs.jpg);
   background-size: cover;
   background-position: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.cs3 h1,
+.cs2 h1 {
+  font-family: 'Roboto', sans-serif;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  color: white;
+  text-align: center;
+  height: 75px;
+  width: 100%;
+}
+
+.cs3 p,
+.cs2 p {
+  width: 20%;
+  padding: 10px;
+  margin-left: 20px;
+}
+
+.cs3 button,
+.cs2 button {
+  width: 120px;
+  margin-left: 20px;
 }
 
 /* primera seccion de la página */

@@ -12,6 +12,7 @@
                 <div class="cs2 carousel-slide">
                     <h1>¡Nuevos móviles disponibles en nuestra tienda!</h1>
                     <p>Descubre los últimos modelos de teléfonos móviles con tecnología de vanguardia.</p>
+                    <button type="button" class="btn btn-primary">Ver ahora</button>
                 </div>
                 <div class="cs1 carousel-slide">
                     <div>
@@ -31,6 +32,7 @@
                 <div class="cs3 carousel-slide">
                     <h1>¡Nuevas ofertas de ordenadores de sobremesa!</h1>
                     <p>Aprovecha nuestras increíbles ofertas en ordenadores de sobremesa de última generación.</p>
+                    <button type="button" class="btn btn-primary">Ver ahora</button>
                 </div>
             </div>
         </section>

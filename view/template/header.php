@@ -159,7 +159,7 @@
         <div class="modal-dialog" role="document"></div>
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -170,19 +170,15 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label">Usuario:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="username" name="username" required>
-                                <!--                                 
-                                    <div id="error-message" class="error-message"></div>
-                                -->
+                                <input type="text" class="form-control" id="username" name="username"
+                                    placeholder="Usuario" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="password" class="col-sm-2 control-label">Contraseña:</label>
                             <div class="col-sm-10">
-                                <input type="password" class="form-control" id="password" name="password" required>
-                                <!--
-                                    <div id="error-message" class="error-message"></div>
-                                -->
+                                <input type="password" class="form-control" id="password" name="password"
+                                    placeholder="Contraseña" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -196,7 +192,13 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button id="submitBtn" type="submit" class="btn btn-primary">Iniciar sesión</button>
+                                <button id="submitBtn" type="submit" class="btn btn-primary">Ingresar</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <p>¿No tienes una cuenta?</p>
+                                <a href="index.php">Registrate</a>
                             </div>
                         </div>
                         <div class="form-group">
