@@ -29,7 +29,6 @@
     </div>
     <div class="container copy">
         <div>Copyright © 2023 Future Tech - All rights reserved</div>
-        <div>Español EUR €</div>
     </div>
 </footer>
 <!-- JAVASCRIPT -->

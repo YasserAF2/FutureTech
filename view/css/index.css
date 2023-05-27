@@ -12,6 +12,10 @@
   --azulclaro: #5ce1e6;
 }
 
+main {
+  background-color: #f0f8ff;
+}
+
 /* redes sociales iconos, espacio y tamaño */
 .redes li {
   display: inline-block;
@@ -28,9 +32,15 @@
 }
 
 /* NAV DE LA CABECERA CON LAS CATEGORIAS */
+nav.menupc {
+  height: 10vh;
+}
+
 nav.menupc ul {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
   font-size: 1.5em;
+  height: 100%;
   display: flex;
   margin-bottom: 0;
 }
@@ -70,7 +80,7 @@ nav.menupc ul li a:hover {
 }
 
 .comentarios h3 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Raleway', sans-serif;
   margin-bottom: 20px;
 }
 
@@ -110,22 +120,25 @@ nav.menupc ul li a:hover {
 
 .comentarios-boton {
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   padding: 10px;
   border: none;
-  background-color: #007bff;
-  color: #fff;
+  background-color: var(--azuloscuro);
+  border-color: var(--azuloscuro);
+  color: black;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .comentarios-boton:hover {
-  background-color: #0056b3;
+  background-color: var(--azulclaro);
+  color: black;
 }
 
 /* buscador */
 .buscador {
+  font-family: 'Open Sans', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,8 +153,9 @@ nav.menupc ul li a:hover {
 
 /* DIV DE los resultados del BUSCADOR */
 #resultados {
+  font-family: 'Open Sans', sans-serif;
   position: absolute;
-  top: 10%;
+  top: 8%;
   z-index: 99;
   margin-top: 20px;
   padding: 10px;
@@ -232,7 +246,7 @@ footer {
 }
 
 footer h3 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Raleway', sans-serif;
   color: var(--azulclaro);
 }
 
@@ -250,6 +264,7 @@ footer .copy {
 
 /* carrusel */
 .hero-carousel {
+  background-color: white;
   position: relative;
   width: 100%;
   height: 100%;
@@ -325,7 +340,7 @@ footer .copy {
 
 /* primera seccion de la página */
 .highlight {
-  height: 550px;
+  height: 76vh;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -400,6 +415,7 @@ footer .copy {
 }
 
 .btn-login {
+  font-family: 'Open Sans', sans-serif;
   background-color: var(--azulclaro);
 }
 
@@ -518,6 +534,10 @@ footer .copy {
 }
 
 /* estilo para la vista de una categoria */
+.titulocategoria {
+  padding-top: 20px;
+}
+
 /* Estilo para la lista de productos */
 .producto {
   margin-bottom: 2rem;
@@ -616,13 +636,27 @@ a[href='index.php?action=logout']:hover {
   font-family: 'Open Sans', sans-serif;
   display: grid;
   font-size: 1.5em;
+  padding-top: 20px;
 }
 
 .p-individual h1 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Raleway', sans-serif;
+}
+
+.p-individual button {
+  background-color: var(--azuloscuro);
+  color: black;
+  border-color: var(--azuloscuro);
+}
+
+.p-individual button:hover {
+  background-color: var(--azulclaro);
+  border-color: var(--azulclaro);
+  color: black;
 }
 
 .lupa {
+  margin-top: 10px;
   font-family: 'Open Sans', sans-serif;
 }
 

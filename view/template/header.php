@@ -69,7 +69,7 @@
 
             <?php else : ?>
             <button type="button" class="btn-login btn" data-toggle="modal" data-target="#loginModal">
-                <i class="fas fa-user"></i>
+                Iniciar Sesión <i class="fas fa-user"></i>
             </button>
             <button type="button" id="btn-login2" class="btn-login2 btn btn-primary">
                 <i class="fas fa-user"></i>

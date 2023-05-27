@@ -86,40 +86,39 @@ if (btnLogin) {
 }
 
 //MENU HAMBURGUESA
-// Obtener referencias a los elementos del DOM
-let menuToggle = document.getElementById('menu-toggle');
-let menu = document.getElementById('menu');
-
-// Agregar un controlador de eventos al botón
-menuToggle.addEventListener('click', function () {
-  menu.classList.toggle('show');
-});
-
-// JavaScript carrusel
 window.addEventListener('DOMContentLoaded', function () {
   var carousel = document.querySelector('.hero-carousel');
-  carousel.classList.add('loading');
 
-  setTimeout(function () {
-    // Una vez que los recursos estén listos, eliminar la clase de "loading"
-    carousel.classList.remove('loading');
-  }, 4000);
+  if (carousel !== null) {
+    carousel.classList.add('loading');
+
+    setTimeout(function () {
+      // Una vez que los recursos estén listos, eliminar la clase "loading"
+      carousel.classList.remove('loading');
+    }, 4000);
+
+    // Selecciona todos los elementos con la clase "carousel-slide" y los guarda en la variable slides
+    var slides = document.querySelectorAll('.carousel-slide');
+    // Almacena el índice del slide actual
+    var currentSlide = 0;
+
+    if (slides.length > 0) {
+      // Establece un intervalo de tiempo para llamar a la función nextSlide cada 5000 milisegundos (5 segundos)
+      var slideInterval = setInterval(nextSlide, 4000);
+    }
+
+    function nextSlide() {
+      // Verifica si el índice actual está dentro del rango válido
+      if (currentSlide >= 0 && currentSlide < slides.length) {
+        // Remueve la clase "active" del slide actual, ocultándolo
+        slides[currentSlide].classList.remove('active');
+
+        // Calcula el índice del siguiente slide en función del índice actual y la cantidad de slides disponibles
+        currentSlide = (currentSlide + 1) % slides.length;
+
+        // Agrega la clase "active" al nuevo slide actual, mostrándolo
+        slides[currentSlide].classList.add('active');
+      }
+    }
+  }
 });
-
-// Selecciona todos los elementos con la clase "carousel-slide" y los guarda en la variable slides
-var slides = document.querySelectorAll('.carousel-slide');
-// Almacena el índice del slide actual
-var currentSlide = 0;
-// Establece un intervalo de tiempo para llamar a la función nextSlide cada 5000 milisegundos (5 segundos)
-var slideInterval = setInterval(nextSlide, 4000);
-
-function nextSlide() {
-  // Remueve la clase "active" del slide actual, ocultándolo
-  slides[currentSlide].classList.remove('active');
-
-  // Calcula el índice del siguiente slide en función del índice actual y la cantidad de slides disponibles
-  currentSlide = (currentSlide + 1) % slides.length;
-
-  // Agrega la clase "active" al nuevo slide actual, mostrándolo
-  slides[currentSlide].classList.add('active');
-}
