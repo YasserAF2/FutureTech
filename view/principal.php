@@ -63,14 +63,15 @@
                     if ($producto->getDestacado() == 1) {
                         $id = $producto->getIdProducto();
                 ?>
-                        <li>
-                            <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
-                                <img class="imagen-principal" src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>" alt="<?php echo $producto->getNombre(); ?>">
-                                <p class="nproducto"><?php echo $producto->getNombre(); ?></p>
-                                <!--<p><?php echo $producto->getDescripcion(); ?></p>-->
-                                <span class="precio">Precio: <?php echo $producto->getPrecio(); ?> €</span>
-                            </a>
-                        </li>
+                <li>
+                    <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
+                        <img class="imagen-principal"
+                            src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>"
+                            alt="<?php echo $producto->getNombre(); ?>">
+                        <p class="nproducto"><?php echo $producto->getNombre(); ?></p>
+                        <span class="precio">Precio: <?php echo $producto->getPrecio(); ?> €</span>
+                    </a>
+                </li>
                 <?php
                     }
                 }
@@ -91,14 +92,16 @@
                     if ($producto->getOferta() == 1) {
                         $id = $producto->getIdProducto();
                 ?>
-                        <li>
-                            <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
-                                <img class="imagen-principal" src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>" alt="<?php echo $producto->getNombre(); ?>">
-                                <h3 class="nproducto"><?php echo $producto->getNombre(); ?></h3>
-                                <!--<p><?php echo $producto->getDescripcion(); ?></p>-->
-                                <span class="precio">Precio: <?php echo $producto->getPrecio(); ?> €</span>
-                            </a>
-                        </li>
+                <li>
+                    <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
+                        <img class="imagen-principal"
+                            src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>"
+                            alt="<?php echo $producto->getNombre(); ?>">
+                        <h3 class="nproducto"><?php echo $producto->getNombre(); ?></h3>
+                        <!--<p><?php echo $producto->getDescripcion(); ?></p>-->
+                        <span class="precio">Precio: <?php echo $producto->getPrecio(); ?> €</span>
+                    </a>
+                </li>
                 <?php
                     }
                 }

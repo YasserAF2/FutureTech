@@ -14,6 +14,7 @@
 
 main {
   background-color: #f0f8ff;
+  min-height: 49vh;
 }
 
 /* redes sociales iconos, espacio y tamaño */
@@ -73,7 +74,9 @@ nav.menupc ul li a:hover {
 .comentarios {
   font-family: 'Open Sans', sans-serif;
   margin-top: 50px;
+  /*   
   margin-bottom: 50px;
+  */
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 10px;
@@ -375,6 +378,8 @@ footer .copy {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   text-align: center;
+  margin-bottom: 0;
+  padding-bottom: 20px;
 }
 
 .nproducto {
@@ -453,6 +458,7 @@ footer .copy {
 
 /* carrito */
 .carrito {
+  padding-top: 20px;
   height: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -494,9 +500,8 @@ footer .copy {
 
 .mensajecarrito {
   border: 1px solid #ccc;
-  background-color: #f9f9f9;
+  background-color: #f0f8ff;
   padding: 10px;
-  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -555,9 +560,15 @@ footer .copy {
 }
 
 /* Estilo para la lista de productos */
+.cat {
+  padding-bottom: 2rem;
+}
+
 .producto {
-  margin-bottom: 2rem;
+  font-family: 'Open Sans', sans-serif;
   border: 1px solid #ccc;
+  background-color: white;
+  margin-bottom: 2rem;
   padding: 1rem;
   text-align: center;
   position: relative;
@@ -565,6 +576,7 @@ footer .copy {
 }
 
 .producto h2 a {
+  font-family: 'Raleway', sans-serif;
   color: black;
 }
 
@@ -572,9 +584,19 @@ footer .copy {
   text-decoration: none;
 }
 
+.container.cat .producto:last-child {
+  margin-bottom: 0;
+}
+
 /* descripcion del producto */
 .producto-d {
   margin-top: 5px;
+}
+
+/* precio */
+.precio-destacado {
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 /* imagen del producto */
@@ -605,6 +627,7 @@ footer .copy {
 
 /* Estilo para la oferta */
 .producto .oferta {
+  font-family: 'Raleway', sans-serif;
   position: absolute;
   top: 0;
   right: 0;
@@ -616,6 +639,7 @@ footer .copy {
 
 /* Estilo para el destacado */
 .producto .destacado {
+  font-family: 'Raleway', sans-serif;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -801,6 +825,7 @@ a[href='index.php?action=logout']:hover {
   .menumovil {
     display: block;
     position: fixed;
+    z-index: 90;
     top: 85px;
     right: -100%; /* Inicialmente oculto fuera de la pantalla */
     width: 100%;
@@ -846,9 +871,7 @@ a[href='index.php?action=logout']:hover {
   }
 
   .imagen-principal {
-    float: left;
-    height: 200px;
-    width: 160px;
+    transform: scale(0.8);
   }
 
   .producto h2 {
