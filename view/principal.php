@@ -11,13 +11,15 @@
             <div class="hero-carousel">
                 <div class="cs2 carousel-slide">
                     <h1>¡Nuevos móviles disponibles en nuestra tienda!</h1>
-                    <p>Descubre los últimos modelos de teléfonos móviles con tecnología de vanguardia.</p>
-                    <button type="button" class="btn btn-primary">Ver ahora</button>
+                    <div class="d-carrusel">
+                        <p>Descubre los últimos modelos de teléfonos móviles con tecnología de vanguardia.</p>
+                        <button type="button" class="btn btn-primary">Ver ahora</button>
+                    </div>
                 </div>
                 <div class="cs1 carousel-slide">
                     <div>
                         <h1>Bienvenido a FutureTech, tu tienda en línea para tecnología de vanguardia.</h1>
-                        <p>
+                        <p class="container">
                             Ofrecemos una amplia selección de productos tecnológicos de alta calidad, desde portátiles y
                             ordenadores de sobremesa hasta periféricos y accesorios para computadoras.
                             Nuestros productos son cuidadosamente seleccionados para garantizar que nuestros clientes
@@ -31,8 +33,10 @@
                 </div>
                 <div class="cs3 carousel-slide">
                     <h1>¡Nuevas ofertas de ordenadores de sobremesa!</h1>
-                    <p>Aprovecha nuestras increíbles ofertas en ordenadores de sobremesa de última generación.</p>
-                    <button type="button" class="btn btn-primary">Ver ahora</button>
+                    <div class="d-carrusel">
+                        <p>Aprovecha nuestras increíbles ofertas en ordenadores de sobremesa de última generación.</p>
+                        <button type="button" class="btn btn-primary">Ver ahora</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -59,16 +63,14 @@
                     if ($producto->getDestacado() == 1) {
                         $id = $producto->getIdProducto();
                 ?>
-                <li>
-                    <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
-                        <img class="imagen-principal"
-                            src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>"
-                            alt="<?php echo $producto->getNombre(); ?>">
-                        <p class="nproducto"><?php echo $producto->getNombre(); ?></p>
-                        <!--<p><?php echo $producto->getDescripcion(); ?></p>-->
-                        <span class="precio">Precio: <?php echo $producto->getPrecio(); ?> €</span>
-                    </a>
-                </li>
+                        <li>
+                            <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
+                                <img class="imagen-principal" src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>" alt="<?php echo $producto->getNombre(); ?>">
+                                <p class="nproducto"><?php echo $producto->getNombre(); ?></p>
+                                <!--<p><?php echo $producto->getDescripcion(); ?></p>-->
+                                <span class="precio">Precio: <?php echo $producto->getPrecio(); ?> €</span>
+                            </a>
+                        </li>
                 <?php
                     }
                 }
@@ -89,16 +91,14 @@
                     if ($producto->getOferta() == 1) {
                         $id = $producto->getIdProducto();
                 ?>
-                <li>
-                    <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
-                        <img class="imagen-principal"
-                            src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>"
-                            alt="<?php echo $producto->getNombre(); ?>">
-                        <h3 class="nproducto"><?php echo $producto->getNombre(); ?></h3>
-                        <!--<p><?php echo $producto->getDescripcion(); ?></p>-->
-                        <span class="precio">Precio: <?php echo $producto->getPrecio(); ?> €</span>
-                    </a>
-                </li>
+                        <li>
+                            <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
+                                <img class="imagen-principal" src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>" alt="<?php echo $producto->getNombre(); ?>">
+                                <h3 class="nproducto"><?php echo $producto->getNombre(); ?></h3>
+                                <!--<p><?php echo $producto->getDescripcion(); ?></p>-->
+                                <span class="precio">Precio: <?php echo $producto->getPrecio(); ?> €</span>
+                            </a>
+                        </li>
                 <?php
                     }
                 }

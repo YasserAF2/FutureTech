@@ -18,13 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'titulo' => 'Ordenador de sobremesa HP',
             'descripcion' => 'Ordenador de sobremesa HP con procesador Intel Core i5, 8 GB de RAM y 256 GB de almacenamiento SSD.',
             'imagen' => 'view/buscar/img/sobremesa-HP.jpg',
-            'url' => 'index.php?action=producto_individual&id_producto=11'
+            'url' => 'index.php?action=producto_individual&id_producto=2'
         ],
         [
             'titulo' => 'Monitor LG',
             'descripcion' => 'Monitor LG de 27 pulgadas con resolución 4K y tecnología HDR.',
-            'imagen' => 'view/buscar/img/monitor LG.jpg',
-            'url' => 'index.php?action=producto_individual&id_producto=11'
+            'imagen' => 'view/buscar/img/monitor LG.png',
+            'url' => 'index.php?action=producto_individual&id_producto=8'
         ]
     ];
 

@@ -38,6 +38,7 @@ document.querySelector('form').addEventListener('submit', function (event) {
       // Mostrar el div de resultados solo si hay resultados
       if (html.trim() !== '') {
         resultadosDiv.style.display = 'block';
+        resultadosDiv.style.backgroundColor = '#101010';
         resultadosVisible = true;
       } else {
         resultadosDiv.style.display = 'none';
@@ -69,11 +70,14 @@ document.addEventListener('click', function (event) {
 // Obtén el botón y el formulario por su ID
 var btnLogin = document.getElementById('btn-login2');
 var formLogin = document.getElementById('formlogin');
+// Variable para almacenar la posición anterior del scroll vertical
+var previousScroll = window.pageYOffset || document.documentElement.scrollTop;
 
 // Verifica si el botón existe antes de agregar el event listener
 if (btnLogin) {
   // Agrega un event listener al botón para escuchar el clic
-  btnLogin.addEventListener('click', function () {
+  btnLogin.addEventListener('click', function (ev) {
+    ev.stopPropagation();
     // Verifica si el formulario ya tiene la clase "open"
     if (formLogin.classList.contains('open')) {
       // Si tiene la clase "open", la remueve para cerrar el formulario
@@ -85,7 +89,65 @@ if (btnLogin) {
   });
 }
 
+// Agrega un event listener al documento para escuchar el clic fuera del formulario
+document.addEventListener('click', function (event) {
+  if (!formLogin.contains(event.target) && event.target !== btnLogin) {
+    formLogin.classList.remove('open');
+  }
+});
+
+// Agrega un event listener al scroll vertical de la página
+window.addEventListener('scroll', function () {
+  // Obtiene la posición actual del scroll vertical
+  var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  // Verifica si hubo un desplazamiento hacia abajo
+  if (currentScroll > previousScroll) {
+    formLogin.classList.remove('open');
+  }
+
+  // Actualiza la posición anterior del scroll vertical
+  previousScroll = currentScroll;
+});
+
 //MENU HAMBURGUESA
+// Obtener referencias a los elementos del DOM
+let menuToggle = document.getElementById('menu-toggle');
+let menu = document.getElementById('menu');
+
+// Variables para almacenar la posición anterior y actual del scroll vertical
+var previousScrollPos =
+  window.pageYOffset || document.documentElement.scrollTop;
+var currentScrollPos;
+
+//abrir menu con el botón
+menuToggle.addEventListener('click', function (ev) {
+  ev.stopPropagation();
+  menu.classList.toggle('show');
+});
+
+//cerrar menu clickeando fuera
+document.addEventListener('click', function (event) {
+  if (!menu.contains(event.target) && !event.target.matches('#menu-toggle')) {
+    menu.classList.remove('show');
+  }
+});
+
+// Cerrar el menú al hacer scroll vertical
+window.addEventListener('scroll', function () {
+  // Obtener la posición actual del scroll vertical
+  currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
+
+  // Verificar si hubo un desplazamiento hacia abajo
+  if (currentScrollPos > previousScrollPos) {
+    menu.classList.remove('show');
+  }
+
+  // Actualizar la posición anterior del scroll vertical
+  previousScrollPos = currentScrollPos;
+});
+
+//CARRUSEL
 window.addEventListener('DOMContentLoaded', function () {
   var carousel = document.querySelector('.hero-carousel');
 

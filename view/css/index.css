@@ -159,7 +159,6 @@ nav.menupc ul li a:hover {
   z-index: 99;
   margin-top: 20px;
   padding: 10px;
-  background-color: #101010;
 }
 
 .resultado-busqueda {
@@ -205,7 +204,7 @@ nav.menupc ul li a:hover {
 
 /* div del titulo destacados */
 .titulo-d {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Raleway', sans-serif;
   color: black;
   background-color: var(--azuloscuro);
   display: flex;
@@ -316,9 +315,10 @@ footer .copy {
 
 .cs3 h1,
 .cs2 h1 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Raleway', sans-serif;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 10px;
+  margin-bottom: 0;
   color: white;
   text-align: center;
   height: 75px;
@@ -327,14 +327,17 @@ footer .copy {
 
 .cs3 p,
 .cs2 p {
-  width: 20%;
+  font-size: 1.5rem;
   padding: 10px;
   margin-left: 20px;
 }
 
 .cs3 button,
 .cs2 button {
-  width: 120px;
+  background-color: var(--azuloscuro);
+  border-color: var(--azuloscuro);
+  font-size: 1.5rem;
+  width: auto;
   margin-left: 20px;
 }
 
@@ -345,7 +348,7 @@ footer .copy {
 }
 
 .cs1 h1 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Raleway', sans-serif;
   text-align: center;
   margin-top: 100px;
   color: white;
@@ -355,6 +358,13 @@ footer .copy {
   margin-top: 50px;
   padding: 10px;
   color: white;
+  font-size: 1.4rem;
+}
+
+.d-carrusel {
+  height: 100%;
+  width: 30%;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 /* DESTACADOS PRINCIPAL */
@@ -394,6 +404,10 @@ footer .copy {
 
 /* contenedor de la cabecera que contiene el titulo, el buscador y los botones */
 .top {
+  background-image: url(../img/fondo.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   background-color: #101010;
   height: 120px;
   display: flex;
@@ -403,8 +417,10 @@ footer .copy {
 }
 
 /* contenedor de los botones */
+
 .botones button,
 .botones a {
+  border-color: var(--azulclaro);
   background-color: var(--azulclaro);
   color: black;
 }
@@ -450,7 +466,7 @@ footer .copy {
 }
 
 .carrito h2 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .carritoimg {
@@ -680,13 +696,13 @@ a[href='index.php?action=logout']:hover {
 }
 
 /* menu hamburguesa */
+.menumovil {
+  display: none;
+}
+
 /* boton */
 #menu-toggle {
   display: none; /* Ocultar el botón en dispositivos grandes */
-}
-
-#menu {
-  display: none; /* Ocultar el menú desplegable por defecto */
 }
 
 /* menu de version movil */
@@ -719,6 +735,10 @@ a[href='index.php?action=logout']:hover {
   *:hover {
     pointer-events: none;
     cursor: default;
+  }
+
+  .highlight {
+    display: none;
   }
 
   /* logo tienda */
@@ -778,12 +798,26 @@ a[href='index.php?action=logout']:hover {
     display: none;
   }
 
+  .menumovil {
+    display: block;
+    position: fixed;
+    top: 85px;
+    right: -100%; /* Inicialmente oculto fuera de la pantalla */
+    width: 100%;
+    background-color: white;
+    transition: right 0.3s ease-in-out;
+  }
+
+  .menumovil ul {
+    margin-bottom: 0;
+  }
+
   #menu-toggle {
-    display: block; /* Mostrar el botón en dispositivos pequeños */
+    display: block;
   }
 
   #menu.show {
-    display: block; /* Mostrar el menú cuando tiene la clase "show" */
+    right: 0; /* Mostrar el menú cuando tiene la clase "show" */
   }
 
   .titulo-d {
