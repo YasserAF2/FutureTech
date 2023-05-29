@@ -10,7 +10,7 @@ $tipo = $dataToView['tipo'];
 <main>
     <section class="formularioEditar">
         <article class="container mt-2 mb-2">
-            <h2 class="mt-4">Editar Usuario</h2>
+            <h2 class="mt-4 text-center">Editar Usuario</h2>
             <form class="f-editar" action="index.php?action=guardar_usuario" method="POST">
                 <input type="hidden" name="id_usuario" value="<?php echo $id_usuario; ?>" />
                 <div class="form-group w-50">

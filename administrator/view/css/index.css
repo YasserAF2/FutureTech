@@ -159,7 +159,6 @@ html {
 
 /* footer.php */
 footer {
-  bottom: 0;
   width: 100%;
   height: 50px;
   background-color: #333;
@@ -195,21 +194,45 @@ footer {
   display: block;
 }
 
-/* formulario editar */
+/* Estilos para el formulario de editar */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .formularioEditar {
-  height: 550px;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2f2f2;
 }
 
 .f-editar {
   display: flex;
   flex-direction: column;
-}
-
-.f-editar button {
-  width: 100px;
+  justify-content: center;
   align-items: center;
 }
 
-.f-editar a {
-  width: 150px;
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type='text'],
+input[type='email'],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
