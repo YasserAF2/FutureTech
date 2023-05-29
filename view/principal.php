@@ -13,7 +13,7 @@
                     <h1>¡Nuevos móviles disponibles en nuestra tienda!</h1>
                     <div class="d-carrusel">
                         <p>Descubre los últimos modelos de teléfonos móviles con tecnología de vanguardia.</p>
-                        <a href="index.php?action=action=vista_categoria&id=3" class="btn btn-primary">Ver ahora</a>
+                        <a href="index.php?action=vista_categoria&id=3" class="btn btn-primary">Ver ahora</a>
                     </div>
                 </div>
                 <div class="cs1 carousel-slide">
@@ -35,7 +35,7 @@
                     <h1>¡Nuevas ofertas de ordenadores de sobremesa!</h1>
                     <div class="d-carrusel">
                         <p>Aprovecha nuestras increíbles ofertas en ordenadores de sobremesa de última generación.</p>
-                        <a href="index.php?action=action=vista_categoria&id=1" class="btn btn-primary">Ver ahora</a>
+                        <a href="index.php?action=vista_categoria&id=1" class="btn btn-primary">Ver ahora</a>
                     </div>
                 </div>
             </div>
