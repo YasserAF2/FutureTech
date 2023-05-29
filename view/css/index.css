@@ -154,6 +154,23 @@ nav.menupc ul li a:hover {
   height: 300px;
 }
 
+.piniciar {
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.bt-sesion {
+  background-color: var(--azuloscuro) !important;
+  border-color: var(--azuloscuro) !important;
+  color: black !important;
+}
+
+.bt-sesion:hover {
+  background-color: var(--azuloscuro) !important;
+  border-color: var(--azuloscuro) !important;
+  color: black !important;
+}
+
 /* DIV DE los resultados del BUSCADOR */
 #resultados {
   font-family: 'Open Sans', sans-serif;
@@ -700,14 +717,22 @@ a[href='index.php?action=logout']:hover {
   font-family: 'Open Sans', sans-serif;
 }
 
-.img-p-individual {
-  height: 400px;
-  width: auto;
-}
 /* div donde va la imagen*/
 .img-p {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.img-p-individual {
+  max-height: 400px;
+  max-width: 100%;
+}
+
+/* imagen grande del modal */
+.imagen-grande {
+  max-width: 100%;
+  height: auto;
 }
 
 /* cantidad de producto individual */
