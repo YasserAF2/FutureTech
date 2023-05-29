@@ -335,8 +335,8 @@ footer .copy {
   margin-left: 20px;
 }
 
-.cs3 button,
-.cs2 button {
+.cs3 a,
+.cs2 a {
   background-color: var(--azuloscuro);
   border-color: var(--azuloscuro);
   font-size: 1.5rem;

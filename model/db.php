@@ -16,6 +16,7 @@ class Db
         $this->pass = constant('DB_PASS');
 
         $this->conection = new mysqli($this->host, $this->user, $this->pass, $this->db);
+        mysqli_set_charset($this->conection, "utf8");
         if ($this->conection->connect_error) {
             die("Fallo en la conexión " . $this->conection->connect_error);
         }

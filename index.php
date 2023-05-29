@@ -1,6 +1,6 @@
 <?php
 
-require_once 'model/db.php';
+require_once 'model/Db.php';
 require_once 'config/config.php';
 require_once 'model/Producto.php';
 require_once 'model/Categoria.php';

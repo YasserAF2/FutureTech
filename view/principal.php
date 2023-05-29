@@ -13,7 +13,7 @@
                     <h1>¡Nuevos móviles disponibles en nuestra tienda!</h1>
                     <div class="d-carrusel">
                         <p>Descubre los últimos modelos de teléfonos móviles con tecnología de vanguardia.</p>
-                        <button type="button" class="btn btn-primary">Ver ahora</button>
+                        <a href="index.php?action=action=vista_categoria&id=3" class="btn btn-primary">Ver ahora</a>
                     </div>
                 </div>
                 <div class="cs1 carousel-slide">
@@ -35,7 +35,7 @@
                     <h1>¡Nuevas ofertas de ordenadores de sobremesa!</h1>
                     <div class="d-carrusel">
                         <p>Aprovecha nuestras increíbles ofertas en ordenadores de sobremesa de última generación.</p>
-                        <button type="button" class="btn btn-primary">Ver ahora</button>
+                        <a href="index.php?action=action=vista_categoria&id=1" class="btn btn-primary">Ver ahora</a>
                     </div>
                 </div>
             </div>
@@ -63,15 +63,13 @@
                     if ($producto->getDestacado() == 1) {
                         $id = $producto->getIdProducto();
                 ?>
-                <li>
-                    <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
-                        <img class="imagen-principal"
-                            src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>"
-                            alt="<?php echo $producto->getNombre(); ?>">
-                        <p class="nproducto"><?php echo $producto->getNombre(); ?></p>
-                        <span class="precio">Precio: <?php echo $producto->getPrecio(); ?> €</span>
-                    </a>
-                </li>
+                        <li>
+                            <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
+                                <img class="imagen-principal" src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>" alt="<?php echo $producto->getNombre(); ?>">
+                                <p class="nproducto"><?php echo $producto->getNombre(); ?></p>
+                                <span class="precio">Precio: <?php echo $producto->getPrecio(); ?> €</span>
+                            </a>
+                        </li>
                 <?php
                     }
                 }
@@ -92,16 +90,14 @@
                     if ($producto->getOferta() == 1) {
                         $id = $producto->getIdProducto();
                 ?>
-                <li>
-                    <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
-                        <img class="imagen-principal"
-                            src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>"
-                            alt="<?php echo $producto->getNombre(); ?>">
-                        <h3 class="nproducto"><?php echo $producto->getNombre(); ?></h3>
-                        <!--<p><?php echo $producto->getDescripcion(); ?></p>-->
-                        <span class="precio">Precio: <?php echo $producto->getPrecio(); ?> €</span>
-                    </a>
-                </li>
+                        <li>
+                            <a href="index.php?action=producto_individual&id_producto=<?php echo $id; ?>">
+                                <img class="imagen-principal" src="data:image/jpeg;base64,<?php echo base64_encode($producto->getImagen()); ?>" alt="<?php echo $producto->getNombre(); ?>">
+                                <h3 class="nproducto"><?php echo $producto->getNombre(); ?></h3>
+                                <!--<p><?php echo $producto->getDescripcion(); ?></p>-->
+                                <span class="precio">Precio: <?php echo $producto->getPrecio(); ?> €</span>
+                            </a>
+                        </li>
                 <?php
                     }
                 }
