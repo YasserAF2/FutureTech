@@ -92,4 +92,47 @@ class controlador
 
         header('Location: index.php');
     }
+
+    public function lista_comentarios()
+    {
+        $this->view = 'lista_comentarios';
+        $comentarios = $this->tienda->getComentarios();
+
+        $datos = array(
+            'comentarios' => $comentarios,
+        );
+
+        return $datos;
+    }
+
+    //vista de nº de comentarios por producto
+    public function comentarios()
+    {
+        $this->view = 'comentarios';
+        $productosConComentarios = $this->tienda->obtenerProductosConComentarios();
+
+        $datos = array(
+            'productos' => $productosConComentarios,
+        );
+
+        return $datos;
+    }
+
+    public function borrar_comentario()
+    {
+        $id_comentario = $_POST['id_comentario'];
+
+        $this->tienda->borrarComentario($id_comentario);
+
+        header('Location: index.php');
+    }
+
+    public function borrar_producto()
+    {
+        $id_producto = $_POST['id_producto'];
+
+        $this->tienda->borrarProducto($id_producto);
+
+        header('Location: index.php');
+    }
 }

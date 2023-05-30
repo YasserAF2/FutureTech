@@ -17,18 +17,20 @@ $productos = $dataToView['productos'];
         </thead>
         <tbody>
             <?php foreach ($productos as $producto) : ?>
-            <tr>
-                <td><?php echo $producto->getNombre(); ?></td>
-                <td><?php echo $producto->getPrecio(); ?></td>
-                <td><?php echo $producto->getCantidad(); ?></td>
-                <td><?php echo $producto->getDescripcion(); ?></td>
-                <td>
-                    <i class="fas fa-pencil-alt"></i>
-                </td>
-                <td>
-                    <i class="fas fa-trash"></i>
-                </td>
-            </tr>
+                <tr>
+                    <td><?php echo $producto->getNombre(); ?></td>
+                    <td><?php echo $producto->getPrecio(); ?></td>
+                    <td><?php echo $producto->getCantidad(); ?></td>
+                    <td><?php echo $producto->getDescripcion(); ?></td>
+                    <td>
+                        <i class="fas fa-pencil-alt"></i>
+                    </td>
+                    <td>
+                        <button type="button" class="brr btn btn-link" onclick="confirmarBorradoProducto(<?php echo $producto->getIdProducto(); ?>)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
             <?php endforeach; ?>
         </tbody>
     </table>

@@ -394,4 +394,44 @@ class Tienda
         $stmt = $this->conection->prepare($sql);
         $stmt->execute();
     }
+
+    //Borrar comentario de la vista de administrador
+    public function borrarComentario($id_comentario)
+    {
+        $this->getConection();
+        $sql = "DELETE FROM comentarios WHERE id_comentarios= $id_comentario";
+        $stmt = $this->conection->prepare($sql);
+        $stmt->execute();
+    }
+
+    //Borrar comentario de la vista de producto
+    public function borrarProducto($id_producto)
+    {
+        $this->getConection();
+        $sql = "DELETE FROM producto WHERE id_producto= $id_producto";
+        $stmt = $this->conection->prepare($sql);
+        $stmt->execute();
+    }
+
+    //subconsulta del numero de comentarios
+    public function obtenerProductosConComentarios()
+    {
+        $this->getConection();
+
+        $sql = "SELECT p.id_producto, p.nombre, (
+            SELECT COUNT(*) FROM comentarios WHERE id_producto = p.id_producto
+        ) AS total_comentarios
+        FROM producto p";
+        $result = $this->conection->query($sql);
+
+        if ($result->num_rows > 0) {
+            $productos = [];
+            while ($row = $result->fetch_assoc()) {
+                $productos[] = $row;
+            }
+            return $productos;
+        } else {
+            return false;
+        }
+    }
 }

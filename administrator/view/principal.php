@@ -2,11 +2,12 @@
     <div class="list">
         <h2>Lista de opciones:</h2>
         <ul>
-            <li><a href="index.php?action=lista_usuarios" class="opciones-lista">Lista de usuarios</a></li>
+            <li><a href="index.php?action=lista_usuarios" class="opciones-lista">Gestionar usuarios</a></li>
             <li><a href="index.php?action=ver_productos" class="opciones-lista">Gestionar Productos</a></li>
-            <li><a href="index.php?action=lista_usuarios" class="opciones-lista">Gestionar Pedidos</a></li>
-            <li><a href="index.php?action=lista_usuarios" class="opciones-lista">Gestionar Productos en oferta</a></li>
-            <li><a href="index.php?action=lista_usuarios" class="opciones-lista">Gestionar Productos Destacados</a></li>
+            <li><a href="index.php?action=lista_pedidos" class="opciones-lista">Gestionar Pedidos</a></li>
+            <li><a href="index.php?action=lista_comentarios" class="opciones-lista">Gestionar comentarios</a></li>
+            <li><a href="index.php?action=comentarios" class="opciones-lista">Ver lista de productos/comentarios</a>
+            </li>
         </ul>
         <a class="btn btn-primary" href="../index.php">Volver atrás</a>
     </div>

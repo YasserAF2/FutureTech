@@ -55,25 +55,61 @@ function borrarProducto(id_producto) {
     });
 }
 
+//confirmar borrado de la lista de usuarios
 function confirmarBorrado(idUsuario) {
   if (confirm('¿Estás seguro de que deseas borrar este usuario?')) {
     // Realiza la solicitud de borrado al servidor
-    // Puedes utilizar AJAX para enviar una solicitud al controlador PHP
-    // pasando el ID del usuario a borrar
-
-    // Ejemplo con jQuery AJAX:
     $.ajax({
       url: 'index.php?action=borrar_usuario',
       method: 'POST',
       data: { id_usuario: idUsuario },
       success: function (response) {
-        // Realiza alguna acción después de que se haya borrado el usuario
-        // por ejemplo, actualiza la lista de usuarios en la página
+        // actualiza la lista de usuarios en la página
         location.reload();
       },
       error: function () {
         // Maneja el error si la solicitud de borrado falla
         alert('Error al borrar el usuario.');
+      },
+    });
+  }
+}
+
+//confirmar borrado de la lista de comentarios
+function confirmarBorradoComentario(idComentario) {
+  if (confirm('¿Estás seguro de que deseas borrar este comentario?')) {
+    // Realiza la solicitud de borrado al servidor
+    $.ajax({
+      url: 'index.php?action=borrar_comentario',
+      method: 'POST',
+      data: { id_comentario: idComentario },
+      success: function (response) {
+        // Actualiza la página
+        location.reload();
+      },
+      error: function () {
+        // Maneja el error si la solicitud de borrado falla
+        alert('Error al borrar el comentario.');
+      },
+    });
+  }
+}
+
+//confirmar borrado de la lista de productos
+function confirmarBorradoProducto(idProducto) {
+  if (confirm('¿Estás seguro de que deseas borrar este producto?')) {
+    // Realiza la solicitud de borrado al servidor
+    $.ajax({
+      url: 'index.php?action=borrar_producto',
+      method: 'POST',
+      data: { id_producto: idProducto },
+      success: function (response) {
+        // Actualiza la página o realiza acciones adicionales si es necesario
+        location.reload();
+      },
+      error: function () {
+        // Maneja el error si la solicitud de borrado falla
+        alert('Error al borrar el producto.');
       },
     });
   }
