@@ -12,12 +12,10 @@ $tienda = new Tienda();
 
 ?>
 <main>
-    <div class="container">
+    <div class="container cm">
         <div class="row p-individual">
             <div id="img-container" class="img-p col-md-5">
-                <img id="imagenPI" class="img-p-individual"
-                    src="data:image/jpeg;base64,<?php echo base64_encode($producto['imagen']) ?>"
-                    alt="IMAGEN DEL PRODUCTO" data-toggle="modal" data-target="#imagenModal">
+                <img id="imagenPI" class="img-p-individual" src="data:image/jpeg;base64,<?php echo base64_encode($producto['imagen']) ?>" alt="IMAGEN DEL PRODUCTO" data-toggle="modal" data-target="#imagenModal">
             </div>
             <div class="col-md-6">
                 <h1><?php echo $producto['nombre'] ?></h1>
@@ -27,9 +25,9 @@ $tienda = new Tienda();
                     <li>Precio: <?php echo $producto['precio'] ?> €</li>
                     <li>
                         <?php if ($producto['cantidad'] <= 0) : ?>
-                        <i class="text-danger fas fa-times"></i> Sin stock
+                            <i class="text-danger fas fa-times"></i> Sin stock
                         <?php else : ?>
-                        <i class="text-success fas fa-check"></i> En stock
+                            <i class="text-success fas fa-check"></i> En stock
                         <?php endif; ?>
                     </li>
                 </ul>
@@ -37,25 +35,21 @@ $tienda = new Tienda();
                     <div class="form-group">
                         <div class="cantidadpi">
                             <label for="cantidad">Cantidad:</label>
-                            <input type="number" name="cantidad" id="cantidad" class="w-25 form-control" value="1"
-                                min="1" max="<?php echo $producto['cantidad'] ?>">
+                            <input type="number" name="cantidad" id="cantidad" class="w-25 form-control" value="1" min="1" max="<?php echo $producto['cantidad'] ?>">
                         </div>
                         <input type="hidden" name="id_producto" id="id_producto" value="<?php echo $id_producto ?>">
                         <input type="hidden" name="precio" id="precio" value="<?php echo $producto['precio'] ?>">
                     </div>
                     <?php if ($producto['cantidad'] <= 0 || !isset($_SESSION['usuario'])) : ?>
-                    <button type="submit" class="btn btn-primary bt-sesion" disabled
-                        title="Inicia sesión para añadir productos a tu carrito personal">Agregar al carrito</button>
-                    <?php if (!isset($_SESSION['usuario'])) : ?>
-                    <br>
-                    <p class="piniciar">Inicia sesión para añadir productos a tu carrito personal</p>
-                    <?php endif; ?>
+                        <button type="submit" class="btn btn-primary bt-sesion" disabled title="Inicia sesión para añadir productos a tu carrito personal">Agregar al carrito</button>
+                        <?php if (!isset($_SESSION['usuario'])) : ?>
+                            <br>
+                            <p class="piniciar">Inicia sesión para añadir productos a tu carrito personal</p>
+                        <?php endif; ?>
                     <?php else : ?>
-                    <button type="submit" class="btn btn-primary">Agregar al carrito</button>
+                        <button type="submit" class="btn btn-primary">Agregar al carrito</button>
                     <?php endif; ?>
                 </form>
-
-
             </div>
         </div>
         <div class="lupa mb-2 ml-2">
@@ -69,22 +63,22 @@ $tienda = new Tienda();
                 <?php
                 if (isset($_SESSION['usuario'])) {
                 ?>
-                <input type="hidden" name="correo_usuario" value="<?php echo $_SESSION['usuario']; ?>">
+                    <input type="hidden" name="correo_usuario" value="<?php echo $_SESSION['usuario']; ?>">
                 <?php } ?>
                 <input type="submit" class="comentarios-boton" value="Enviar comentario">
             </form>
             <h3>Comentarios</h3>
             <div>
                 <?php if (empty($comentarios)) : ?>
-                <p>No hay comentarios.</p>
+                    <p>No hay comentarios.</p>
                 <?php else : ?>
-                <?php foreach ($comentarios as $comentario) : ?>
-                <div class="comentario">
-                    <p><?php echo $tienda->obtenerNombreUser($comentario->getIdUsuario()); ?></p>
-                    <p class="fecha"><?php echo $comentario->getFecha(); ?></p>
-                    <p class="usuario"><?php echo $comentario->getTexto(); ?></p>
-                </div>
-                <?php endforeach; ?>
+                    <?php foreach ($comentarios as $comentario) : ?>
+                        <div class="comentario">
+                            <p><?php echo $tienda->obtenerNombreUser($comentario->getIdUsuario()); ?></p>
+                            <p class="fecha"><?php echo $comentario->getFecha(); ?></p>
+                            <p class="usuario"><?php echo $comentario->getTexto(); ?></p>
+                        </div>
+                    <?php endforeach; ?>
                 <?php endif; ?>
             </div>
         </div>
@@ -92,8 +86,7 @@ $tienda = new Tienda();
 </main>
 
 <!-- Modal -->
-<div class="modal fade" id="imagenModal" tabindex="-1" role="dialog" aria-labelledby="imagenModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="imagenModal" tabindex="-1" role="dialog" aria-labelledby="imagenModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -103,8 +96,7 @@ $tienda = new Tienda();
                 </button>
             </div>
             <div class="modal-body">
-                <img src="data:image/jpeg;base64,<?php echo base64_encode($producto['imagen']) ?>"
-                    alt="IMAGEN DEL PRODUCTO" class="img-fluid imagen-grande">
+                <img src="data:image/jpeg;base64,<?php echo base64_encode($producto['imagen']) ?>" alt="IMAGEN DEL PRODUCTO" class="img-fluid imagen-grande">
             </div>
         </div>
     </div>

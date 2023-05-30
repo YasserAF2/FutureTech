@@ -13,8 +13,9 @@
     <link rel="stylesheet" type="text/css" href="view/css/index.css">
 
     <!-- FONT AWESOME -->
-    <script src="https://kit.fontawesome.com/abdf042606.js" crossorigin="anonymous"></script>
-
+    <!--     
+        <script src="https://kit.fontawesome.com/abdf042606.js" crossorigin="anonymous"></script>
+    -->
     <!-- JQUERY -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

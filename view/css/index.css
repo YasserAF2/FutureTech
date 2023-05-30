@@ -71,12 +71,13 @@ nav.menupc ul li a:hover {
 }
 
 /* COMENTARIOS DE UN PRODUCTO */
+.cm {
+  padding-bottom: 25px;
+}
+
 .comentarios {
   font-family: 'Open Sans', sans-serif;
   margin-top: 50px;
-  /*   
-  margin-bottom: 50px;
-  */
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 10px;
@@ -598,7 +599,7 @@ footer .copy {
 }
 
 .producto h2 a:hover {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .container.cat .producto:last-child {
@@ -670,6 +671,16 @@ p.destacado {
   margin-bottom: 0;
 }
 
+.producto .detalles-categoria {
+  font-family: 'Raleway', sans-serif;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: var(--azuloscuro);
+  color: #fff;
+  font-size: 1rem;
+}
+
 /* modal del header para logearse */
 .modal-content {
   max-width: 500px;
@@ -689,6 +700,25 @@ a[href='index.php?action=logout']:hover {
 }
 
 /* producto individual */
+.producto .detalles-categoria {
+  text-align: right;
+}
+
+.detalles-categoria a {
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+  color: black;
+  background-color: var(--azuloscuro) !important;
+  border-color: var(--azuloscuro) !important;
+}
+
+.detalles-categoria a:hover {
+  color: black;
+  background-color: var(--azulclaro) !important;
+  border-color: var(--azulclaro) !important;
+}
+
 .p-individual {
   font-family: 'Open Sans', sans-serif;
   display: grid;
@@ -742,6 +772,23 @@ a[href='index.php?action=logout']:hover {
 
 .cantidadpi label {
   margin-right: 10px;
+  margin-bottom: 0;
+}
+
+.cantidadpi2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cantidadpi2 input {
+  height: auto;
+  width: auto;
+}
+
+.cantidadpi2 label {
+  margin-right: 10px;
+  margin-bottom: 0;
 }
 
 /* menu hamburguesa */
@@ -900,7 +947,11 @@ a[href='index.php?action=logout']:hover {
   }
 
   .producto h2 {
-    padding-top: 20px;
+    padding-top: 30px;
+  }
+
+  .producto form {
+    padding-bottom: 40px;
   }
 
   .titulocategoria {
