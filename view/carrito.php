@@ -24,42 +24,40 @@ foreach ($productos as $producto) {
 ?>
 
 <?php if (empty($productos)) : ?>
-<main class="mensajecarrito">
-    <div><i class="fas fa-shopping-cart"></i></div>
-    <div>
-        <h1>¡Tu carrito esta vacío!</h1>
-    </div>
-</main>
-<?php else : ?>
-<main>
-    <div class="container carrito">
+    <main class="mensajecarrito">
+        <div><i class="fas fa-shopping-cart"></i></div>
         <div>
-            <h2>Tu carrito</h2>
-            <?php foreach ($productos_agrupados as $producto) : ?>
-            <div class="divcarrito">
-                <div class="divimagen">
-                    <a href="index.php?action=producto_individual&id_producto=<?php echo $producto['id'] ?>">
-                        <img class="carritoimg" src="data:image/jpeg;base64,<?php echo $producto['imagen']; ?>"
-                            alt="Imagen del producto">
-                    </a>
-                </div>
-                <div class="datosCarrito">
-                    <p><?php echo $producto['nombre']; ?></p>
-                    <p>Precio: <?php echo $producto['precio']; ?>€</p>
-                    <p>Cantidad: <?php echo $producto['cantidad']; ?></p>
-                </div>
-                <div class="carritoBorrar">
-                    <a href="index.php?action=eliminarProductoCarrito&id=<?php echo $producto['id']; ?>"
-                        class="btn-eliminar"><i class="fas fa-trash-alt"></i></a>
-                </div>
+            <h1>¡Tu carrito esta vacío!</h1>
+        </div>
+    </main>
+<?php else : ?>
+    <main>
+        <div class="container carrito">
+            <div>
+                <h2>Tu carrito</h2>
+                <?php foreach ($productos_agrupados as $producto) : ?>
+                    <div class="divcarrito">
+                        <div class="divimagen">
+                            <a href="index.php?action=producto_individual&id_producto=<?php echo $producto['id'] ?>">
+                                <img class="carritoimg" src="data:image/jpeg;base64,<?php echo $producto['imagen']; ?>" alt="Imagen del producto">
+                            </a>
+                        </div>
+                        <div class="datosCarrito">
+                            <p><?php echo $producto['nombre']; ?></p>
+                            <p>Precio: <?php echo $producto['precio']; ?>€</p>
+                            <p>Cantidad: <?php echo $producto['cantidad']; ?></p>
+                        </div>
+                        <div class="carritoBorrar">
+                            <a href="index.php?action=eliminarProductoCarrito&id=<?php echo $producto['id']; ?>" class="btn-eliminar"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
-            <?php endforeach; ?>
+            <div class="resumen">
+                <h2>Resumen de la compra</h2>
+                <p class="precio-total">Precio total: <?php echo $precio_total; ?> euros.</p>
+                <a href="index.php?action=compra" class="compra btn">Proceder con el pago</a>
+            </div>
         </div>
-        <div class="resumen">
-            <h2>Resumen de la compra</h2>
-            <p class="precio-total">Precio total: <?php echo $precio_total; ?> euros.</p>
-            <button class="compra btn" type="button">Proceder con el pago</button>
-        </div>
-    </div>
-</main>
+    </main>
 <?php endif; ?>

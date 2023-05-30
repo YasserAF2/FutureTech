@@ -50,19 +50,20 @@ class controlador
     //LOGIN DE USUARIO
     public function logeado()
     {
+        $mensajeError = '';
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $usuario = isset($_POST['username']) ? $_POST['username'] : '';
             $password = isset($_POST['password']) ? $_POST['password'] : '';
 
             if (!empty($usuario) && !empty($password) && $this->tienda->validarUsuario($usuario, $password)) {
-
                 session_start(); // Inicia la sesión
                 $_SESSION['usuario'] = $usuario; // Guarda el usuario en la sesión
                 $_SESSION['tipo_usuario'] = $this->tienda->getTipoUsuario($usuario); // Guarda el tipo de usuario en la sesión
                 header('Location: index.php'); // Redirecciona a la página principal
                 exit;
             } else {
-                $_SESSION['mensaje_error'] = 'Usuario o contraseña incorrectos';
+                $mensajeError = 'Usuario o contraseña incorrectos';
             }
         }
 
@@ -70,10 +71,12 @@ class controlador
 
         $datos = array(
             'categorias' => $categorias,
+            'mensaje_error' => $mensajeError // Agrega el mensaje de error al arreglo de datos
         );
 
         return $datos;
     }
+
 
     //LOGOUT DE USUARIO
     public function logout()
@@ -231,5 +234,50 @@ class controlador
         );
 
         return $datos;
+    }
+
+    public function registro()
+    {
+        $this->view = 'registro';
+        $categorias = $this->tienda->getCategorias();
+
+        $datos = array(
+            'categorias' => $categorias,
+        );
+
+        return $datos;
+    }
+
+    public function registrohecho()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Capturar los valores del formulario
+            $nombre = $_POST['nombre'];
+            $direccion = $_POST['direccion'];
+            $correo = $_POST['correo'];
+            $contraseña = $_POST['contrasena'];
+
+            // Encriptar la contraseña
+            $contraseñaEncriptada = password_hash($contraseña, PASSWORD_DEFAULT);
+
+            // Insertar los datos del usuario en la base de datos
+            $this->tienda->registro($nombre, $direccion, $correo, $contraseñaEncriptada);
+
+            // Después de procesar los datos y realizar el registro
+            $this->view = 'registro_exitoso';
+        }
+
+        $categorias = $this->tienda->getCategorias();
+
+        $datos = array(
+            'categorias' => $categorias,
+        );
+
+        return $datos;
+    }
+
+
+    public function compra()
+    {
     }
 }

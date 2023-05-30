@@ -53,6 +53,11 @@ nav.menupc ul li {
   justify-content: center;
   align-items: center;
   width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+nav.menupc ul li:hover {
+  background-color: var(--azulclaro);
 }
 
 nav.menupc ul li a {
@@ -517,6 +522,7 @@ footer .copy {
 }
 
 .mensajecarrito {
+  font-family: 'Open Sans', sans-serif;
   border: 1px solid #ccc;
   background-color: #f0f8ff;
   padding: 10px;
@@ -817,6 +823,63 @@ a[href='index.php?action=logout']:hover {
   width: 100%;
   text-decoration: none;
   color: black;
+}
+
+/* FORM REGISTRO */
+.mainregistro {
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.container.registro {
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container.registro h2 {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.container.registro .btn-primary {
+  background-color: var(--azuloscuro);
+  border-color: var(--azuloscuro);
+}
+
+.container.registro .btn-primary:hover {
+  background-color: var(--azulclaro);
+  border-color: var(--azulclaro);
+}
+
+.container.registro .is-invalid {
+  border-color: red;
+}
+
+.container.registro .invalid-feedback {
+  display: none;
+  color: red;
+}
+
+.container.registro .is-invalid + .invalid-feedback {
+  display: block;
+}
+
+/* registro exitoso */
+.registro-exitoso a {
+  color: black;
+  background-color: var(--azuloscuro) !important;
+  border-color: var(--azuloscuro) !important;
+}
+
+.registro-exitoso a:hover {
+  border-color: var(--azulclaro) !important;
+  color: black;
+  background-color: var(--azulclaro) !important;
 }
 
 /* Estilos para tablets */

@@ -184,3 +184,44 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }
 });
+
+function validarFormulario() {
+  // Obtener los valores de los campos
+  var nombre = document.getElementById('nombre').value;
+  var direccion = document.getElementById('direccion').value;
+  var correo = document.getElementById('correo').value;
+  var contrasena = document.getElementById('contrasena').value;
+
+  // Expresiones regulares para validar los campos
+  var nombreRegex = /^[A-Za-z\s]+$/;
+  var direccionRegex = /^[A-Za-z0-9\s]+$/;
+  var correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var contrasenaRegex = /^.{6,}$/;
+
+  // Validar nombre
+  if (!nombreRegex.test(nombre)) {
+    document.getElementById('nombre').classList.add('is-invalid');
+    return false;
+  }
+
+  // Validar dirección
+  if (!direccionRegex.test(direccion)) {
+    document.getElementById('direccion').classList.add('is-invalid');
+    return false;
+  }
+
+  // Validar correo
+  if (!correoRegex.test(correo)) {
+    document.getElementById('correo').classList.add('is-invalid');
+    return false;
+  }
+
+  // Validar contraseña
+  if (!contrasenaRegex.test(contrasena)) {
+    document.getElementById('contrasena').classList.add('is-invalid');
+    return false;
+  }
+
+  // Si todos los campos son válidos, se puede enviar el formulario
+  return true;
+}
