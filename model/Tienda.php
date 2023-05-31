@@ -413,7 +413,7 @@ class Tienda
         $stmt->execute();
     }
 
-    //subconsulta del numero de comentarios
+    //subconsulta del número de comentarios
     public function obtenerProductosConComentarios()
     {
         $this->getConection();
@@ -430,6 +430,46 @@ class Tienda
                 $productos[] = $row;
             }
             return $productos;
+        } else {
+            return false;
+        }
+    }
+
+    //CREAR PEDIDO
+    public function crearPedido($fecha, $precio_total, $id_usuario)
+    {
+        $this->getConection();
+        $sql = "INSERT INTO pedido (fecha, precio_total, id_usuario) VALUES ('$fecha', $precio_total, $id_usuario)";
+
+        if ($this->conection->query($sql) === TRUE) {
+            // Devuelve el ID del pedido recién insertado
+            return $this->conection->insert_id;
+        } else {
+            return false;
+        }
+    }
+
+    //CREAR ITEM DE PEDIDO
+    public function crearItemPedido($id_pedido, $id_producto, $cantidad, $precio)
+    {
+        $this->getConection();
+        $sql = "INSERT INTO item_pedido (id_pedido, id_producto, cantidad, precio) VALUES ($id_pedido, $id_producto, $cantidad, $precio)";
+
+        if ($this->conection->query($sql) === TRUE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //Vaciar el carrito
+    public function vaciarCarrito($id_carrito)
+    {
+        $this->getConection();
+        $sql = "DELETE FROM item_carrito WHERE id_carrito = $id_carrito";
+
+        if ($this->conection->query($sql) === TRUE) {
+            return true;
         } else {
             return false;
         }

@@ -279,5 +279,52 @@ class controlador
 
     public function compra()
     {
+        $precio_total = $_POST['precio_total'];
+        $correo = $_POST['correo'];
+        $id_usuario = $this->tienda->obtenerUsuarioPorCorreo($correo);
+
+        // Verificar si se encontró el usuario por correo
+        if ($id_usuario) {
+            // Obtener la fecha actual
+            $fecha = date('Y-m-d', strtotime('now'));
+
+            // Realizar la lógica para crear el pedido en la base de datos utilizando el precio total, la fecha, el ID del usuario
+
+            // 1. Crear el pedido
+            $id_pedido = $this->tienda->crearPedido($fecha, $precio_total, $id_usuario);
+
+            // 2. Obtener los productos del carrito desde la base de datos (o desde la sesión, dependiendo de tu implementación)
+            $id_carrito = $this->tienda->obtenerIdCarrito($id_usuario);
+            $productos = $this->tienda->obtenerProductosCarrito($id_carrito);
+
+            // 3. Recorrer los productos y crear los registros correspondientes en la tabla "item_pedido"
+            foreach ($productos as $producto) {
+                $id_producto = $producto['id_producto'];
+                $cantidad = $producto['cantidad'];
+                $precio = $producto['precio'];
+                $this->tienda->crearItemPedido($id_pedido, $id_producto, $cantidad, $precio);
+            }
+
+            // 4. Vaciar el carrito
+            $this->tienda->vaciarCarrito($id_carrito);
+
+            // Enviar notificación por correo electrónico
+            // Dirección de correo del usuario
+            $to = $correo;
+            $subject = 'Compra realizada';
+            $message = 'Su compra se ha realizado con éxito. Gracias por su compra.';
+            $headers = 'From: 9078@cifpceuta.es' . "\r\n" .
+                'Reply-To: 9078@cifpceuta.es' . "\r\n" .
+                'X-Mailer: PHP/' . phpversion();
+
+            // Envío del correo electrónico
+            $mailSent = mail($to, $subject, $message, $headers);
+
+            // Redirigir a una vista con un mensaje de éxito
+            if ($mailSent) {
+                // Configurar la vista de éxit
+                $this->view = 'pedido_hecho';
+            }
+        }
     }
 }
