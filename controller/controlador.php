@@ -255,13 +255,13 @@ class controlador
             $nombre = $_POST['nombre'];
             $direccion = $_POST['direccion'];
             $correo = $_POST['correo'];
-            $contraseña = $_POST['contrasena'];
+            $contrasena = $_POST['contrasena'];
 
             // Encriptar la contraseña
-            $contraseñaEncriptada = password_hash($contraseña, PASSWORD_DEFAULT);
+            $contrasenaEncriptada = password_hash($contrasena, PASSWORD_DEFAULT);
 
             // Insertar los datos del usuario en la base de datos
-            $this->tienda->registro($nombre, $direccion, $correo, $contraseñaEncriptada);
+            $this->tienda->registro($nombre, $direccion, $correo, $contrasenaEncriptada);
 
             // Después de procesar los datos y realizar el registro
             $this->view = 'registro_exitoso';
@@ -275,6 +275,7 @@ class controlador
 
         return $datos;
     }
+
 
 
     public function compra()
