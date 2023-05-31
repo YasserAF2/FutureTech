@@ -883,9 +883,21 @@ a[href='index.php?action=logout']:hover {
 }
 
 /* Estilos para tablets */
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  main {
-    background-color: yellow;
+@media screen and (min-width: 481px) and (max-width: 811px) {
+  .destacados,
+  .ofertas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .destacados li,
+  .ofertas li {
+    border-bottom: 1px solid black;
+  }
+
+  .producto h2 {
+    margin-top: 25px;
   }
 }
 

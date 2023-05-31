@@ -250,6 +250,9 @@ class controlador
 
     public function registrohecho()
     {
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Capturar los valores del formulario
             $nombre = $_POST['nombre'];
