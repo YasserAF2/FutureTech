@@ -309,23 +309,16 @@ class controlador
             // 4. Vaciar el carrito
             $this->tienda->vaciarCarrito($id_carrito);
 
-            // Enviar notificación por correo electrónico
-            // Dirección de correo del usuario
-            $to = $correo;
-            $subject = 'Compra realizada';
-            $message = 'Su compra se ha realizado con éxito. Gracias por su compra.';
-            $headers = 'From: 9078@cifpceuta.es' . "\r\n" .
-                'Reply-To: 9078@cifpceuta.es' . "\r\n" .
-                'X-Mailer: PHP/' . phpversion();
-
-            // Envío del correo electrónico
-            $mailSent = mail($to, $subject, $message, $headers);
-
-            // Redirigir a una vista con un mensaje de éxito
-            if ($mailSent) {
-                // Configurar la vista de éxit
-                $this->view = 'pedido_hecho';
-            }
+            // 5. Cambiar vista
+            $this->view = 'pedido_hecho';
         }
+
+        $categorias = $this->tienda->getCategorias();
+
+        $datos = array(
+            'categorias' => $categorias,
+        );
+
+        return $datos;
     }
 }

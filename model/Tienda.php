@@ -356,11 +356,11 @@ class Tienda
     }
 
     //registrar un usuario
-    public function registro($nombre, $direccion, $correo, $contraseña)
+    public function registro($nombre, $direccion, $correo, $contrasena)
     {
         // Insertar los datos del usuario en la base de datos
         $this->getConection();
-        $sql = "INSERT INTO usuario (nombre, direccion, correo, contraseña) VALUES ('$nombre', '$direccion', '$correo', '$contraseña')";
+        $sql = "INSERT INTO usuario (nombre, direccion, correo, contraseña) VALUES ('$nombre', '$direccion', '$correo', '$contrasena')";
 
         if ($this->conection->query($sql) === TRUE) {
         } else {
