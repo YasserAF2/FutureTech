@@ -47,23 +47,44 @@ class controlador
         return $datos;
     }
 
-    //LOGIN DE USUARIO
+    // LOGIN DE USUARIO
     public function logeado()
     {
         $mensajeError = '';
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $usuario = isset($_POST['username']) ? $_POST['username'] : '';
             $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-            if (!empty($usuario) && !empty($password) && $this->tienda->validarUsuario($usuario, $password)) {
-                session_start(); // Inicia la sesión
-                $_SESSION['usuario'] = $usuario; // Guarda el usuario en la sesión
-                $_SESSION['tipo_usuario'] = $this->tienda->getTipoUsuario($usuario); // Guarda el tipo de usuario en la sesión
-                header('Location: index.php'); // Redirecciona a la página principal
-                exit;
+            if (!empty($usuario) && !empty($password)) {
+                echo "Entrando en la condición de no vacío<br>"; // Mensaje de depuración
+
+                // Obtener la contraseña encriptada asociada al usuario
+                $contrasenaEncriptada = $this->tienda->getContrasenaEncriptada($usuario);
+
+                if ($contrasenaEncriptada) {
+                    echo "Contraseña encriptada obtenida: $contrasenaEncriptada<br>"; // Mensaje de depuración
+                    echo $password;
+
+                    // Comparar las contraseñas encriptadas
+                    if (password_verify($password, $contrasenaEncriptada)) {
+                        echo "Contraseña verificada correctamente<br>"; // Mensaje de depuración
+
+                        session_start(); // Iniciar la sesión
+                        $_SESSION['usuario'] = $usuario; // Guardar el usuario en la sesión
+                        $_SESSION['tipo_usuario'] = $this->tienda->getTipoUsuario($usuario); // Guardar el tipo de usuario en la sesión
+                        header('Location: index.php'); // Redireccionar a la página principal
+                        exit;
+                    } else {
+                        $mensajeError = 'Usuario o contraseña incorrectos';
+                    }
+                } else {
+                    echo "No se pudo obtener la contraseña encriptada<br>"; // Mensaje de depuración
+
+                    $mensajeError = 'Usuario no encontrado';
+                }
             } else {
-                $mensajeError = 'Usuario o contraseña incorrectos';
+                $mensajeError = 'Por favor, completa todos los campos';
             }
         }
 
@@ -71,11 +92,13 @@ class controlador
 
         $datos = array(
             'categorias' => $categorias,
-            'mensaje_error' => $mensajeError // Agrega el mensaje de error al arreglo de datos
+            'mensaje_error' => $mensajeError // Agregar el mensaje de error al arreglo de datos
         );
 
         return $datos;
     }
+
+
 
 
     //LOGOUT DE USUARIO
@@ -236,6 +259,7 @@ class controlador
         return $datos;
     }
 
+    //Vista form registro
     public function registro()
     {
         $this->view = 'registro';
@@ -248,11 +272,9 @@ class controlador
         return $datos;
     }
 
+    //Realizar el registro
     public function registrohecho()
     {
-        ini_set('display_errors', 1);
-        ini_set('display_startup_errors', 1);
-        error_reporting(E_ALL);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Capturar los valores del formulario
             $nombre = $_POST['nombre'];
@@ -278,8 +300,6 @@ class controlador
 
         return $datos;
     }
-
-
 
     public function compra()
     {

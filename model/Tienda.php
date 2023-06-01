@@ -78,20 +78,21 @@ class Tienda
         return $producto;
     }
 
-    //validar el usuario
-    public function validarUsuario($usuario, $password)
+    // devuelve la contraseña para el login
+    public function getContrasenaEncriptada($usuario)
     {
-        // Consulta para verificar las credenciales de inicio de sesión
-        $sql = "SELECT * FROM usuario WHERE correo = '$usuario' AND contraseña = '$password'";
+        // Consulta para obtener la contraseña encriptada del usuario
+        $sql = "SELECT contraseña FROM usuario WHERE correo = '$usuario'";
         $result = $this->conection->query($sql);
 
-        // Verificar si se obtuvo un resultado
-        if (mysqli_num_rows($result) == 1) {
-            return true;
+        if ($result && $result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+            return $row['contraseña'];
         } else {
             return false;
         }
     }
+
 
     /* obtener el tipo (cliente o admin) de usuario mediante el email */
     public function getTipoUsuario($email)
@@ -363,7 +364,9 @@ class Tienda
         $sql = "INSERT INTO usuario (nombre, direccion, correo, contraseña) VALUES ('$nombre', '$direccion', '$correo', '$contrasena')";
 
         if ($this->conection->query($sql) === TRUE) {
+            // Registro exitoso
         } else {
+            // Error al insertar en la base de datos
         }
     }
 
