@@ -57,18 +57,14 @@ class controlador
             $password = isset($_POST['password']) ? $_POST['password'] : '';
 
             if (!empty($usuario) && !empty($password)) {
-                echo "Entrando en la condición de no vacío<br>"; // Mensaje de depuración
 
                 // Obtener la contraseña encriptada asociada al usuario
                 $contrasenaEncriptada = $this->tienda->getContrasenaEncriptada($usuario);
 
                 if ($contrasenaEncriptada) {
-                    echo "Contraseña encriptada obtenida: $contrasenaEncriptada<br>"; // Mensaje de depuración
-                    echo $password;
 
                     // Comparar las contraseñas encriptadas
                     if (password_verify($password, $contrasenaEncriptada)) {
-                        echo "Contraseña verificada correctamente<br>"; // Mensaje de depuración
 
                         session_start(); // Iniciar la sesión
                         $_SESSION['usuario'] = $usuario; // Guardar el usuario en la sesión
@@ -79,8 +75,6 @@ class controlador
                         $mensajeError = 'Usuario o contraseña incorrectos';
                     }
                 } else {
-                    echo "No se pudo obtener la contraseña encriptada<br>"; // Mensaje de depuración
-
                     $mensajeError = 'Usuario no encontrado';
                 }
             } else {
@@ -97,9 +91,6 @@ class controlador
 
         return $datos;
     }
-
-
-
 
     //LOGOUT DE USUARIO
     public function logout()
