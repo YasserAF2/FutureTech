@@ -9,6 +9,7 @@ $(document).ready(function () {
   });
 });
 
+//vista dinámica
 function cargarVistaDinamica(url) {
   console.log('Cargando la vista dinámica desde la URL: ' + url);
   $.ajax({
@@ -26,6 +27,7 @@ function cargarVistaDinamica(url) {
   });
 }
 
+//botón de volver arriba
 window.addEventListener('scroll', function () {
   var btnVolverArriba = document.querySelector('.btn-volver-arriba');
   if (window.scrollY > 200) {
@@ -35,6 +37,7 @@ window.addEventListener('scroll', function () {
   }
 });
 
+//borrar producto
 function borrarProducto(id_producto) {
   fetch('index.php?action=borrar_producto_carrito', {
     method: 'POST',
