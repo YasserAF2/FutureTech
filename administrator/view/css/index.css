@@ -243,3 +243,27 @@ select {
   border-radius: 4px;
   box-sizing: border-box;
 }
+
+@media screen and (min-width: 481px) and (max-width: 811px) {
+  .list {
+    flex-basis: auto;
+  }
+  .main {
+    flex-basis: auto;
+  }
+  .lista {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .list {
+    flex-basis: auto;
+  }
+  .main {
+    flex-basis: auto;
+  }
+  .lista {
+    width: 100% !important;
+  }
+}

@@ -449,12 +449,24 @@ footer .copy {
 .botones button,
 .botones a {
   border-color: var(--azulclaro);
+  border-color: var(--azulclaro);
   background-color: var(--azulclaro);
   color: black;
 }
 
+.botones a.logout {
+  border-color: white;
+}
+
+.botones a.logout:hover {
+  border-color: rgb(210, 53, 53);
+  background-color: rgb(210, 53, 53);
+  color: #ffffff;
+}
+
 .botones a:hover {
-  background-color: var(--azulclaro);
+  border-color: var(--azuloscuro);
+  background-color: var(--azuloscuro);
   color: black;
 }
 

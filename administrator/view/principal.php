@@ -1,5 +1,5 @@
 <div class="cont">
-    <div class="list">
+    <div class="list lista">
         <h2>Lista de opciones:</h2>
         <ul>
             <li><a href="index.php?action=lista_usuarios" class="opciones-lista">Gestionar usuarios</a></li>
