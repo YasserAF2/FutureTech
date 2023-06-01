@@ -1,3 +1,4 @@
+//click en la lista
 $(document).ready(function () {
   console.log('El documento se ha cargado correctamente.');
   $('.opciones-lista').click(function (event) {
