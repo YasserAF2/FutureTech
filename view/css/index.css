@@ -896,6 +896,19 @@ a[href='index.php?action=logout']:hover {
 
 /* Estilos para tablets */
 @media screen and (min-width: 481px) and (max-width: 811px) {
+  .highlight {
+    height: 50vh;
+  }
+
+  .highlight h1 {
+    font-size: 2em;
+    height: 60px;
+  }
+
+  .cs1 h1 {
+    margin-top: 70px;
+  }
+
   .destacados,
   .ofertas {
     display: flex;
