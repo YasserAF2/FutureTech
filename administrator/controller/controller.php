@@ -30,6 +30,18 @@ class controlador
         return $datos;
     }
 
+    public function lista_pedidos()
+    {
+        $this->view = 'lista_pedidos';
+        $pedidos = $this->tienda->obtenerListaPedidos();
+
+        $datos = array(
+            'pedidos' => $pedidos,
+        );
+
+        return $datos;
+    }
+
     public function ver_productos()
     {
         $this->view = 'ver_productos';
@@ -132,6 +144,52 @@ class controlador
         $id_producto = $_POST['id_producto'];
 
         $this->tienda->borrarProducto($id_producto);
+
+        header('Location: index.php');
+    }
+
+    public function editar_producto()
+    {
+        $this->view = "editar_producto";
+
+        $id_producto = $_POST['id_producto'];
+        $nombre = $_POST['nombre'];
+        $precio = $_POST['precio'];
+        $cantidad = $_POST['cantidad'];
+        $oferta = $_POST['oferta'];
+        $porcentaje_oferta = $_POST['porcentaje_oferta'];
+        $destacado = $_POST['destacado'];
+        $descripcion = $_POST['descripcion'];
+        $id_categoria = $_POST['id_categoria'];
+
+        $datos = array(
+            'id_producto' => $id_producto,
+            'nombre' => $nombre,
+            'precio' => $precio,
+            'cantidad' => $cantidad,
+            'oferta' => $oferta,
+            'porcentaje_oferta' => $porcentaje_oferta,
+            'destacado' => $destacado,
+            'descripcion' => $descripcion,
+            'id_categoria' => $id_categoria
+        );
+
+        return $datos;
+    }
+
+    public function guardar_producto()
+    {
+        $id_producto = $_POST['id_producto'];
+        $nombre = $_POST['nombre'];
+        $precio = $_POST['precio'];
+        $cantidad = $_POST['cantidad'];
+        $oferta = $_POST['oferta'];
+        $porcentaje_oferta = $_POST['porcentaje_oferta'];
+        $destacado = $_POST['destacado'];
+        $descripcion = $_POST['descripcion'];
+        $id_categoria = $_POST['id_categoria'];
+
+        $this->tienda->editarProducto($id_producto, $nombre, $precio, $cantidad, $oferta, $porcentaje_oferta, $destacado, $descripcion, $id_categoria);
 
         header('Location: index.php');
     }

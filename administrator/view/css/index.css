@@ -103,6 +103,13 @@ html {
   color: darkred;
 }
 
+.tabla-productos .brr {
+  color: red;
+}
+
+.tabla-productos .brr:hover {
+  color: darkred;
+}
 /* tabla usuarios vista ver_productos.php */
 .tabla-productos {
   width: 100%;

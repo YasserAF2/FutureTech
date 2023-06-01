@@ -15,17 +15,20 @@ $tipo = $dataToView['tipo'];
                 <input type="hidden" name="id_usuario" value="<?php echo $id_usuario; ?>" />
                 <div class="form-group w-50">
                     <label for="nombre">Nombre:</label>
-                    <input type="text" name="nombre" id="nombre" value="<?php echo $nombre; ?>" class="form-control" required>
+                    <input type="text" name="nombre" id="nombre" value="<?php echo $nombre; ?>" class="form-control"
+                        required>
                 </div>
 
                 <div class="form-group w-50">
                     <label for="direccion">Dirección:</label>
-                    <input type="text" name="direccion" id="direccion" value="<?php echo $direccion; ?>" class="form-control" required>
+                    <input type="text" name="direccion" id="direccion" value="<?php echo $direccion; ?>"
+                        class="form-control" required>
                 </div>
 
                 <div class="form-group w-50">
                     <label for="correo">Correo:</label>
-                    <input type="email" name="correo" id="correo" value="<?php echo $correo; ?>" class="form-control" required>
+                    <input type="email" name="correo" id="correo" value="<?php echo $correo; ?>" class="form-control"
+                        required>
                 </div>
 
                 <div class="form-group w-25">

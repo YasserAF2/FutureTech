@@ -389,6 +389,28 @@ class Tienda
         }
     }
 
+    //editar producto de la vista de administrador
+    public function editarProducto($id_producto, $nombre, $precio, $cantidad, $oferta, $porcentaje_oferta, $destacado, $descripcion, $id_categoria)
+    {
+        $this->getConection();
+        $nombre = $this->conection->real_escape_string($nombre);
+        $precio = $this->conection->real_escape_string($precio);
+        $cantidad = $this->conection->real_escape_string($cantidad);
+        $oferta = $this->conection->real_escape_string($oferta);
+        $porcentaje_oferta = $this->conection->real_escape_string($porcentaje_oferta);
+        $destacado = $this->conection->real_escape_string($destacado);
+        $descripcion = $this->conection->real_escape_string($descripcion);
+        $id_categoria = $this->conection->real_escape_string($id_categoria);
+
+        $sql = "UPDATE producto SET nombre = '$nombre', precio = '$precio', cantidad = '$cantidad', oferta = '$oferta', porcentaje_oferta = '$porcentaje_oferta', destacado = '$destacado', descripcion = '$descripcion' WHERE id_producto = $id_producto";
+
+        if ($this->conection->query($sql) === TRUE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // borrar usuario de la vista de administrador
     public function borrarUsuario($id_usuario)
     {
@@ -473,6 +495,38 @@ class Tienda
 
         if ($this->conection->query($sql) === TRUE) {
             return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    //CONSULTA JOIN PARA OBTENER LOS PEDIDOS Y LOS USUARIOS
+    public function obtenerListaPedidos()
+    {
+        $this->getConection();
+
+        $sql = "SELECT p.fecha, p.precio_total, u.nombre, u.correo
+                FROM pedido p
+                JOIN usuario u ON p.id_usuario = u.id_usuario";
+
+        $result = $this->conection->query($sql);
+
+        if ($result) {
+            $listaPedidos = array();
+
+            while ($row = $result->fetch_assoc()) {
+                $pedido = array(
+                    'fecha' => $row['fecha'],
+                    'precio_total' => $row['precio_total'],
+                    'nombre' => $row['nombre'],
+                    'correo' => $row['correo']
+                );
+
+                $listaPedidos[] = $pedido;
+            }
+
+            return $listaPedidos;
         } else {
             return false;
         }
